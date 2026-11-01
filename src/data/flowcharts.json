@@ -1,0 +1,1602 @@
+{
+ "parts": [
+  {
+   "label": "1.0",
+   "title": "BLEEDING",
+   "items": [
+    {
+     "id": "fc1-1",
+     "label": "1.1",
+     "title": "Bleeding P/V — Vaginal Bleeding",
+     "sheets": [
+      {
+       "src": "flowcharts/1-1-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1503
+      },
+      {
+       "src": "flowcharts/1-1-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1312
+      }
+     ]
+    },
+    {
+     "id": "fc1-2",
+     "label": "1.2",
+     "title": "Haematuria",
+     "sheets": [
+      {
+       "src": "flowcharts/1-2-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1535
+      },
+      {
+       "src": "flowcharts/1-2-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1311
+      }
+     ]
+    },
+    {
+     "id": "fc1-3",
+     "label": "1.3",
+     "title": "Coughing Blood — Haemoptysis",
+     "sheets": [
+      {
+       "src": "flowcharts/1-3-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1462
+      },
+      {
+       "src": "flowcharts/1-3-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1128
+      }
+     ]
+    },
+    {
+     "id": "fc1-4",
+     "label": "1.4",
+     "title": "Bleeding Per Rectum and Melaena",
+     "sheets": [
+      {
+       "src": "flowcharts/1-4-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1630
+      },
+      {
+       "src": "flowcharts/1-4-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 945
+      }
+     ]
+    },
+    {
+     "id": "fc1-5",
+     "label": "1.5",
+     "title": "Blood at the Tip of the Meatus",
+     "sheets": [
+      {
+       "src": "flowcharts/1-5-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1233
+      },
+      {
+       "src": "flowcharts/1-5-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1033
+      }
+     ]
+    },
+    {
+     "id": "fc1-6",
+     "label": "1.6",
+     "title": "Nasal Bleeding — Epistaxis",
+     "sheets": [
+      {
+       "src": "flowcharts/1-6-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1301
+      },
+      {
+       "src": "flowcharts/1-6-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 950
+      }
+     ]
+    },
+    {
+     "id": "fc1-7",
+     "label": "1.7",
+     "title": "Bleeding from the Penis",
+     "sheets": [
+      {
+       "src": "flowcharts/1-7-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1378
+      },
+      {
+       "src": "flowcharts/1-7-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 960
+      }
+     ]
+    },
+    {
+     "id": "fc1-8",
+     "label": "1.8",
+     "title": "Blood in Vomiting — Haematemesis",
+     "sheets": [
+      {
+       "src": "flowcharts/1-8-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1286
+      },
+      {
+       "src": "flowcharts/1-8-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 931
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "2.0",
+   "title": "VOMITING AND LOOSE STOOLS",
+   "items": [
+    {
+     "id": "fc2-1",
+     "label": "2.1",
+     "title": "Fever, Nausea and Vomiting",
+     "sheets": [
+      {
+       "src": "flowcharts/2-1-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1533
+      },
+      {
+       "src": "flowcharts/2-1-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1293
+      }
+     ]
+    },
+    {
+     "id": "fc2-2",
+     "label": "2.2",
+     "title": "Loose Stools",
+     "sheets": [
+      {
+       "src": "flowcharts/2-2-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1393
+      },
+      {
+       "src": "flowcharts/2-2-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1236
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "3.0",
+   "title": "ACUTE ABDOMEN",
+   "items": [
+    {
+     "id": "fc3-1",
+     "label": "3.1",
+     "title": "Abdominal Pain",
+     "sheets": [
+      {
+       "src": "flowcharts/3-1-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1452
+      },
+      {
+       "src": "flowcharts/3-1-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1232
+      }
+     ]
+    },
+    {
+     "id": "fc3-2",
+     "label": "3.2",
+     "title": "Urinary Retention",
+     "sheets": [
+      {
+       "src": "flowcharts/3-2-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1282
+      },
+      {
+       "src": "flowcharts/3-2-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1097
+      }
+     ]
+    },
+    {
+     "id": "fc3-3",
+     "label": "3.3",
+     "title": "Loose Stools",
+     "sheets": [
+      {
+       "src": "flowcharts/3-3-1.webp",
+       "caption": "See protocol 2.2",
+       "width": 831,
+       "height": 391
+      }
+     ],
+     "seeAlso": "2.2"
+    },
+    {
+     "id": "fc3-4",
+     "label": "3.4",
+     "title": "Constipation",
+     "sheets": [
+      {
+       "src": "flowcharts/3-4-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1442
+      },
+      {
+       "src": "flowcharts/3-4-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1239
+      }
+     ]
+    },
+    {
+     "id": "fc3-5",
+     "label": "3.5",
+     "title": "Uneasiness and Bloating",
+     "sheets": [
+      {
+       "src": "flowcharts/3-5-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1376
+      },
+      {
+       "src": "flowcharts/3-5-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1114
+      }
+     ]
+    },
+    {
+     "id": "fc3-6",
+     "label": "3.6",
+     "title": "Loss of Appetite",
+     "sheets": [
+      {
+       "src": "flowcharts/3-6-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1425
+      },
+      {
+       "src": "flowcharts/3-6-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1029
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "4.0",
+   "title": "ALTERED SENSORIUM",
+   "items": [
+    {
+     "id": "fc4-1",
+     "label": "4.1",
+     "title": "Drowsiness and Alcohol Intoxication",
+     "sheets": [
+      {
+       "src": "flowcharts/4-1-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1407
+      },
+      {
+       "src": "flowcharts/4-1-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1174
+      }
+     ]
+    },
+    {
+     "id": "fc4-2",
+     "label": "4.2",
+     "title": "The Unconscious Patient",
+     "sheets": [
+      {
+       "src": "flowcharts/4-2-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1267,
+       "height": 1520
+      },
+      {
+       "src": "flowcharts/4-2-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1235
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "5.0",
+   "title": "SEIZURES",
+   "items": [
+    {
+     "id": "fc5-1",
+     "label": "5.1",
+     "title": "Abnormal Body Movement and Seizure",
+     "sheets": [
+      {
+       "src": "flowcharts/5-1-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1516
+      },
+      {
+       "src": "flowcharts/5-1-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 956
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "6.0",
+   "title": "CHEST PAIN AND SHORTNESS OF BREATH",
+   "items": [
+    {
+     "id": "fc6-1",
+     "label": "6.1",
+     "title": "Shortness of Breath",
+     "sheets": [
+      {
+       "src": "flowcharts/6-1-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1572
+      },
+      {
+       "src": "flowcharts/6-1-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 881
+      }
+     ]
+    },
+    {
+     "id": "fc6-2",
+     "label": "6.2",
+     "title": "Chest Pain",
+     "sheets": [
+      {
+       "src": "flowcharts/6-2-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1572
+      },
+      {
+       "src": "flowcharts/6-2-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1238
+      }
+     ]
+    },
+    {
+     "id": "fc6-3",
+     "label": "6.3",
+     "title": "Anxiety and Panic Attack",
+     "sheets": [
+      {
+       "src": "flowcharts/6-3-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1471
+      },
+      {
+       "src": "flowcharts/6-3-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1141
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "7.0",
+   "title": "DIZZINESS, SYNCOPE AND GENERALISED WEAKNESS",
+   "items": [
+    {
+     "id": "fc7-1",
+     "label": "7.1",
+     "title": "Dizziness",
+     "sheets": [
+      {
+       "src": "flowcharts/7-1-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1477
+      },
+      {
+       "src": "flowcharts/7-1-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1057
+      }
+     ]
+    },
+    {
+     "id": "fc7-2",
+     "label": "7.2",
+     "title": "Generalised Weakness",
+     "sheets": [
+      {
+       "src": "flowcharts/7-2-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1370
+      },
+      {
+       "src": "flowcharts/7-2-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 878
+      }
+     ]
+    },
+    {
+     "id": "fc7-3",
+     "label": "7.3",
+     "title": "Syncope",
+     "sheets": [
+      {
+       "src": "flowcharts/7-3-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1352
+      },
+      {
+       "src": "flowcharts/7-3-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1209
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "8.0",
+   "title": "HEADACHE AND NEUROLOGICAL PRESENTATIONS",
+   "items": [
+    {
+     "id": "fc8-0",
+     "label": "8.0",
+     "title": "Headache",
+     "sheets": [
+      {
+       "src": "flowcharts/8-0-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1417
+      },
+      {
+       "src": "flowcharts/8-0-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1141
+      }
+     ]
+    },
+    {
+     "id": "fc8-1",
+     "label": "8.1",
+     "title": "Numbness and Tingling",
+     "sheets": [
+      {
+       "src": "flowcharts/8-1-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1464
+      },
+      {
+       "src": "flowcharts/8-1-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1171
+      }
+     ]
+    },
+    {
+     "id": "fc8-2",
+     "label": "8.2",
+     "title": "Weakness in Both Lower Limbs",
+     "sheets": [
+      {
+       "src": "flowcharts/8-2-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1472
+      },
+      {
+       "src": "flowcharts/8-2-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1093
+      }
+     ]
+    },
+    {
+     "id": "fc8-3",
+     "label": "8.3",
+     "title": "Paralysis and Suspected Stroke",
+     "sheets": [
+      {
+       "src": "flowcharts/8-3-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1399,
+       "height": 1647
+      },
+      {
+       "src": "flowcharts/8-3-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1316
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "9.0",
+   "title": "BACK, LIMB AND JOINT PAIN",
+   "items": [
+    {
+     "id": "fc9-1",
+     "label": "9.1",
+     "title": "Chronic Back Pain",
+     "sheets": [
+      {
+       "src": "flowcharts/9-1-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1454
+      },
+      {
+       "src": "flowcharts/9-1-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1282
+      }
+     ]
+    },
+    {
+     "id": "fc9-2",
+     "label": "9.2",
+     "title": "Upper Limb Pain and Swelling",
+     "sheets": [
+      {
+       "src": "flowcharts/9-2-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1315
+      },
+      {
+       "src": "flowcharts/9-2-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1119
+      }
+     ]
+    },
+    {
+     "id": "fc9-3",
+     "label": "9.3",
+     "title": "Elbow Pain",
+     "sheets": [
+      {
+       "src": "flowcharts/9-3-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1196
+      },
+      {
+       "src": "flowcharts/9-3-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1176
+      }
+     ]
+    },
+    {
+     "id": "fc9-4",
+     "label": "9.4",
+     "title": "Neck Pain",
+     "sheets": [
+      {
+       "src": "flowcharts/9-4-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1378
+      },
+      {
+       "src": "flowcharts/9-4-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1190
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "10.0",
+   "title": "JOINT PAIN",
+   "items": [
+    {
+     "id": "fc10",
+     "label": "10",
+     "title": "Joint Pain",
+     "sheets": [
+      {
+       "src": "flowcharts/10-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1385
+      },
+      {
+       "src": "flowcharts/10-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1280
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "11.0",
+   "title": "TRAUMA",
+   "items": [
+    {
+     "id": "fc11-1",
+     "label": "11.1",
+     "title": "Road Traffic Accident with Facial Trauma and Head Injury",
+     "sheets": [
+      {
+       "src": "flowcharts/11-1-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1309
+      },
+      {
+       "src": "flowcharts/11-1-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1192
+      }
+     ]
+    },
+    {
+     "id": "fc11-2",
+     "label": "11.2",
+     "title": "Gunshot Injury",
+     "sheets": [
+      {
+       "src": "flowcharts/11-2-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1347
+      },
+      {
+       "src": "flowcharts/11-2-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1251
+      }
+     ]
+    },
+    {
+     "id": "fc11-3",
+     "label": "11.3",
+     "title": "Wrist Laceration",
+     "sheets": [
+      {
+       "src": "flowcharts/11-3-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1254
+      },
+      {
+       "src": "flowcharts/11-3-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1068
+      }
+     ]
+    },
+    {
+     "id": "fc11-4",
+     "label": "11.4",
+     "title": "Fall from Stairs",
+     "sheets": [
+      {
+       "src": "flowcharts/11-4-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1352
+      },
+      {
+       "src": "flowcharts/11-4-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1039
+      }
+     ]
+    },
+    {
+     "id": "fc11-5",
+     "label": "11.5",
+     "title": "Leg Injury",
+     "sheets": [
+      {
+       "src": "flowcharts/11-5-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1283
+      },
+      {
+       "src": "flowcharts/11-5-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1206
+      }
+     ]
+    },
+    {
+     "id": "fc11-6",
+     "label": "11.6",
+     "title": "Soft-Tissue Injury",
+     "sheets": [
+      {
+       "src": "flowcharts/11-6-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1227
+      },
+      {
+       "src": "flowcharts/11-6-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1057
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "12.0",
+   "title": "HEAD INJURY",
+   "items": [
+    {
+     "id": "fc12",
+     "label": "12",
+     "title": "Head Injury",
+     "sheets": [
+      {
+       "src": "flowcharts/12-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1508
+      },
+      {
+       "src": "flowcharts/12-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 850
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "13.0",
+   "title": "FEVER AND INFECTIONS",
+   "items": [
+    {
+     "id": "fc13-1",
+     "label": "13.1",
+     "title": "Pyrexia of Unknown Origin",
+     "sheets": [
+      {
+       "src": "flowcharts/13-1-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1451
+      },
+      {
+       "src": "flowcharts/13-1-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1298
+      }
+     ]
+    },
+    {
+     "id": "fc13-2",
+     "label": "13.2",
+     "title": "Fever with Generalised Weakness",
+     "sheets": [
+      {
+       "src": "flowcharts/13-2-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1345
+      },
+      {
+       "src": "flowcharts/13-2-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1264
+      }
+     ]
+    },
+    {
+     "id": "fc13-3",
+     "label": "13.3",
+     "title": "Fever with Cough",
+     "sheets": [
+      {
+       "src": "flowcharts/13-3-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1345
+      },
+      {
+       "src": "flowcharts/13-3-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1309
+      }
+     ]
+    },
+    {
+     "id": "fc13-4",
+     "label": "13.4",
+     "title": "Fever with Yellowing of the Skin",
+     "sheets": [
+      {
+       "src": "flowcharts/13-4-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1372
+      },
+      {
+       "src": "flowcharts/13-4-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1213
+      }
+     ]
+    },
+    {
+     "id": "fc13-5",
+     "label": "13.5",
+     "title": "Fever with Shortness of Breath",
+     "sheets": [
+      {
+       "src": "flowcharts/13-5-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1345
+      },
+      {
+       "src": "flowcharts/13-5-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1278
+      }
+     ]
+    },
+    {
+     "id": "fc13-6",
+     "label": "13.6",
+     "title": "Fever with Headache and Vomiting",
+     "sheets": [
+      {
+       "src": "flowcharts/13-6-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1314
+      },
+      {
+       "src": "flowcharts/13-6-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1279
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "14.0",
+   "title": "ENT, THROAT AND DENTAL",
+   "items": [
+    {
+     "id": "fc14-1",
+     "label": "14.1",
+     "title": "Earache",
+     "sheets": [
+      {
+       "src": "flowcharts/14-1-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1329
+      },
+      {
+       "src": "flowcharts/14-1-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1030
+      }
+     ]
+    },
+    {
+     "id": "fc14-2",
+     "label": "14.2",
+     "title": "Pain in the Mandibular Region",
+     "sheets": [
+      {
+       "src": "flowcharts/14-2-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1397
+      },
+      {
+       "src": "flowcharts/14-2-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1087
+      }
+     ]
+    },
+    {
+     "id": "fc14-3",
+     "label": "14.3",
+     "title": "Pain in the Nose",
+     "sheets": [
+      {
+       "src": "flowcharts/14-3-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1303
+      },
+      {
+       "src": "flowcharts/14-3-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1120
+      }
+     ]
+    },
+    {
+     "id": "fc14-4",
+     "label": "14.4",
+     "title": "Dysphagia",
+     "sheets": [
+      {
+       "src": "flowcharts/14-4-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1460
+      },
+      {
+       "src": "flowcharts/14-4-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1071
+      }
+     ]
+    },
+    {
+     "id": "fc14-5",
+     "label": "14.5",
+     "title": "Throat Pain",
+     "sheets": [
+      {
+       "src": "flowcharts/14-5-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1363
+      },
+      {
+       "src": "flowcharts/14-5-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1190
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "15.0",
+   "title": "FOREIGN BODY",
+   "items": [
+    {
+     "id": "fc15-1",
+     "label": "15.1",
+     "title": "Foreign Body in the Ear",
+     "sheets": [
+      {
+       "src": "flowcharts/15-1-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1290
+      },
+      {
+       "src": "flowcharts/15-1-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1037
+      }
+     ]
+    },
+    {
+     "id": "fc15-2",
+     "label": "15.2",
+     "title": "Foreign Body in the Nasal Cavity",
+     "sheets": [
+      {
+       "src": "flowcharts/15-2-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1181
+      },
+      {
+       "src": "flowcharts/15-2-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1005
+      }
+     ]
+    },
+    {
+     "id": "fc15-3",
+     "label": "15.3",
+     "title": "Foreign Body Insertion",
+     "sheets": [
+      {
+       "src": "flowcharts/15-3-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1383
+      },
+      {
+       "src": "flowcharts/15-3-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1263
+      }
+     ]
+    },
+    {
+     "id": "fc15-4",
+     "label": "15.4",
+     "title": "Ingestion of a Foreign Body",
+     "sheets": [
+      {
+       "src": "flowcharts/15-4-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1335
+      },
+      {
+       "src": "flowcharts/15-4-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 909
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "16.0",
+   "title": "UROLOGICAL AND RENAL",
+   "items": [
+    {
+     "id": "fc16-1",
+     "label": "16.1",
+     "title": "Decreased Urine Output",
+     "sheets": [
+      {
+       "src": "flowcharts/16-1-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1427
+      },
+      {
+       "src": "flowcharts/16-1-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1261
+      }
+     ]
+    },
+    {
+     "id": "fc16-2",
+     "label": "16.2",
+     "title": "Urinary Retention",
+     "sheets": [
+      {
+       "src": "flowcharts/16-2-1.webp",
+       "caption": "See protocol 3.2",
+       "width": 831,
+       "height": 391
+      }
+     ],
+     "seeAlso": "3.2"
+    },
+    {
+     "id": "fc16-3",
+     "label": "16.3",
+     "title": "Flank Pain",
+     "sheets": [
+      {
+       "src": "flowcharts/16-3-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1211
+      },
+      {
+       "src": "flowcharts/16-3-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1150
+      }
+     ]
+    },
+    {
+     "id": "fc16-4",
+     "label": "16.4",
+     "title": "Pain and Swelling in the Perineal Region",
+     "sheets": [
+      {
+       "src": "flowcharts/16-4-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1230
+      },
+      {
+       "src": "flowcharts/16-4-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1180
+      }
+     ]
+    },
+    {
+     "id": "fc16-5",
+     "label": "16.5",
+     "title": "Penile and Scrotal Swelling",
+     "sheets": [
+      {
+       "src": "flowcharts/16-5-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1220
+      },
+      {
+       "src": "flowcharts/16-5-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 786
+      }
+     ]
+    },
+    {
+     "id": "fc16-6",
+     "label": "16.6",
+     "title": "Burning Micturition",
+     "sheets": [
+      {
+       "src": "flowcharts/16-6-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1449
+      },
+      {
+       "src": "flowcharts/16-6-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1131
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "17.0",
+   "title": "OBSTETRIC AND GYNAECOLOGICAL",
+   "items": [
+    {
+     "id": "fc17-1",
+     "label": "17.1",
+     "title": "Labour Pain",
+     "sheets": [
+      {
+       "src": "flowcharts/17-1-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1253
+      },
+      {
+       "src": "flowcharts/17-1-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "id": "fc17-2",
+     "label": "17.2",
+     "title": "Termination of Pregnancy and Post-Procedure Bleeding",
+     "sheets": [
+      {
+       "src": "flowcharts/17-2-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1409
+      },
+      {
+       "src": "flowcharts/17-2-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1243
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "18.0",
+   "title": "METABOLIC, HAEMATOLOGIC AND CHRONIC DISEASE",
+   "items": [
+    {
+     "id": "fc18-1",
+     "label": "18.1",
+     "title": "Hypoglycaemia",
+     "sheets": [
+      {
+       "src": "flowcharts/18-1-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1318
+      },
+      {
+       "src": "flowcharts/18-1-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1208
+      }
+     ]
+    },
+    {
+     "id": "fc18-2",
+     "label": "18.2",
+     "title": "Hypertension",
+     "sheets": [
+      {
+       "src": "flowcharts/18-2-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1233
+      },
+      {
+       "src": "flowcharts/18-2-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1164
+      }
+     ]
+    },
+    {
+     "id": "fc18-3",
+     "label": "18.3",
+     "title": "Hyperglycaemia",
+     "sheets": [
+      {
+       "src": "flowcharts/18-3-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1452
+      },
+      {
+       "src": "flowcharts/18-3-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1244
+      }
+     ]
+    },
+    {
+     "id": "fc18-4",
+     "label": "18.4",
+     "title": "Severe Anaemia",
+     "sheets": [
+      {
+       "src": "flowcharts/18-4-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1547
+      },
+      {
+       "src": "flowcharts/18-4-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1153
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "19.0",
+   "title": "BITES AND WOUNDS",
+   "items": [
+    {
+     "id": "fc19-1",
+     "label": "19.1",
+     "title": "Animal Bite",
+     "sheets": [
+      {
+       "src": "flowcharts/19-1-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1101
+      },
+      {
+       "src": "flowcharts/19-1-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1250
+      }
+     ]
+    },
+    {
+     "id": "fc19-2",
+     "label": "19.2",
+     "title": "Scorpion Sting and Insect Bite",
+     "sheets": [
+      {
+       "src": "flowcharts/19-2-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1258
+      },
+      {
+       "src": "flowcharts/19-2-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1203
+      }
+     ]
+    },
+    {
+     "id": "fc19-3",
+     "label": "19.3",
+     "title": "Snake Bite",
+     "sheets": [
+      {
+       "src": "flowcharts/19-3-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1239
+      },
+      {
+       "src": "flowcharts/19-3-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1187
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "20.0",
+   "title": "POISONING",
+   "items": [
+    {
+     "id": "fc20-1",
+     "label": "20.1",
+     "title": "Poisoning",
+     "sheets": [
+      {
+       "src": "flowcharts/20-1-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1146
+      },
+      {
+       "src": "flowcharts/20-1-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1234
+      }
+     ]
+    },
+    {
+     "id": "fc20-2",
+     "label": "20.2",
+     "title": "Phenyl and Hydrocarbon Ingestion",
+     "sheets": [
+      {
+       "src": "flowcharts/20-2-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1398
+      },
+      {
+       "src": "flowcharts/20-2-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1298
+      }
+     ]
+    },
+    {
+     "id": "fc20-3",
+     "label": "20.3",
+     "title": "Tremors and Alcohol Withdrawal",
+     "sheets": [
+      {
+       "src": "flowcharts/20-3-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1298,
+       "height": 1615
+      },
+      {
+       "src": "flowcharts/20-3-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1185
+      }
+     ]
+    },
+    {
+     "id": "fc20-4",
+     "label": "20.4",
+     "title": "Corrosive and Acid Ingestion",
+     "sheets": [
+      {
+       "src": "flowcharts/20-4-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1342
+      },
+      {
+       "src": "flowcharts/20-4-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1271
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "label": "21.0",
+   "title": "CARDIAC ARREST",
+   "items": [
+    {
+     "id": "fc21-1",
+     "label": "21.1",
+     "title": "Shock",
+     "sheets": [
+      {
+       "src": "flowcharts/21-1-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1396,
+       "height": 1552
+      },
+      {
+       "src": "flowcharts/21-1-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1324
+      }
+     ]
+    },
+    {
+     "id": "fc21-2",
+     "label": "21.2",
+     "title": "The Gasping Patient and Cardiac Arrest",
+     "sheets": [
+      {
+       "src": "flowcharts/21-2-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1346
+      },
+      {
+       "src": "flowcharts/21-2-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1223
+      }
+     ]
+    },
+    {
+     "id": "fc21-3",
+     "label": "21.3",
+     "title": "Brought Dead",
+     "sheets": [
+      {
+       "src": "flowcharts/21-3-1.webp",
+       "caption": "Sheet 1 of 2",
+       "width": 1400,
+       "height": 1227
+      },
+      {
+       "src": "flowcharts/21-3-2.webp",
+       "caption": "Sheet 2 of 2",
+       "width": 1400,
+       "height": 1093
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
