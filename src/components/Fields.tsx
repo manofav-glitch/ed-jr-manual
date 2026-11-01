@@ -21,6 +21,7 @@ export function NumberField({
       <span className="text-sm font-bold text-muted">{label}</span>
       <span className="mt-0.5 flex min-h-14 items-center rounded-xl border-2 border-line bg-surface px-3 focus-within:border-accent">
         <input
+          aria-label={label}
           inputMode="decimal"
           autoComplete="off"
           value={value}
