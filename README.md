@@ -10,6 +10,9 @@ It is a decision aid. Nothing in it replaces the Senior Resident on shift.
 
 - **Protocols**: every chapter, with presentations as a stepper (History → Exam → Tests → Red flags
   → Manage → Reference), tickable checklists, "Ask SR" badges, pinning and full-text search.
+- **Hospital protocols**: the hospital's own ED protocols (44 presentations plus resuscitation,
+  medication and reference chapters), in the same stepper.
+- **Flowcharts**: 154 flowchart sheets for 78 presentations, as drawn.
 - **Triage** (chapter 1), **Code blue** (chapter 13), **Doses** and the **case-sheet Note** (chapter 2).
 - Works in airplane mode after the first load. No backend: everything stays in the phone's browser.
 
@@ -27,10 +30,13 @@ npm run e2e        # browser smoke tests; first time: npx playwright install chr
 ## How it fits together
 
 ```
-content/manual.md            the manual — the only source of clinical text
-scripts/parse-manual.ts      manual.md → src/data/manual.json (generated; never edit the JSON)
+content/manual.md            the AIIMS manual — source of its clinical text
+content/hospital.md          the hospital protocols, imported from the hospital's .docx
+scripts/parse-manual.ts      both .md files → src/data/manual.json and hospital.json (generated; never edit the JSON)
+scripts/import-hospital.ts   hospital .docx → content/hospital.md
+scripts/import-flowcharts.ts flowchart-sheet .docx → public/flowcharts/*.webp + src/data/flowcharts.json
 src/data/reviewNotes.ts      "Check before use" corrections, shown next to the manual text
-src/config/site.ts           hospital-specific details (AIIMS, Patel Hospital)
+src/config/site.ts           hospital-specific details (AIIMS, local hospital)
 src/lib/                     pure logic: triage, codeBlue, doses, note, search, anchors, quote
 src/features/                screens: protocols, triage, codeblue, doses, note, about
 tests/unit/                  Vitest
@@ -67,6 +73,30 @@ Red flags and Management heading; the parser stops with an error otherwise. A ne
 parser does not recognise is shown under Reference with a warning: if it belongs elsewhere, add a
 pattern to `KIND_RULES` in `scripts/parse-manual.ts`.
 
+## Updating the hospital protocols and flowcharts
+
+Both come from Word files that are **not** committed (they carry the institution's cover page and
+file details). To update them, run the importers on the new files, then parse and test:
+
+```bash
+node scripts/import-hospital.ts <manual.docx> --replace "<institution name>=this hospital"
+node scripts/import-flowcharts.ts <sheets.docx>
+npm run parse && npm test
+```
+
+- `import-hospital.ts` drops the cover page, contents, index and the flowchart captions, and carries
+  every other word over. `--replace` (repeatable) swaps text everywhere, so the institution is not
+  named; at the start of a sentence the replacement is capitalised. Asterisk pairs typed into the
+  document (`*Do not lavage*`) are shown as italics, as the authors meant. The run fails if any
+  text did not come through.
+- `import-flowcharts.ts` takes titles from the document's contents list and pairs each "SHEET n of
+  2" caption with the image after it, saving 1400 px WebP files (about 24 MB in all).
+- `tests/unit/hospital.test.ts` fails if the institution's name appears in any file in the
+  repository. It compares word hashes, so the test does not contain the name either.
+
+Hospital protocols use the same tabs as the AIIMS manual, from their fixed column headings. They
+have no "Ask SR" badges: the asterisks in that document are formatting, not a convention.
+
 ## Editing the "Check before use" notes
 
 `src/data/reviewNotes.ts` lists the corrections. Each note has an `id`, a `title`, a `body`, an
@@ -76,10 +106,10 @@ marks). `npm test` fails if a `match` is not found, or is found in more than one
 tells you when a manual edit has moved text a note points to. The notes are listed on the About
 screen.
 
-## Site config (AIIMS / Patel Hospital)
+## Site config (AIIMS / local hospital)
 
 `src/config/site.ts` holds two profiles. The active one is `ACTIVE_SITE` (or build with
-`VITE_SITE=patel`).
+`VITE_SITE=local`).
 
 | Field | Used for |
 |---|---|
@@ -92,9 +122,9 @@ screen.
 | `tenecteplaseStroke` | Dose calculator (0.25 mg/kg, max 25 mg; change `mgPerKg` to 0.2 for the Indian label) |
 
 With a profile other than AIIMS active, its values appear as "At <site>" notes next to the
-AIIMS-specific lines; the manual text itself is unchanged. The Patel profile was drafted from the
-Patel Hospital Emergency Manual, Revision 02, and is marked `verified: false` (the app shows
-"draft") until the department has checked it. The code-blue phone number is still to be added.
+AIIMS-specific lines; the manual text itself is unchanged. The local profile was drafted from the
+hospital's emergency manual (Revision 02) and is marked `verified: false` (the app shows "draft")
+until the department has checked it. The code-blue phone number is still to be added.
 
 ## How the tools read the manual
 
@@ -131,8 +161,9 @@ next time the app is opened.
 
 ## Offline and installing
 
-The service worker (vite-plugin-pwa) precaches the whole app on the first visit: code, the parsed
-manual, fonts and icons (about 0.8 MB). After that it works with no network. On Android, Chrome
+The service worker (vite-plugin-pwa) precaches the whole app on the first visit: code, both parsed
+manuals, fonts and icons. After that it works with no network. Flowchart sheets are kept once
+opened; "Save all flowcharts for offline" on the Flowcharts list downloads all of them (about 24 MB). On Android, Chrome
 offers "Install app"; on iPhone, use Share → Add to Home Screen.
 
 The icons are generated from `public/icon.svg`: after changing it, run

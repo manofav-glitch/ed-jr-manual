@@ -11,9 +11,12 @@ import {
   CHECKLIST_KINDS,
   TAB_LABEL,
   chapterById,
+  chapterLine,
   checkItems,
-  manual,
+  introFor,
+  partFor,
   sectionsFor,
+  sourceOf,
   shortTitle,
   tabsFor,
 } from '../../lib/manual.ts';
@@ -23,7 +26,7 @@ export function ProtocolScreen() {
   const { chapterId, tab } = useParams();
   const [params] = useSearchParams();
   const focus = params.get('focus') ?? '';
-  const ch = chapterById(manual, chapterId);
+  const ch = chapterById(chapterId);
 
   if (!ch) {
     return (
@@ -43,9 +46,7 @@ export function ProtocolScreen() {
     <>
       <ProtocolHeader ch={ch} tabs={tabs} current={current} />
       <main className="px-safe mx-auto max-w-3xl pb-8">
-        <p className="pt-3 text-sm text-muted">
-          Chapter {ch.number} · {ch.title}
-        </p>
+        <p className="pt-3 text-sm text-muted">{chapterLine(ch)}</p>
         {/* Remount on every jump so collapsed sections open around the search target. */}
         <TabContent key={`${ch.id}/${current}/${focus}`} ch={ch} kind={current} focus={focus} />
         <NextStep ch={ch} tabs={tabs} current={current} />
@@ -191,9 +192,27 @@ function TabContent({ ch, kind, focus }: { ch: Chapter; kind: SectionKind; focus
   }, [focus]);
 
   const sections = sectionsFor(ch, kind);
+  const first = kind === tabsFor(ch)[0];
+  const part = first ? partFor(ch) : undefined;
+  const intro = first ? introFor(ch) : [];
   return (
     <div className="pt-2">
-      {kind === 'redflags' && (
+      {part && part.intro.length > 0 && (
+        <Collapsible id={`${ch.id}-part`} level="subsection" title={`About ${part.title}`} initialOpen={false}>
+          <Blocks blocks={part.intro} mode="read" />
+        </Collapsible>
+      )}
+      {intro.map((s) => (
+        <div key={s.id} id={s.id} className="my-3 scroll-mt-40 rounded-xl bg-surface-2 px-3 py-1">
+          {s.subsections.map((sub) => (
+            <div key={sub.id} id={sub.id}>
+              <Blocks blocks={sub.blocks} mode="read" />
+            </div>
+          ))}
+        </div>
+      ))}
+      {/* AIIMS: the manual's rule as a banner. The hospital protocols print it in the red-flag heading. */}
+      {kind === 'redflags' && sourceOf(ch) === 'aiims' && (
         <p className="mb-3 flex items-start gap-2 rounded-xl bg-danger px-4 py-3 text-lg font-bold text-surface" role="note">
           <AlertIcon className="mt-1 size-6 shrink-0" />
           {redFlagAction(site)}

@@ -60,7 +60,7 @@ function Card({ card, show }: { card: DoseCard; show: boolean }) {
           const q = quote(manual, a);
           return (
             <blockquote key={q.id} className="my-2 border-l-4 border-line pl-3">
-              <Link to={urlFor(manual, q.id)} className="text-sm text-muted underline">
+              <Link to={urlFor(q.id)} className="text-sm text-muted underline">
                 Chapter {q.chapter}
               </Link>
               <p>

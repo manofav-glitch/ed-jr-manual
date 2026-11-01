@@ -40,15 +40,15 @@ describe('site config', () => {
     expect(sites.aiims.priorityRed).toEqual({ text: 'AIIMS EHS patient', useInTriage: false });
   });
 
-  it.each(siteNotes(sites.patel).flatMap((n) => n.anchors.map((a) => [n.id, a.chapter, a.match] as const)))(
-    'Patel note %s: "%s / %s" is found in exactly one place',
+  it.each(siteNotes(sites.local).flatMap((n) => n.anchors.map((a) => [n.id, a.chapter, a.match] as const)))(
+    'Local note %s: "%s / %s" is found in exactly one place',
     (_id, chapter, match) => {
       expect(findAnchor(manual, { chapter, match })).toHaveLength(1);
     },
   );
 
-  it('Patel uses its own zones and senior', () => {
-    expect(redFlagAction(sites.patel)).toBe('Any red flag → shift to Resuscitation Bay / Red bed, inform Consultant.');
-    expect(sites.patel.verified).toBe(false);
+  it('the local profile uses its own zones and senior', () => {
+    expect(redFlagAction(sites.local)).toBe('Any red flag → shift to Resuscitation Bay / Red bed, inform Consultant.');
+    expect(sites.local.verified).toBe(false);
   });
 });

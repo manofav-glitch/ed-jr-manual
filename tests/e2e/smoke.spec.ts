@@ -20,7 +20,7 @@ test('Protocols: open a presentation, tick a step, see red flags, search and jum
 
   await tab(page, 'Protocols').click();
   await page.getByRole('searchbox').fill('Hamman');
-  await page.getByRole('link', { name: /Boerhaave/ }).click();
+  await page.getByRole('link', { name: /Boerhaave/ }).filter({ hasText: 'AIIMS' }).click();
   await expect(page.getByText("Hamman's crunch (audible crepitus with heart beat) — rare finding on examination")).toBeVisible();
 });
 
@@ -103,4 +103,23 @@ test('Is installable and works offline after the first load', async ({ page, con
   await expect(page.getByRole('button', { name: 'Start CPR' })).toBeVisible();
   // Fonts come from the cache too.
   expect(await page.evaluate(() => document.fonts.check('16px "Atkinson Hyperlegible"'))).toBe(true);
+});
+
+test('Hospital protocols: open one as a stepper with its red-flag row', async ({ page }) => {
+  await page.goto('./');
+  await page.getByRole('radio', { name: 'Hospital' }).click();
+  await page.getByRole('link', { name: /2\.1\s*Chest Pain/ }).click();
+  await expect(page.getByRole('heading', { name: 'Chest Pain' })).toBeVisible();
+  await expect(page.getByText('Salient history to be taken')).toBeVisible();
+  await page.getByRole('link', { name: /Red flags/ }).click();
+  await expect(page.getByRole('heading', { name: /RED FLAG SIGNS/ })).toBeVisible();
+});
+
+test('Flowcharts: open a presentation and load both sheets', async ({ page }) => {
+  await page.goto('./');
+  await page.getByRole('radio', { name: 'Flowcharts' }).click();
+  await page.getByRole('link', { name: /1\.1\s*Bleeding P\/V/ }).click();
+  const sheets = page.locator('main img');
+  await expect(sheets).toHaveCount(2);
+  await expect.poll(() => sheets.first().evaluate((i: HTMLImageElement) => i.naturalWidth)).toBe(1400);
 });

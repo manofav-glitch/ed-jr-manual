@@ -1,15 +1,15 @@
 import Fuse, { type FuseResultMatch } from 'fuse.js';
-import type { Block, Manual, SectionKind } from '../data/types.ts';
+import type { Block } from '../data/types.ts';
+import type { Flowcharts } from '../data/flowchartTypes.ts';
 import { plain } from './inline.ts';
-import { tabsFor, urlFor } from './manual.ts';
+import { SOURCES, TAB_LABEL, isIntro, shortTitle, tabsFor, type SourceId } from './manual.ts';
 
 export interface SearchDoc {
-  /** Element id to scroll to. */
+  /** Element (or chapter / flowchart) id. */
   id: string;
-  chapterId: string;
-  chapterNumber: number;
-  tab: SectionKind;
-  /** Section / subsection heading the text sits under, for context. */
+  url: string;
+  source: SourceId | 'flowcharts';
+  /** "3. Chest pain › Tests › Point-of-care investigations" */
   where: string;
   text: string;
 }
@@ -20,20 +20,38 @@ export interface SearchHit {
   ranges: [number, number][];
 }
 
-export function buildDocs(m: Manual): SearchDoc[] {
+export const SOURCE_LABEL: Record<SearchDoc['source'], string> = {
+  aiims: 'AIIMS',
+  hospital: 'Hospital',
+  flowcharts: 'Flowchart',
+};
+
+export function buildDocs(fc?: Flowcharts): SearchDoc[] {
   const docs: SearchDoc[] = [];
-  for (const ch of m.chapters) {
-    const firstTab = tabsFor(ch)[0] ?? 'reference';
-    docs.push({ id: ch.id, chapterId: ch.id, chapterNumber: ch.number, tab: firstTab, where: '', text: ch.title });
-    for (const s of ch.sections) {
-      const add = (id: string, text: string, where: string) =>
-        docs.push({ id, chapterId: ch.id, chapterNumber: ch.number, tab: s.kind, where, text });
-      if (s.headingText) add(s.id, s.headingText, '');
-      for (const sub of s.subsections) {
-        const where = [s.headingText, sub.headingText].filter(Boolean).join(' › ');
-        if (sub.headingText) add(sub.id, sub.headingText, s.headingText ?? '');
-        walk(sub.blocks, (id, text) => add(id, text, where));
+  for (const { id: source, manual } of SOURCES) {
+    for (const ch of manual.chapters) {
+      const name = `${ch.label ? `${ch.label}${source === 'aiims' ? '.' : ''} ` : ''}${shortTitle(ch)}`;
+      const tabs = tabsFor(ch);
+      const stepper = tabs.length > 1;
+      docs.push({ id: ch.id, url: `/p/${ch.id}`, source, where: '', text: ch.title });
+      for (const s of ch.sections) {
+        // Same link urlFor() would give, worked out once per section.
+        const kind = stepper && isIntro(s) ? tabs[0]! : s.kind;
+        const base = `/p/${ch.id}${stepper ? `/${kind}` : ''}?focus=`;
+        const tab = stepper ? ` › ${TAB_LABEL[kind]}` : '';
+        const add = (id: string, text: string, under: (string | null)[]) =>
+          docs.push({ id, url: base + encodeURIComponent(id), source, where: [`${name}${tab}`, ...under].filter(Boolean).join(' › '), text });
+        if (s.headingText) add(s.id, s.headingText, []);
+        for (const sub of s.subsections) {
+          if (sub.headingText) add(sub.id, sub.headingText, [s.headingText]);
+          walk(sub.blocks, (id, text) => add(id, text, [s.headingText, sub.headingText]));
+        }
       }
+    }
+  }
+  for (const part of fc?.parts ?? []) {
+    for (const f of part.items) {
+      docs.push({ id: f.id, url: `/f/${f.id}`, source: 'flowcharts', where: `${part.label} ${part.title}`, text: `${f.label} ${f.title}` });
     }
   }
   return docs;
@@ -71,7 +89,7 @@ export function createSearch(docs: SearchDoc[]) {
     minMatchCharLength: 2,
   });
 
-  return (query: string, limit = 60): SearchHit[] => {
+  return (query: string, limit = 80): SearchHit[] => {
     const q = query.trim();
     if (q.length < 2) return [];
     const lower = q.toLowerCase();
@@ -94,8 +112,4 @@ export function createSearch(docs: SearchDoc[]) {
 
 function rangesOf(matches: readonly FuseResultMatch[] | undefined): [number, number][] {
   return (matches?.[0]?.indices ?? []).filter(([a, b]) => b - a >= 1).map(([a, b]) => [a, b]);
-}
-
-export function hitUrl(m: Manual, doc: SearchDoc): string {
-  return doc.id === doc.chapterId ? `/p/${doc.chapterId}` : urlFor(m, doc.id);
 }

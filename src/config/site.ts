@@ -4,11 +4,11 @@
 // active, its values appear as "At <site>" notes next to the AIIMS-specific lines of the manual,
 // and in the app's own wording (badges, the red-flag banner).
 //
-// To switch hospital: change ACTIVE_SITE below (or build with VITE_SITE=patel).
+// To switch hospital: change ACTIVE_SITE below (or build with VITE_SITE=local).
 
 import type { Anchor } from '../lib/anchors.ts';
 
-export type SiteId = 'aiims' | 'patel';
+export type SiteId = 'aiims' | 'local';
 
 export interface SiteProfile {
   id: SiteId;
@@ -49,11 +49,11 @@ const aiims: SiteProfile = {
   tenecteplaseStroke: TNK_AHA,
 };
 
-// Drafted 2026-11-02 from the Patel Hospital Emergency Manual, Revision 02
-// (PH/INT/QC/MAN/EMG/11680). Every value needs checking by the department.
-const patel: SiteProfile = {
-  id: 'patel',
-  name: 'Patel Hospital, Jalandhar',
+// Drafted 2026-11-02 from the hospital's own emergency manual (Revision 02, the source of the
+// Hospital protocols in the app). Every value needs checking by the department.
+const local: SiteProfile = {
+  id: 'local',
+  name: 'Local hospital',
   verified: false,
   senior: 'Consultant',
   seniorLong: 'Consultant on call',
@@ -70,11 +70,11 @@ const patel: SiteProfile = {
     gastro: 'Consultant Gastroenterology / Physician',
   },
   codeBlue: 'Announce CODE BLUE and send for the defibrillator and crash cart. (Add the local number.)',
-  antibiotics: 'Patel Emergency Manual section 11.5 (syndromic antibiotic guide) — not yet in the app.',
+  antibiotics: 'Hospital protocols, section 11.0 (Guide to Common Medications, 11.5 antibiotics).',
   tenecteplaseStroke: TNK_AHA,
 };
 
-export const sites: Record<SiteId, SiteProfile> = { aiims, patel };
+export const sites: Record<SiteId, SiteProfile> = { aiims, local };
 
 export const ACTIVE_SITE: SiteId = 'aiims';
 

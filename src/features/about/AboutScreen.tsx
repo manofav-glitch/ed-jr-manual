@@ -45,7 +45,7 @@ export function AboutScreen() {
               const a = n.anchors[0]!;
               const ch = manual.chapters.find((c) => c.number === a.chapter);
               const id = findAnchor(manual, a)[0];
-              const to = id ? urlFor(manual, id) : '/';
+              const to = id ? urlFor(id) : '/';
               return (
                 <li key={n.id}>
                   <Link to={to} className="block rounded-xl border-2 border-dashed border-review bg-review-soft px-3 py-2">

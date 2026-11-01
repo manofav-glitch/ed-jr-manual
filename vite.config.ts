@@ -39,6 +39,19 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,svg,png,ico,woff2}'],
         navigateFallback: 'index.html',
         cleanupOutdatedCaches: true,
+        // Flowchart sheets (~24 MB) are not in the install download: each is kept once opened,
+        // or all at once from the Flowcharts list (src/lib/flowcharts.ts uses the same cache name).
+        runtimeCaching: [
+          {
+            urlPattern: ({ url }) => url.pathname.includes('/flowcharts/') && url.pathname.endsWith('.webp'),
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'flowcharts',
+              expiration: { maxEntries: 400 },
+              cacheableResponse: { statuses: [200] },
+            },
+          },
+        ],
       },
     }),
   ],

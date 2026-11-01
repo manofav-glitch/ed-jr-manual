@@ -3,6 +3,7 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 import { BottomNav } from './components/BottomNav.tsx';
 import { CodeBlueScreen } from './features/codeblue/CodeBlueScreen.tsx';
 import { DosesScreen } from './features/doses/DosesScreen.tsx';
+import { FlowchartScreen } from './features/flowcharts/FlowchartScreen.tsx';
 import { NoteScreen } from './features/note/NoteScreen.tsx';
 import { AboutScreen } from './features/about/AboutScreen.tsx';
 import { HomeScreen } from './features/protocols/HomeScreen.tsx';
@@ -24,6 +25,7 @@ export function App() {
         <Routes>
           <Route path="/" element={<HomeScreen />} />
           <Route path="/p/:chapterId/:tab?" element={<ProtocolScreen />} />
+          <Route path="/f/:id" element={<FlowchartScreen />} />
           <Route path="/about" element={<AboutScreen />} />
           <Route path="/triage" element={<TriageScreen />} />
           <Route path="/code" element={<CodeBlueScreen />} />

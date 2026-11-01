@@ -12,8 +12,8 @@ const TABS: { to: string; label: string; Icon: ComponentType<SVGProps<SVGSVGElem
 
 export function BottomNav() {
   const { pathname } = useLocation();
-  // Protocol pages and About belong to the Protocols tab.
-  const inProtocols = pathname === '/' || pathname.startsWith('/p/') || pathname === '/about';
+  // Protocol and flowchart pages and About belong to the Protocols tab.
+  const inProtocols = pathname === '/' || pathname.startsWith('/p/') || pathname.startsWith('/f/') || pathname === '/about';
   return (
     <nav aria-label="Main" className="pb-safe fixed inset-x-0 bottom-0 z-30 border-t border-line bg-surface">
       <ul className="mx-auto flex max-w-3xl">

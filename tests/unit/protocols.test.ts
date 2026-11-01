@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { items } from '../../src/lib/items.ts';
 import { checkItems, isLeaf, manual, shortTitle, tabsFor, urlFor } from '../../src/lib/manual.ts';
-import { buildDocs, createSearch, hitUrl } from '../../src/lib/search.ts';
+import { buildDocs, createSearch } from '../../src/lib/search.ts';
+import { flowcharts } from '../../src/lib/flowcharts.ts';
 import type { Block } from '../../src/data/types.ts';
 
 const ch = (n: number) => manual.chapters[n - 1]!;
@@ -67,10 +68,10 @@ describe('stepper', () => {
 });
 
 describe('search', () => {
-  const search = createSearch(buildDocs(manual));
+  const search = createSearch(buildDocs(flowcharts));
 
   it('indexes every item in the manual', () => {
-    const docIds = new Set(buildDocs(manual).map((d) => d.id));
+    const docIds = new Set(buildDocs(flowcharts).map((d) => d.id));
     const all = manual.chapters.flatMap((c) => c.sections.flatMap((s) => s.subsections.flatMap((sub) => items(sub.blocks))));
     expect(all.every((i) => docIds.has(i.id))).toBe(true);
   });
@@ -78,30 +79,30 @@ describe('search', () => {
   it('jumps to the exact chapter, tab and item', () => {
     const hit = search('Troponin I')[0]!;
     expect(hit.doc.text).toBe('Troponin I*');
-    expect(hitUrl(manual, hit.doc)).toBe(`/p/ch3/tests?focus=${encodeURIComponent(hit.doc.id)}`);
+    expect(hit.doc.url).toBe(`/p/ch3/tests?focus=${encodeURIComponent(hit.doc.id)}`);
   });
 
   it('finds text inside reference subsections and opens them', () => {
     const hit = search('Hamman')[0]!;
-    expect(hit.doc.chapterNumber).toBe(3);
-    expect(hit.doc.tab).toBe('reference');
-    expect(hit.doc.where).toBe('Quick guide to important ED differentials of chest pain › Boerhaave Syndrome');
+    expect(hit.doc.source).toBe('aiims');
+    expect(hit.doc.url).toMatch(/^\/p\/ch3\/reference\?focus=/);
+    expect(hit.doc.where).toBe('3. Chest pain › Reference › Quick guide to important ED differentials of chest pain › Boerhaave Syndrome');
   });
 
   it('finds table rows', () => {
-    const hit = search('Methylene blue')[0]!;
-    expect(hit.doc.chapterNumber).toBe(12);
+    const hit = search('Methylene blue').find((h) => h.doc.source === 'aiims')!;
+    expect(hit.doc.url).toMatch(/^\/p\/ch12\//);
     expect(hit.doc.text).toContain('Oxidizing toxins');
   });
 
   it('tolerates a typo', () => {
-    expect(search('adrenalin').some((h) => h.doc.chapterNumber === 13)).toBe(true);
-    expect(search('hyperkalemia').some((h) => h.doc.chapterNumber === 17)).toBe(true);
+    expect(search('adrenalin').some((h) => h.doc.url.startsWith('/p/ch13'))).toBe(true);
+    expect(search('hyperkalemia').some((h) => h.doc.url.startsWith('/p/ch17'))).toBe(true);
   });
 
   it('links chapters without tabs straight to the chapter', () => {
     const hit = search('Mature interactions')[0]!;
-    expect(hitUrl(manual, hit.doc)).toMatch(/^\/p\/ch1\?focus=/);
+    expect(hit.doc.url).toMatch(/^\/p\/ch1\?focus=/);
   });
 
   it('ignores one-letter queries', () => {
@@ -111,7 +112,7 @@ describe('search', () => {
 
 describe('urlFor', () => {
   it('opens the right tab for a nested id', () => {
-    expect(urlFor(manual, 'ch4-reference.3.4')).toBe('/p/ch4/reference?focus=ch4-reference.3.4');
-    expect(urlFor(manual, 'nonsense')).toBe('/');
+    expect(urlFor('ch4-reference.3.4')).toBe('/p/ch4/reference?focus=ch4-reference.3.4');
+    expect(urlFor('nonsense')).toBe('/');
   });
 });
