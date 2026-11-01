@@ -1,5 +1,6 @@
 import { create } from 'zustand';
-import { createJSONStorage, persist, type StateStorage } from 'zustand/middleware';
+import { persist } from 'zustand/middleware';
+import { safeStorage } from './persist.ts';
 
 export type Theme = 'system' | 'light' | 'dark';
 
@@ -14,31 +15,6 @@ interface AppState {
   togglePin: (chapterId: string) => void;
   setTheme: (t: Theme) => void;
 }
-
-// localStorage can be missing or throw (private mode, blocked storage): the app still works, it just forgets.
-const safeStorage: StateStorage = {
-  getItem: (k) => {
-    try {
-      return localStorage.getItem(k);
-    } catch {
-      return null;
-    }
-  },
-  setItem: (k, v) => {
-    try {
-      localStorage.setItem(k, v);
-    } catch {
-      // ignore
-    }
-  },
-  removeItem: (k) => {
-    try {
-      localStorage.removeItem(k);
-    } catch {
-      // ignore
-    }
-  },
-};
 
 export const useApp = create<AppState>()(
   persist(
@@ -57,6 +33,6 @@ export const useApp = create<AppState>()(
       togglePin: (id) => set((s) => ({ pins: s.pins.includes(id) ? s.pins.filter((p) => p !== id) : [...s.pins, id] })),
       setTheme: (theme) => set({ theme }),
     }),
-    { name: 'ed-manual', version: 1, storage: createJSONStorage(() => safeStorage) },
+    { name: 'ed-manual', version: 1, storage: safeStorage },
   ),
 );
