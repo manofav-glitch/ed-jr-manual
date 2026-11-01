@@ -1,11 +1,8 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { unified } from 'unified';
-import remarkParse from 'remark-parse';
-import remarkGfm from 'remark-gfm';
-import type { Nodes, RootContent } from 'mdast';
-import { MANUAL_PATH, OUTPUT_PATH, items, parseManual, plain, serialise } from '../../scripts/parse-manual.ts';
-import type { Block, Chapter, Item, Manual } from '../../src/data/types.ts';
+import { MANUAL_PATH, OUTPUT_PATH, items, parseManual, serialise } from '../../scripts/parse-manual.ts';
+import { squash, textOfBlocks, textOfManual, textOfMarkdown } from './helpers.ts';
+import type { Chapter, Item } from '../../src/data/types.ts';
 
 const md = readFileSync(MANUAL_PATH, 'utf8');
 const { manual, warnings } = parseManual(md);
@@ -135,7 +132,6 @@ describe('parser: text is carried over exactly', () => {
   });
 
   it('loses, adds or reorders no text anywhere in the manual', () => {
-    const squash = (parts: string[]) => parts.join('').replace(/\s+/g, '');
     expect(squash(textOfManual(manual))).toBe(squash(textOfMarkdown(md)));
   });
 });
@@ -165,59 +161,3 @@ describe('parser: re-running picks up edits to the manual', () => {
     expect(readFileSync(OUTPUT_PATH, 'utf8')).toBe(serialise(manual));
   });
 });
-
-// ---- Text walkers for the fidelity test ----
-
-function textOfMarkdown(source: string): string[] {
-  const tree = unified().use(remarkParse).use(remarkGfm).parse(source);
-  const out: string[] = [];
-  const walk = (node: Nodes) => {
-    if (node.type === 'text' || node.type === 'inlineCode') out.push(node.value);
-    // A list item starting with ">" means "more than" (see the parser).
-    if (node.type === 'listItem' && node.children[0]?.type === 'blockquote') out.push('>');
-    if ('children' in node) (node.children as Nodes[]).forEach(walk);
-  };
-  let inContents = false;
-  for (const node of tree.children as RootContent[]) {
-    if (node.type === 'heading' && node.depth === 2) {
-      const t = node.children.map((c) => ('value' in c ? c.value : '')).join('');
-      inContents = t === 'Contents';
-      if (inContents) continue;
-    }
-    if (!inContents) walk(node);
-  }
-  return out;
-}
-
-function textOfManual(m: Manual): string[] {
-  const out = [m.title, ...textOfBlocks(m.front)];
-  for (const ch of m.chapters) {
-    if (ch.partTitle) out.push(ch.partTitle);
-    out.push(`${ch.number}. ${ch.title}`);
-    for (const s of ch.sections) {
-      if (s.headingText) out.push(s.headingText);
-      for (const sub of s.subsections) {
-        if (sub.headingText) out.push(sub.headingText);
-        out.push(...textOfBlocks(sub.blocks));
-      }
-    }
-  }
-  return out;
-}
-
-function textOfBlocks(bs: Block[]): string[] {
-  return bs.flatMap((b): string[] => {
-    switch (b.type) {
-      case 'paragraph':
-      case 'subhead':
-        return [b.text];
-      case 'list':
-        return b.items.flatMap((i) => [i.text, ...textOfBlocks(i.children)]);
-      case 'callout':
-        return textOfBlocks(b.blocks);
-      case 'table':
-        return [...b.header, ...b.rows.flat()].map(plain);
-    }
-  });
-}
-

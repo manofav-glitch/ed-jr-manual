@@ -64,7 +64,10 @@ export type ChapterGroup = 'counter' | 'presentation' | 'drug';
 
 export interface Chapter {
   id: string;
+  /** Position in its manual, from 1. */
   number: number;
+  /** Number as printed: "3" in the AIIMS manual, "1.1" in the hospital protocols, "" if none. */
+  label: string;
   /** Title as in the chapter heading, e.g. "Assessment of a patient with Chest Pain". */
   title: string;
   /** Title as in the manual's contents list, e.g. "Initial assessment of a patient with chest pain". */
@@ -72,12 +75,16 @@ export interface Chapter {
   group: ChapterGroup;
   /** A part title (a single # heading) printed just before this chapter, if any. */
   partTitle?: string;
+  /** Hospital protocols: the part ("1.0 Trauma") this chapter belongs to. */
+  part?: string;
   sections: Section[];
   line: number;
 }
 
 export interface Manual {
   title: string;
+  /** Hospital protocols: parts ("# 1.0 Trauma") with their introductions. */
+  parts?: { title: string; intro: Block[] }[];
   /** Front matter: department line and credits, exactly as written. */
   front: Block[];
   /** Headings the manual uses to group its contents list. */

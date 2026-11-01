@@ -125,6 +125,7 @@
   {
    "id": "ch1",
    "number": 1,
+   "label": "1",
    "title": "General instructions for patient assessment & triage in ED",
    "contentsTitle": "General instructions for patient assessment & triage in ED",
    "group": "counter",
@@ -1151,6 +1152,7 @@
   {
    "id": "ch2",
    "number": 2,
+   "label": "2",
    "title": "Guide to succinct clinical documentation in ED",
    "contentsTitle": "Guide to succinct clinical documentation in ED",
    "group": "counter",
@@ -1741,6 +1743,7 @@
   {
    "id": "ch3",
    "number": 3,
+   "label": "3",
    "title": "Assessment of a patient with Chest Pain",
    "contentsTitle": "Initial assessment of a patient with chest pain",
    "group": "presentation",
@@ -3376,6 +3379,7 @@
   {
    "id": "ch4",
    "number": 4,
+   "label": "4",
    "title": "Assessment of a patient with Suspected Stroke",
    "contentsTitle": "Initial assessment of a patient with suspected stroke",
    "group": "presentation",
@@ -5015,6 +5019,7 @@
   {
    "id": "ch5",
    "number": 5,
+   "label": "5",
    "title": "Assessment of a patient with Shortness of Breath (SOB)",
    "contentsTitle": "Initial assessment of a patient with breathing difficulty",
    "group": "presentation",
@@ -8146,6 +8151,7 @@
   {
    "id": "ch6",
    "number": 6,
+   "label": "6",
    "title": "Assessment of a patient with Altered Mental Status",
    "contentsTitle": "Initial assessment of a patient with altered mental status",
    "group": "presentation",
@@ -9795,6 +9801,7 @@
   {
    "id": "ch7",
    "number": 7,
+   "label": "7",
    "title": "Assessment of a patient with Pain Abdomen",
    "contentsTitle": "Initial assessment of a patient with pain abdomen",
    "group": "presentation",
@@ -11607,6 +11614,7 @@
   {
    "id": "ch8",
    "number": 8,
+   "label": "8",
    "title": "Initial assessment of a patient with UGI Bleed",
    "contentsTitle": "Initial assessment of a patient with UGI bleed",
    "group": "presentation",
@@ -12526,6 +12534,7 @@
   {
    "id": "ch9",
    "number": 9,
+   "label": "9",
    "title": "Initial assessment of a patient with Haemoptysis",
    "contentsTitle": "Initial assessment of a patient with haemoptysis",
    "group": "presentation",
@@ -13902,6 +13911,7 @@
   {
    "id": "ch10",
    "number": 10,
+   "label": "10",
    "title": "Initial assessment of a patient with Gastro-intestinal symptoms",
    "contentsTitle": "Initial assessment of a patient with gastro-intestinal symptoms",
    "group": "presentation",
@@ -14788,6 +14798,7 @@
   {
    "id": "ch11",
    "number": 11,
+   "label": "11",
    "title": "Assessment of a patient with Fever in ED",
    "contentsTitle": "Initial assessment of patients with fever",
    "group": "presentation",
@@ -16232,6 +16243,7 @@
   {
    "id": "ch12",
    "number": 12,
+   "label": "12",
    "title": "Assessment of a patient with Toxin Ingestion",
    "contentsTitle": "Initial assessment of a patient with toxin ingestion",
    "group": "presentation",
@@ -17896,6 +17908,7 @@
   {
    "id": "ch13",
    "number": 13,
+   "label": "13",
    "title": "Approach to an Unresponsive patient",
    "contentsTitle": "Assessment of an unresponsive patient",
    "group": "presentation",
@@ -19047,6 +19060,7 @@
   {
    "id": "ch14",
    "number": 14,
+   "label": "14",
    "title": "Assessment of a patient with Chronic Liver Disease (CLD) in ED",
    "contentsTitle": "Initial assessment of a patient of chronic liver disease",
    "group": "presentation",
@@ -20098,6 +20112,7 @@
   {
    "id": "ch15",
    "number": 15,
+   "label": "15",
    "title": "Assessment of a patient with Chronic Kidney Disease (CKD) in ED",
    "contentsTitle": "Initial assessment of a patient of chronic kidney disease",
    "group": "presentation",
@@ -21995,6 +22010,7 @@
   {
    "id": "ch16",
    "number": 16,
+   "label": "16",
    "title": "Assessment of a patient with Haematological disorder in ED",
    "contentsTitle": "Initial assessment of a patient of haematological disorders",
    "group": "presentation",
@@ -23608,6 +23624,7 @@
   {
    "id": "ch17",
    "number": 17,
+   "label": "17",
    "title": "Medications for treating Hyperkalaemia (S. K⁺ > 5.5 mEq/L)",
    "contentsTitle": "Drugs for hyperkalaemia",
    "group": "drug",
@@ -23843,6 +23860,7 @@
   {
    "id": "ch18",
    "number": 18,
+   "label": "18",
    "title": "Initial loading dose for suspected ACS patient",
    "contentsTitle": "Loading dose for acute coronary syndrome",
    "group": "drug",
@@ -24110,6 +24128,7 @@
   {
    "id": "ch19",
    "number": 19,
+   "label": "19",
    "title": "Drugs for initial management of Upper GI Bleed",
    "contentsTitle": "Drugs for a patient with UGI bleed",
    "group": "drug",
@@ -24382,6 +24401,7 @@
   {
    "id": "ch20",
    "number": 20,
+   "label": "20",
    "title": "Common analgesics in ED",
    "contentsTitle": "Doses of common analgesics used in ED & contraindications",
    "group": "drug",
@@ -24963,6 +24983,7 @@
   {
    "id": "ch21",
    "number": 21,
+   "label": "21",
    "title": "Common antibiotics in ED and their doses (syndromic approach)",
    "contentsTitle": "Common antibiotics used in ED — dose & indication",
    "group": "drug",
