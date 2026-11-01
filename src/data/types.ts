@@ -31,11 +31,11 @@ export interface Item {
 
 export type Block =
   | { type: 'list'; ordered: boolean; items: Item[] }
-  | { type: 'paragraph'; inline: Inline[]; text: string; line: number }
+  | { type: 'paragraph'; id: string; inline: Inline[]; text: string; line: number }
   /** A paragraph that is only bold text, used by the manual as a small heading. */
-  | { type: 'subhead'; inline: Inline[]; text: string; line: number }
-  | { type: 'callout'; blocks: Block[]; line: number }
-  | { type: 'table'; header: Inline[][]; rows: Inline[][][]; line: number };
+  | { type: 'subhead'; id: string; inline: Inline[]; text: string; line: number }
+  | { type: 'callout'; id: string; blocks: Block[]; line: number }
+  | { type: 'table'; id: string; header: Inline[][]; rows: Inline[][][]; line: number };
 
 export type SectionKind = 'history' | 'exam' | 'tests' | 'redflags' | 'management' | 'reference';
 

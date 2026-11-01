@@ -26,6 +26,10 @@ import type {
   SectionKind,
   Subsection,
 } from '../src/data/types.ts';
+import { items } from '../src/lib/items.ts';
+import { plain } from '../src/lib/inline.ts';
+
+export { items, plain };
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 export const MANUAL_PATH = join(ROOT, 'content/manual.md');
@@ -200,10 +204,9 @@ export function parseManual(md: string): ParseResult {
         s.markerMeaning = 'ifIndicated';
       }
       s.subsections.forEach((sub, j) => {
-        sub.id = `${s.id}-${j}`;
-        let k = 0;
+        sub.id = `${s.id}.${j}`;
+        assignIds(sub.blocks, sub.id);
         for (const item of items(sub.blocks)) {
-          item.id = `${sub.id}-${k++}`;
           // The "*" sits before, after or (ch 19) in the middle of the item's text.
           if (item.text.includes('*')) item.marker = s.markerMeaning;
         }
@@ -221,6 +224,7 @@ export function parseManual(md: string): ParseResult {
   chapters.forEach((ch, i) => {
     if (ch.number !== i + 1) throw new Error(`Chapter ${ch.number} is out of order (expected ${i + 1})`);
   });
+  assignIds(front, 'front');
 
   return {
     manual: {
@@ -248,6 +252,24 @@ function classify(ch: Chapter, s: Section, warnings: string[]): SectionKind {
   return 'reference';
 }
 
+/**
+ * Ids are positional, in reading order: items `<subsection>.<n>`, other blocks `<subsection>.b<n>`.
+ * Sections never contain a ".", so ids cannot collide across levels.
+ */
+function assignIds(bs: Block[], prefix: string, counter = { item: 0, block: 0 }): void {
+  for (const b of bs) {
+    if (b.type === 'list') {
+      for (const it of b.items) {
+        it.id = `${prefix}.${counter.item++}`;
+        assignIds(it.children, prefix, counter);
+      }
+    } else {
+      b.id = `${prefix}.b${counter.block++}`;
+      if (b.type === 'callout') assignIds(b.blocks, prefix, counter);
+    }
+  }
+}
+
 // ---------- mdast → content blocks ----------
 
 function blocks(nodes: RootContent[]): Block[] {
@@ -258,14 +280,14 @@ function blocks(nodes: RootContent[]): Block[] {
       case 'paragraph': {
         const runs = inline(node.children);
         const onlyBold = runs.length === 1 && runs[0]!.t === 'strong';
-        out.push({ type: onlyBold ? 'subhead' : 'paragraph', inline: runs, text: plain(runs), line });
+        out.push({ type: onlyBold ? 'subhead' : 'paragraph', id: '', inline: runs, text: plain(runs), line });
         break;
       }
       case 'list':
         out.push(list(node));
         break;
       case 'blockquote':
-        out.push({ type: 'callout', blocks: blocks(node.children), line });
+        out.push({ type: 'callout', id: '', blocks: blocks(node.children), line });
         break;
       case 'table':
         out.push(table(node));
@@ -321,7 +343,7 @@ function itemInline(li: ListItem): Inline[] {
 function table(node: Table): Block {
   const [head, ...body] = node.children;
   const cells = (row: typeof head) => (row ? row.children.map((cell) => inline(cell.children)) : []);
-  return { type: 'table', header: cells(head), rows: body.map(cells), line: node.position?.start.line ?? 0 };
+  return { type: 'table', id: '', header: cells(head), rows: body.map(cells), line: node.position?.start.line ?? 0 };
 }
 
 function inline(nodes: PhrasingContent[]): Inline[] {
@@ -357,25 +379,6 @@ function inline(nodes: PhrasingContent[]): Inline[] {
 }
 
 // ---------- helpers ----------
-
-export function plain(runs: Inline[]): string {
-  return runs.map((r) => ('v' in r ? r.v : plain(r.c))).join('');
-}
-
-/** Every list item under these blocks, depth-first in reading order. */
-export function items(bs: Block[]): Item[] {
-  const out: Item[] = [];
-  for (const b of bs) {
-    if (b.type === 'list') {
-      for (const it of b.items) {
-        out.push(it, ...items(it.children));
-      }
-    } else if (b.type === 'callout') {
-      out.push(...items(b.blocks));
-    }
-  }
-  return out;
-}
 
 function paragraphs(bs: Block[]): string[] {
   return bs.flatMap((b) =>
