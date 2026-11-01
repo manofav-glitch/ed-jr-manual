@@ -25,7 +25,14 @@ export interface SiteProfile {
   codeBlue: string;
   /** Where antibiotic regimens come from at this site. */
   antibiotics: string;
+  /**
+   * Stroke tenecteplase used by the dose calculator. The manual's 0.5 mg/kg (max 50) is the STEMI
+   * dose (see reviewNotes.ts). AHA/ASA: 0.25 mg/kg, max 25 mg; Indian stroke label: 0.2 mg/kg.
+   */
+  tenecteplaseStroke: { mgPerKg: number; maxMg: number; source: string };
 }
+
+const TNK_AHA = { mgPerKg: 0.25, maxMg: 25, source: 'AHA/ASA' };
 
 const aiims: SiteProfile = {
   id: 'aiims',
@@ -39,6 +46,7 @@ const aiims: SiteProfile = {
   calls: { neurology: 'SR Neurology', gastro: 'SR Gastro' },
   codeBlue: 'Activate CODE BLUE by informing the telephone operator at the counter.',
   antibiotics: 'Manual chapter 21.',
+  tenecteplaseStroke: TNK_AHA,
 };
 
 // Drafted 2026-11-02 from the Patel Hospital Emergency Manual, Revision 02
@@ -63,6 +71,7 @@ const patel: SiteProfile = {
   },
   codeBlue: 'Announce CODE BLUE and send for the defibrillator and crash cart. (Add the local number.)',
   antibiotics: 'Patel Emergency Manual section 11.5 (syndromic antibiotic guide) — not yet in the app.',
+  tenecteplaseStroke: TNK_AHA,
 };
 
 export const sites: Record<SiteId, SiteProfile> = { aiims, patel };
