@@ -1,0 +1,148 @@
+@import 'tailwindcss';
+
+/*
+ * Colour has meaning here, so it is used sparingly:
+ *   danger  red flags and RED triage only
+ *   warn    YELLOW triage only
+ *   ok      GREEN triage only
+ *   review  "Check before use" corrections
+ *   info    "Ask SR" and other advice
+ *   accent  buttons, progress, links
+ */
+:root {
+  --canvas: #f6f6f4;
+  --surface: #ffffff;
+  --surface-2: #ececea;
+  --ink: #111111;
+  --muted: #474747;
+  --line: #cfcfcc;
+  --accent: #1747c4;
+  --accent-ink: #ffffff;
+  --danger: #b00f17;
+  --danger-soft: #fdeeee;
+  --warn: #8a5200;
+  --warn-soft: #fff4dd;
+  --ok: #17692c;
+  --ok-soft: #e8f6ec;
+  --review: #6127c2;
+  --review-soft: #f3eefe;
+  --info: #17489a;
+  --info-soft: #e9f0fc;
+  --focus: #f2b600;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --canvas: #0d0d0f;
+    --surface: #18181b;
+    --surface-2: #242428;
+    --ink: #f4f4f5;
+    --muted: #c0c0c6;
+    --line: #3a3a40;
+    --accent: #7aa7ff;
+    --accent-ink: #0b1430;
+    --danger: #ff8a8a;
+    --danger-soft: #2c1214;
+    --warn: #f5c14d;
+    --warn-soft: #2b2110;
+    --ok: #7ad995;
+    --ok-soft: #10261a;
+    --review: #c7b0ff;
+    --review-soft: #221837;
+    --info: #9cc0ff;
+    --info-soft: #132036;
+    --focus: #ffd24a;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --canvas: #0d0d0f;
+  --surface: #18181b;
+  --surface-2: #242428;
+  --ink: #f4f4f5;
+  --muted: #c0c0c6;
+  --line: #3a3a40;
+  --accent: #7aa7ff;
+  --accent-ink: #0b1430;
+  --danger: #ff8a8a;
+  --danger-soft: #2c1214;
+  --warn: #f5c14d;
+  --warn-soft: #2b2110;
+  --ok: #7ad995;
+  --ok-soft: #10261a;
+  --review: #c7b0ff;
+  --review-soft: #221837;
+  --info: #9cc0ff;
+  --info-soft: #132036;
+  --focus: #ffd24a;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-review: var(--review);
+  --color-review-soft: var(--review-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-focus: var(--focus);
+  --font-sans: 'Atkinson Hyperlegible', system-ui, sans-serif;
+}
+
+html {
+  font-size: 112.5%; /* 18px: readable at arm's length */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  line-height: 1.45;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* A search result's target briefly flashes when the protocol opens. */
+@keyframes flash {
+  from {
+    background-color: color-mix(in srgb, var(--focus) 45%, transparent);
+  }
+  to {
+    background-color: transparent;
+  }
+}
+.flash {
+  animation: flash 2.4s ease-out;
+  border-radius: 8px;
+}
+
+.pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.px-safe {
+  padding-left: max(1rem, env(safe-area-inset-left));
+  padding-right: max(1rem, env(safe-area-inset-right));
+}
