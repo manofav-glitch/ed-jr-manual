@@ -17,9 +17,9 @@ export default defineConfig({
       injectRegister: 'auto',
       includeAssets: ['favicon.ico', 'icon.svg', 'apple-touch-icon-180x180.png'],
       manifest: {
-        name: 'ED Manual — Junior Residents',
-        short_name: 'ED Manual',
-        description: 'Bedside reference for junior residents in Emergency Medicine, built from the department manual.',
+        name: 'ED Protocols',
+        short_name: 'ED Protocols',
+        description: 'Bedside Emergency Department protocols, flowcharts and tools. Works offline.',
         lang: 'en',
         theme_color: '#1747c4',
         background_color: '#f6f6f4',
