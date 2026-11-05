@@ -7,13 +7,20 @@ import { chestPain } from './chestPain.ts';
 import { constipation } from './constipation.ts';
 import { diarrhoea } from './diarrhoea.ts';
 import { dysphagia } from './dysphagia.ts';
+import { dysuria } from './dysuria.ts';
 import { feverChest } from './feverChest.ts';
 import { feverJaundice } from './feverJaundice.ts';
+import { flankPain } from './flankPain.ts';
 import { haematemesis } from './haematemesis.ts';
+import { haematuria } from './haematuria.ts';
 import { haemoptysis } from './haemoptysis.ts';
 import { hypertension } from './hypertension.ts';
+import { lowUrineOutput } from './lowUrineOutput.ts';
+import { perineal } from './perineal.ts';
 import { rectalBleeding } from './rectalBleeding.ts';
+import { scrotal } from './scrotal.ts';
 import { syncope } from './syncope.ts';
+import { urinaryRetention } from './urinaryRetention.ts';
 import { vomiting } from './vomiting.ts';
 
 export const bedsideTopics: BedsideTopic[] = [
@@ -35,4 +42,12 @@ export const bedsideTopics: BedsideTopic[] = [
   appetite,
   dysphagia,
   feverJaundice,
+  // Batch 3: kidney and urine (book section 5).
+  haematuria,
+  urinaryRetention,
+  lowUrineOutput,
+  flankPain,
+  perineal,
+  scrotal,
+  dysuria,
 ];

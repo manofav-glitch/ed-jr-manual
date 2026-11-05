@@ -229,3 +229,83 @@ export const ABDO_EXAM: PointGroup[] = [
     ],
   },
 ];
+
+/** Ch 19, Text box 19.1 (and ch 18): the renal examination, trimmed to what the ED needs. */
+export const KIDNEY_EXAM: PointGroup[] = [
+  {
+    heading: 'General inspection',
+    refs: [
+      { chapter: 19, pages: '317–318', label: 'Text box 19.1' },
+      { chapter: 18, pages: '306' },
+    ],
+    points: [
+      { text: 'Mental state: drowsy, confused, twitching', urgent: true, hint: 'Advanced uraemia' },
+      { text: 'Deep fast breathing', urgent: true, hint: 'Metabolic acidosis' },
+      { text: 'Hiccups, uraemic (fishy, ammonia) breath, sallow skin' },
+      { text: 'Fluid status: dry or overloaded? Weigh the patient' },
+    ],
+  },
+  {
+    heading: 'Hands, arms, face and neck',
+    refs: [
+      { chapter: 19, pages: '317–318', label: 'Text box 19.1' },
+      { chapter: 18, pages: '306–310' },
+    ],
+    points: [
+      { text: 'Flapping tremor; pale palmar creases' },
+      { text: 'Dialysis fistula (thrill), bruising, scratch marks' },
+      { text: 'Rash of lupus or vasculitis' },
+      { text: 'Eyes: anaemia. Mouth: dry, ulcers' },
+      { text: 'JVP at 45°: volume status' },
+    ],
+  },
+  {
+    heading: 'Abdomen and back',
+    refs: [
+      { chapter: 18, pages: '310–312', label: 'List 18.2' },
+      { chapter: 19, pages: '318', label: 'Text box 19.1' },
+    ],
+    points: [
+      { text: 'Scars: nephrectomy (look in the loins), transplant (iliac fossa), dialysis catheter' },
+      { text: 'Ballot each kidney: enlarged?' },
+      { text: 'Bladder: palpable, or dull to percussion above the pubis?', hint: 'Retention' },
+      { text: 'Aortic aneurysm' },
+      { text: 'Renal bruit (2 cm either side of the midline above the umbilicus, and the flanks)' },
+      { text: 'Loin tenderness: ballot the renal angle or a gentle fist (kidney punch)', hint: 'Infection, stone' },
+      { text: 'Back: spinal tenderness, sacral oedema' },
+    ],
+  },
+  {
+    heading: 'Chest, legs and the rest',
+    refs: [
+      { chapter: 18, pages: '310–313' },
+      { chapter: 19, pages: '318', label: 'Text box 19.1' },
+    ],
+    points: [
+      { text: 'Heart: pericardial rub, heart failure; lungs: crackles, effusion' },
+      { text: 'Legs: oedema, purpura, livedo, neuropathy' },
+      { text: 'BP lying and standing', hint: 'Hypertension; postural drop (hypovolaemia can cause AKI)' },
+      { text: 'Rectal examination: prostate; pelvic examination in women' },
+      { text: 'Fundi: hypertensive and diabetic changes' },
+      { text: 'Urine: look at it, and dipstick it' },
+    ],
+  },
+];
+
+/** Ch 18: examination of the male genitalia (wear gloves; offer a chaperone). */
+export const MALE_GENITAL_EXAM: PointGroup = {
+  heading: 'Male genitalia (gloves, chaperone)',
+  refs: [
+    { chapter: 18, pages: '313–315', label: 'Figs 18.9–18.11' },
+  ],
+  points: [
+    { text: 'Penis: retract the foreskin; ulcers, discharge, swelling' },
+    { text: 'Always pull the foreskin back over the glans afterwards', hint: 'Prevents paraphimosis', extra: true },
+    { text: 'Scrotum standing: is one testis high and lying across?', urgent: true, hint: 'Torsion' },
+    { text: 'Skin: oedema, redness, rash' },
+    { text: 'Each testis: size, tenderness, hardness; then the epididymis behind and the cord above' },
+    { text: 'Any lump: can you get above it?', hint: 'No: inguinoscrotal hernia' },
+    { text: 'Separate from the testis or part of it? Does it light up with a torch?' },
+    { text: 'Groin nodes and hernial orifices' },
+  ],
+};

@@ -27,7 +27,7 @@ const allRefs = bedsideTopics.flatMap((t) => [
 ]);
 
 describe('bedside checklists', () => {
-  it('cover batch 1 (heart and lungs) and batch 2 (gut)', () => {
+  it('cover batches 1–3 (heart and lungs, gut, kidney and urine)', () => {
     const labels = (ids: string[]) => bedsideTopics.filter((t) => ids.includes(t.id)).flatMap((t) => t.flowcharts).sort();
     expect(labels(['chest-pain', 'breathlessness', 'syncope', 'haemoptysis', 'fever-cough-breathless', 'hypertension'])).toEqual([
       '1.3', '13.3', '13.5', '18.2', '6.1', '6.2', '7.3',
@@ -35,7 +35,10 @@ describe('bedside checklists', () => {
     expect(
       labels(['haematemesis', 'rectal-bleeding', 'vomiting', 'diarrhoea', 'abdominal-pain', 'constipation', 'bloating', 'loss-of-appetite', 'dysphagia', 'fever-jaundice']),
     ).toEqual(['1.4', '1.8', '13.4', '14.4', '2.1', '2.2', '3.1', '3.3', '3.4', '3.5', '3.6']);
-    expect(bedsideTopics).toHaveLength(16);
+    expect(
+      labels(['haematuria', 'urinary-retention', 'low-urine-output', 'flank-pain', 'perineal-pain', 'scrotal-swelling', 'burning-micturition']),
+    ).toEqual(['1.2', '16.1', '16.2', '16.3', '16.4', '16.5', '16.6', '3.2']);
+    expect(bedsideTopics).toHaveLength(23);
   });
 
   it('point at real flowcharts, once each, with unique ids', () => {
