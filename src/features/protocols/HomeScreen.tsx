@@ -2,12 +2,13 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { CloseIcon, InfoIcon, SearchIcon, StarIcon } from '../../components/Icons.tsx';
 import { allFlowcharts, countSavedSheets, flowchartById, flowcharts, saveAllSheets } from '../../lib/flowcharts.ts';
+import { bedsideTopics, topicsFor } from '../../lib/bedside.ts';
 import { chapterById, linkedChapters, textFor } from '../../lib/manual.ts';
 import { SOURCE_LABEL, buildDocs, createSearch, type SearchHit } from '../../lib/search.ts';
 import { useApp } from '../../lib/store.ts';
 
 let searcher: ReturnType<typeof createSearch> | undefined;
-const search = (q: string) => (searcher ??= createSearch(buildDocs(flowcharts, linkedChapters)))(q);
+const search = (q: string) => (searcher ??= createSearch(buildDocs(flowcharts, linkedChapters, bedsideTopics)))(q);
 
 interface Row {
   id: string;
@@ -15,6 +16,7 @@ interface Row {
   num: string;
   title: string;
   checklist?: boolean;
+  bedside?: boolean;
 }
 
 export function HomeScreen() {
@@ -88,6 +90,7 @@ export function HomeScreen() {
                   num: f.label,
                   title: f.title,
                   checklist: textFor(f.label).length > 0,
+                  bedside: topicsFor(f.label).length > 0,
                 }))}
               />
             ))}
@@ -150,6 +153,7 @@ function RowList({ title, rows }: { title: string; rows: Row[] }) {
               <span className="min-w-0 flex-1 text-lg">
                 {r.title}
                 {r.checklist && <span className="ml-2 align-middle text-sm font-bold whitespace-nowrap text-info">+ checklist</span>}
+                {r.bedside && <span className="ml-2 align-middle text-sm font-bold whitespace-nowrap text-info">+ bedside</span>}
               </span>
               {title !== 'Pinned' && pins.includes(r.id) && <StarIcon filled className="size-5 shrink-0 text-accent" aria-label="Pinned" />}
             </Link>

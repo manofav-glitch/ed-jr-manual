@@ -22,7 +22,7 @@ import { flowchartByLabel } from '../../lib/flowcharts.ts';
 import { useApp } from '../../lib/store.ts';
 
 /** Back to wherever the checklist was opened from (usually its flowchart), else to the list. */
-function BackButton() {
+export function BackButton() {
   const navigate = useNavigate();
   const canGoBack = (window.history.state as { idx?: number } | null)?.idx;
   return (
@@ -173,7 +173,7 @@ function TabLink({ ch, kind, active }: { ch: Chapter; kind: SectionKind; active:
   );
 }
 
-function NewPatientButton() {
+export function NewPatientButton() {
   const clear = useApp((s) => s.clearTicks);
   const any = useApp((s) => Object.keys(s.ticks).length > 0);
   const [armed, setArmed] = useState(false);

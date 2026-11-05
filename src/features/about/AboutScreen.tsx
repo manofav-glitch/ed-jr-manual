@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { reviewNotes } from '../../data/reviewNotes.ts';
 import { BackIcon } from '../../components/Icons.tsx';
 import { findAnchor } from '../../lib/anchors.ts';
+import { BOOK, bedsideTopics } from '../../lib/bedside.ts';
 import { allFlowcharts } from '../../lib/flowcharts.ts';
 import { chapterById, linkedChapters, manual, urlFor } from '../../lib/manual.ts';
 import { useApp, type Theme } from '../../lib/store.ts';
@@ -33,9 +34,22 @@ export function AboutScreen() {
           </p>
         </section>
 
+        <section className="space-y-2">
+          <h2 className="text-xl font-bold">Bedside checklists</h2>
+          <p>
+            {bedsideTopics.length} presentations ({bedsideTopics.flatMap((t) => t.flowcharts).length} flowcharts) have a
+            bedside history, examination, differentials and plan, following <em>{BOOK}</em>.
+          </p>
+          <p>
+            Unlike the protocols, these are written for the app in our own words; nothing is quoted from the book. Each
+            heading gives the book pages to read. Points marked “Not in the book” were added because they matter in the
+            ED. Until a senior has checked a presentation against the book it is marked as a draft.
+          </p>
+        </section>
+
         <section className="rounded-xl border border-line bg-surface px-3 py-2">
           <p>
-            The text is shown exactly as written. Where it needs checking, a{' '}
+            The protocol text is shown exactly as written. Where it needs checking, a{' '}
             <strong className="text-review">Check before use</strong> note sits next to it; the manual itself is not
             changed.
           </p>

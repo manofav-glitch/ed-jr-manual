@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { BackIcon, StarIcon } from '../../components/Icons.tsx';
+import { topicsFor } from '../../lib/bedside.ts';
 import { flowchartById, flowchartByLabel, sheetUrl } from '../../lib/flowcharts.ts';
 import { textFor } from '../../lib/manual.ts';
 import { useApp } from '../../lib/store.ts';
@@ -26,6 +27,7 @@ export function FlowchartScreen() {
   }
   const see = f.seeAlso ? flowchartByLabel(f.seeAlso) : undefined;
   const texts = textFor(f.label);
+  const bedside = topicsFor(f.label);
 
   return (
     <>
@@ -65,6 +67,19 @@ export function FlowchartScreen() {
               <span className="block text-sm font-normal">
                 {ch.label} {ch.title}
               </span>
+            </span>
+            <span aria-hidden="true">→</span>
+          </Link>
+        ))}
+        {bedside.map((t) => (
+          <Link
+            key={t.id}
+            to={`/b/${t.id}`}
+            className="flex min-h-14 items-center justify-between gap-2 rounded-xl border-2 border-accent px-4 py-2 text-lg font-bold text-accent"
+          >
+            <span>
+              Bedside: history, exam, differentials
+              <span className="block text-sm font-normal">{t.title}, following Talley &amp; O’Connor</span>
             </span>
             <span aria-hidden="true">→</span>
           </Link>

@@ -1,6 +1,8 @@
 import Fuse, { type FuseResultMatch } from 'fuse.js';
 import type { Block, Chapter } from '../data/types.ts';
 import type { Flowcharts } from '../data/flowchartTypes.ts';
+import type { BedsideTopic } from '../data/bedsideTypes.ts';
+import { STEP_LABEL, pointId } from './bedside.ts';
 import { plain } from './inline.ts';
 import { TAB_LABEL, isIntro, tabsFor } from './manual.ts';
 
@@ -8,7 +10,7 @@ export interface SearchDoc {
   /** Element, chapter or flowchart id. */
   id: string;
   url: string;
-  source: 'flowchart' | 'checklist';
+  source: 'flowchart' | 'checklist' | 'bedside';
   /** "2.1 Chest Pain › Tests › Point-of-care investigations" */
   where: string;
   text: string;
@@ -23,10 +25,11 @@ export interface SearchHit {
 export const SOURCE_LABEL: Record<SearchDoc['source'], string> = {
   flowchart: 'Flowchart',
   checklist: 'Checklist',
+  bedside: 'Bedside',
 };
 
-/** Flowchart titles, and every line of the text protocols the flowcharts link to. */
-export function buildDocs(fc: Flowcharts, chapters: Chapter[]): SearchDoc[] {
+/** Flowchart titles, every line of the text protocols the flowcharts link to, and the bedside checklists. */
+export function buildDocs(fc: Flowcharts, chapters: Chapter[], topics: BedsideTopic[] = []): SearchDoc[] {
   const docs: SearchDoc[] = [];
   for (const part of fc.parts) {
     for (const f of part.items) {
@@ -56,6 +59,27 @@ export function buildDocs(fc: Flowcharts, chapters: Chapter[]): SearchDoc[] {
         if (sub.headingText) add(sub.id, sub.headingText, [s.headingText]);
         walk(sub.blocks, (id, text) => add(id, text, [s.headingText, sub.headingText]));
       }
+    }
+  }
+  for (const t of topics) {
+    docs.push({ id: `bs-${t.id}`, url: `/b/${t.id}`, source: 'bedside', where: '', text: t.title });
+    for (const step of ['history', 'exam', 'plan'] as const) {
+      t[step].forEach((g, gi) =>
+        g.points.forEach((p, pi) =>
+          docs.push({
+            id: pointId(t, step, gi, pi),
+            url: `/b/${t.id}/${step}`,
+            source: 'bedside',
+            where: `${t.title} › ${STEP_LABEL[step]} › ${g.heading}`,
+            text: p.text,
+          }),
+        ),
+      );
+    }
+    for (const g of t.differentials) {
+      g.items.forEach((d, i) =>
+        docs.push({ id: `bs-${t.id}.ddx.${g.heading}.${i}`, url: `/b/${t.id}/ddx`, source: 'bedside', where: `${t.title} › Differentials`, text: d.name }),
+      );
     }
   }
   return docs;

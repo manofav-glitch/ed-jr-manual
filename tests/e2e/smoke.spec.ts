@@ -24,6 +24,23 @@ test('Protocols: open a flowchart, then its checklist; tick a step; red flags; s
   await expect(page.getByRole('heading', { name: '1.6 Nasal Bleeding — Epistaxis' })).toBeVisible();
 });
 
+test('Bedside: from the flowchart to history, differentials and back to the hospital protocol', async ({ page }) => {
+  await page.goto('./');
+  await page.getByRole('link', { name: /6\.2\s*Chest Pain/ }).click();
+  await page.getByRole('link', { name: /Bedside: history, exam, differentials/ }).click();
+  await expect(page.getByRole('heading', { name: /^Chest pain/ })).toBeVisible();
+  await expect(page.getByText('Draft: not yet checked by a senior.')).toBeVisible();
+  await page.getByRole('checkbox', { name: /Coming on with less effort/ }).click();
+  await expect(page.getByText(/^1 of \d+ done$/)).toBeVisible();
+
+  await page.getByRole('link', { name: /^Differentials/ }).click();
+  await expect(page.getByRole('listitem', { name: 'Aortic dissection' })).toContainText('Table 4.2B');
+
+  await page.getByRole('link', { name: /^Plan/ }).click();
+  await page.getByRole('link', { name: /Checklist 2\.1 Chest Pain/ }).click();
+  await expect(page.getByRole('heading', { name: 'Chest Pain' })).toBeVisible();
+});
+
 test('Triage: normal vitals are GREEN BED, SpO₂ 93% triages up to RED BED', async ({ page }) => {
   await page.goto('./');
   await tab(page, 'Triage').click();

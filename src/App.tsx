@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { BottomNav } from './components/BottomNav.tsx';
+import { BedsideScreen } from './features/bedside/BedsideScreen.tsx';
 import { CodeBlueScreen } from './features/codeblue/CodeBlueScreen.tsx';
 import { DosesScreen } from './features/doses/DosesScreen.tsx';
 import { FlowchartScreen } from './features/flowcharts/FlowchartScreen.tsx';
@@ -26,6 +27,7 @@ export function App() {
           <Route path="/" element={<HomeScreen />} />
           <Route path="/p/:chapterId/:tab?" element={<ProtocolScreen />} />
           <Route path="/f/:id" element={<FlowchartScreen />} />
+          <Route path="/b/:topicId/:step?" element={<BedsideScreen />} />
           <Route path="/about" element={<AboutScreen />} />
           <Route path="/triage" element={<TriageScreen />} />
           <Route path="/code" element={<CodeBlueScreen />} />

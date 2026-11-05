@@ -6,6 +6,10 @@ A mobile-first, offline bedside app for the hospital's Emergency Department prot
   Where the hospital's text manual covers the same presentation (40 of them), a step-by-step
   checklist opens from the flowchart: History → Exam → Tests → Red flags → Manage → Reference,
   with tickable steps, progress, pins and full-text search.
+- **Bedside**: for presentations the textbook covers, a tickable history, examination, differentials
+  and plan following Talley & O'Connor, *Clinical Examination* (8th edition), in our own words with
+  the book's page numbers. Batch 1 (heart and lungs) covers flowcharts 6.1, 6.2, 7.3, 1.3, 13.3,
+  13.5 and 18.2.
 - **Triage**, **Code blue**, **Doses** and the case-sheet **Note**, all built from the same text manual.
 - Works in airplane mode after the first load. No backend: everything stays in the phone's browser.
 
@@ -79,6 +83,17 @@ How the parser reads `content/hospital.md`:
 `src/data/sheetLinks.ts` maps each flowchart number to the text protocol number(s) for the same
 presentation, e.g. `'6.2': ['2.1']` (flowchart Chest Pain → text Chest Pain). Only linked text
 protocols appear in the app. `npm test` checks every number exists.
+
+## Editing the bedside checklists
+
+`src/data/bedside/*.ts` holds one presentation per file (types in `src/data/bedsideTypes.ts`;
+shared exam sequences in `shared.ts`; the list in `index.ts`). Unlike the protocols, these are
+written by hand: the book is copyrighted and the site is public, so nothing is quoted from it.
+Instead every heading and differential cites the book (`{ chapter, pages, label }`), and anything
+added that is not in the book is marked `extra: true` (shown as "Not in the book"). Set
+`reviewed: true` once a senior has checked a presentation against the book; until then it shows as
+a draft. `npm test` checks that every flowchart number exists, every heading cites the book, and
+every page number is inside the chapter it names. The PDF is not committed.
 
 ## Editing the "Check before use" notes
 
