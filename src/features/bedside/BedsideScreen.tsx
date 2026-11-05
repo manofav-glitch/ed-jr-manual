@@ -61,9 +61,9 @@ function Header({ t, current }: { t: BedsideTopic; current: BedsideStep }) {
     <header className="pt-safe sticky top-0 z-20 border-b border-line bg-canvas/95 backdrop-blur">
       <div className="px-safe mx-auto flex max-w-3xl items-center gap-1 py-1">
         <BackButton />
-        <h1 className="line-clamp-2 min-w-0 flex-1 text-lg leading-tight font-bold break-words">
-          {t.title}
-          <span className="block text-sm font-normal text-muted">Bedside: history, exam, differentials, plan</span>
+        <h1 className="min-w-0 flex-1 text-lg leading-tight font-bold break-words">
+          <span className="line-clamp-2">{t.title}</span>
+          <span className="block truncate text-sm font-normal text-muted">Bedside: history, exam, differentials, plan</span>
         </h1>
       </div>
       <nav aria-label="Steps" className="px-safe mx-auto max-w-3xl overflow-x-auto">

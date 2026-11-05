@@ -309,3 +309,133 @@ export const MALE_GENITAL_EXAM: PointGroup = {
     { text: 'Groin nodes and hernial orifices' },
   ],
 };
+
+/** Ch 36, Text box 36.1: the neurological examination, in the order the ED usually needs it. */
+export const NEURO_EXAM: PointGroup[] = [
+  {
+    heading: 'Higher centres and speech',
+    refs: [
+      { chapter: 36, pages: '606–608', label: 'Text box 36.1' },
+      { chapter: 33, pages: '540–547' },
+    ],
+    points: [
+      { text: 'Right- or left-handed' },
+      { text: 'Orientation: time, place, person' },
+      { text: 'Dysphasia: name an object, point to a named object, follow a command' },
+      { text: 'Dysarthria: slurred speech' },
+      { text: 'Neglect or inattention of one side' },
+    ],
+  },
+  {
+    heading: 'Neck stiffness and Kernig’s sign',
+    refs: [
+      { chapter: 32, pages: '501' },
+      { chapter: 36, pages: '607–608' },
+    ],
+    points: [
+      { text: 'Lying flat, lift the head gently: do the neck and shoulders come up together?', urgent: true, hint: 'Meningism: meningitis or subarachnoid blood' },
+      { text: 'Kernig’s sign: hip flexed, straighten the knee', hint: 'Limited by painful hamstring spasm in meningism' },
+      { text: 'Skip if there may be a neck injury' },
+    ],
+  },
+  {
+    heading: 'Cranial nerves',
+    refs: [
+      { chapter: 36, pages: '607–609', label: 'Text box 36.1' },
+      { chapter: 32, pages: '505–539' },
+    ],
+    points: [
+      { text: 'Pupils: size, equality, reaction to light', urgent: true, hint: 'One dilated pupil: herniation, third nerve' },
+      { text: 'Visual acuity and fields (hemianopia)' },
+      { text: 'Fundi: papilloedema, haemorrhages', hint: 'Raised intracranial pressure' },
+      { text: 'Eye movements: double vision, nystagmus, gaze palsy' },
+      { text: 'Face: weakness of the lower face only (upper motor neurone) or the whole side (Bell’s)' },
+      { text: 'Hearing; palate and gag; tongue', hint: 'Bulbar weakness threatens the airway' },
+    ],
+  },
+  {
+    heading: 'Limbs',
+    refs: [
+      { chapter: 36, pages: '607–610', label: 'Text box 36.1' },
+      { chapter: 35, pages: '583', label: 'List 35.3' },
+    ],
+    points: [
+      { text: 'Arms out, palms up, eyes closed: does one arm drift?' },
+      { text: 'Wasting, fasciculation' },
+      { text: 'Tone: increased (spastic) or reduced (flaccid); clonus' },
+      { text: 'Power at shoulder, elbow, wrist, fingers, hip, knee, ankle; compare sides' },
+      { text: 'Reflexes and plantars (upgoing: upper motor neurone)' },
+      { text: 'Coordination: finger–nose, heel–shin, rapid alternating movements' },
+      { text: 'Sensation: pinprick and vibration; map any loss (one side, glove and stocking, a level, dermatome)' },
+    ],
+  },
+  {
+    heading: 'Gait, back and sacral area',
+    refs: [
+      { chapter: 34, pages: '577–579' },
+      { chapter: 36, pages: '608', label: 'Text box 36.1' },
+    ],
+    points: [
+      { text: 'Gait if safe: ataxic, spastic, high-stepping, shuffling' },
+      { text: 'Back: deformity, tenderness' },
+      { text: 'Saddle sensation and anal reflex', hint: 'Cauda equina' },
+    ],
+  },
+  {
+    heading: 'Also',
+    refs: [
+      { chapter: 36, pages: '607' },
+      { chapter: 31, pages: '497' },
+    ],
+    points: [
+      { text: 'Pulse rhythm (atrial fibrillation), BP, carotid bruits' },
+      { text: 'Blood sugar', urgent: true },
+      { text: 'Temperature' },
+    ],
+  },
+];
+
+/** Ch 35, The unconscious patient (pp 601–604). */
+export const UNCONSCIOUS_EXAM: PointGroup[] = [
+  {
+    heading: 'Airway, breathing, circulation',
+    refs: [{ chapter: 35, pages: '601–602' }],
+    points: [
+      { text: 'Breathing? Clear and protect the airway', urgent: true },
+      { text: 'Breathing pattern: Cheyne–Stokes, ataxic (brainstem), deep and fast (acidosis)' },
+      { text: 'Shock, dehydration, cyanosis; cherry-red colour (carbon monoxide)' },
+      { text: 'Pulse and BP' },
+    ],
+  },
+  {
+    heading: 'Level of consciousness',
+    refs: [{ chapter: 35, pages: '602', label: 'Table 35.4' }],
+    points: [
+      { text: 'GCS: eyes (4), verbal (5), motor (6); record each part, not just the total' },
+      { text: 'Posture: decerebrate (extension) or decorticate (flexion)' },
+      { text: 'Fitting, twitching', urgent: true, hint: 'Status epilepticus (can be non-convulsive)' },
+    ],
+  },
+  {
+    heading: 'Head to toe',
+    refs: [{ chapter: 35, pages: '603–604' }],
+    points: [
+      { text: 'Neck stiffness and Kernig’s sign (if no neck injury)' },
+      { text: 'Head injury: scalp, bruising behind the ear, blood or clear fluid from the ears or nose' },
+      { text: 'Pupils: pinpoint (opioids, pons), one dilated (herniation, subdural), fixed mid-sized (midbrain, anoxia)', urgent: true },
+      { text: 'Eyes: deviation to one side; doll’s eye movements; fundi' },
+      { text: 'Face: asymmetry when grimacing' },
+      { text: 'Mouth: bitten tongue, corrosive burns; smell of alcohol, ketones, liver or kidney failure' },
+      { text: 'Limbs: injection marks; tone and drop test for a hemiplegia; response to pain in each limb; plantars' },
+      { text: 'Heart, lungs, abdomen; temperature (hypothermia, fever)' },
+    ],
+  },
+  {
+    heading: 'Bedside tests',
+    refs: [{ chapter: 35, pages: '604' }],
+    points: [
+      { text: 'Blood sugar now', urgent: true },
+      { text: 'Urine: glucose and ketones, protein, blood; incontinence' },
+    ],
+  },
+];
