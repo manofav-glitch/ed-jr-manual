@@ -11,7 +11,7 @@ A mobile-first, offline bedside app for the hospital's Emergency Department prot
   the book's page numbers. Batch 1 (heart and lungs): flowcharts 6.1, 6.2, 7.3, 1.3, 13.3, 13.5,
   18.2. Batch 2 (gut): 1.4, 1.8, 2.1, 2.2, 3.1, 3.3, 3.4, 3.5, 3.6, 13.4, 14.4. Batch 3 (kidney
   and urine): 1.2, 3.2, 16.1–16.6. Batch 4 (nervous system): 4.1, 4.2, 5.1, 7.1, 7.2, 8.0–8.3,
-  13.6.
+  13.6. Batch 5 (joints and back): 9.1–9.4, 10.
 - **Triage**, **Code blue**, **Doses** and the case-sheet **Note**, all built from the same text manual.
 - Works in airplane mode after the first load. No backend: everything stays in the phone's browser.
 

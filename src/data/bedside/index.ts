@@ -1,6 +1,7 @@
 import type { BedsideTopic } from '../bedsideTypes.ts';
 import { abdominalPain } from './abdominalPain.ts';
 import { appetite } from './appetite.ts';
+import { backPain } from './backPain.ts';
 import { bloating } from './bloating.ts';
 import { breathlessness } from './breathlessness.ts';
 import { chestPain } from './chestPain.ts';
@@ -10,6 +11,7 @@ import { dizziness } from './dizziness.ts';
 import { drowsy } from './drowsy.ts';
 import { dysphagia } from './dysphagia.ts';
 import { dysuria } from './dysuria.ts';
+import { elbowPain } from './elbowPain.ts';
 import { feverChest } from './feverChest.ts';
 import { feverHeadache } from './feverHeadache.ts';
 import { feverJaundice } from './feverJaundice.ts';
@@ -19,8 +21,10 @@ import { haematuria } from './haematuria.ts';
 import { haemoptysis } from './haemoptysis.ts';
 import { headache } from './headache.ts';
 import { hypertension } from './hypertension.ts';
+import { jointPain } from './jointPain.ts';
 import { legWeakness } from './legWeakness.ts';
 import { lowUrineOutput } from './lowUrineOutput.ts';
+import { neckPain } from './neckPain.ts';
 import { numbness } from './numbness.ts';
 import { perineal } from './perineal.ts';
 import { rectalBleeding } from './rectalBleeding.ts';
@@ -29,6 +33,7 @@ import { seizure } from './seizure.ts';
 import { stroke } from './stroke.ts';
 import { syncope } from './syncope.ts';
 import { unconscious } from './unconscious.ts';
+import { upperLimb } from './upperLimb.ts';
 import { urinaryRetention } from './urinaryRetention.ts';
 import { vomiting } from './vomiting.ts';
 import { weakness } from './weakness.ts';
@@ -71,4 +76,10 @@ export const bedsideTopics: BedsideTopic[] = [
   legWeakness,
   stroke,
   feverHeadache,
+  // Batch 5: joints and back (book section 7).
+  backPain,
+  upperLimb,
+  elbowPain,
+  neckPain,
+  jointPain,
 ];

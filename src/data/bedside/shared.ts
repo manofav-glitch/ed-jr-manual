@@ -439,3 +439,50 @@ export const UNCONSCIOUS_EXAM: PointGroup[] = [
     ],
   },
 ];
+
+/** Ch 24, Principles of joint examination: look, feel, move, measure, compare with the other side. */
+export const JOINT_EXAM: PointGroup[] = [
+  {
+    heading: 'Look (compare with the other side)',
+    refs: [{ chapter: 24, pages: '372–373' }],
+    points: [
+      { text: 'Gait and posture as they walk in; help needed?' },
+      { text: 'Swelling, redness, deformity, wasting, scars' },
+      { text: 'Skin: psoriasis (and nails), vasculitic rash, tophi, nodules' },
+      { text: 'Pattern of joints involved (one, a few, many; symmetrical; spine)' },
+    ],
+  },
+  {
+    heading: 'Feel',
+    refs: [{ chapter: 24, pages: '373' }],
+    points: [
+      { text: 'Warmth with the back of the hand', hint: 'Very warm: infection or crystals' },
+      { text: 'Tenderness: along the joint line, or over a tendon, bursa or bone?', hint: 'Joint, or the tissues around it' },
+      { text: 'Effusion (fluctuant), synovitis (boggy) or bony swelling (hard)' },
+      { text: 'Watch the face, not the joint' },
+    ],
+  },
+  {
+    heading: 'Move and measure',
+    refs: [{ chapter: 24, pages: '373–374' }],
+    points: [
+      { text: 'Active, then passive range; pain, crepitus, limitation', hint: 'Not passive movement if a fracture is possible' },
+      { text: 'All directions limited and painful', hint: 'Inside the joint' },
+      { text: 'One direction only', hint: 'Tendon or bursa' },
+      { text: 'Painless weakness', hint: 'Tendon rupture or nerve lesion' },
+      { text: 'Stability' },
+    ],
+  },
+  {
+    heading: 'Also',
+    refs: [
+      { chapter: 23, pages: '363–365' },
+      { chapter: 6, pages: '109–114' },
+    ],
+    points: [
+      { text: 'The joints above and below (pain can be referred, e.g. hip to knee)' },
+      { text: 'Pulses, capillary refill and sensation beyond the joint' },
+      { text: 'Temperature' },
+    ],
+  },
+];
