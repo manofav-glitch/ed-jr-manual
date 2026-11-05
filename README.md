@@ -8,8 +8,8 @@ A mobile-first, offline bedside app for the hospital's Emergency Department prot
   with tickable steps, progress, pins and full-text search.
 - **Bedside**: for presentations the textbook covers, a tickable history, examination, differentials
   and plan following Talley & O'Connor, *Clinical Examination* (8th edition), in our own words with
-  the book's page numbers. Batch 1 (heart and lungs) covers flowcharts 6.1, 6.2, 7.3, 1.3, 13.3,
-  13.5 and 18.2.
+  the book's page numbers. Batch 1 (heart and lungs): flowcharts 6.1, 6.2, 7.3, 1.3, 13.3, 13.5,
+  18.2. Batch 2 (gut): 1.4, 1.8, 2.1, 2.2, 3.1, 3.3, 3.4, 3.5, 3.6, 13.4, 14.4.
 - **Triage**, **Code blue**, **Doses** and the case-sheet **Note**, all built from the same text manual.
 - Works in airplane mode after the first load. No backend: everything stays in the phone's browser.
 

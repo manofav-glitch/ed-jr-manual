@@ -152,3 +152,80 @@ export const RESP_EXAM: PointGroup[] = [
     ],
   },
 ];
+
+/** Ch 16, Text box 16.1: the gastrointestinal examination in order (lying flat, one pillow). */
+export const ABDO_EXAM: PointGroup[] = [
+  {
+    heading: 'General inspection (lying flat, one pillow, abdomen exposed)',
+    refs: [
+      { chapter: 16, pages: '282–283', label: 'Text box 16.1' },
+      { chapter: 15, pages: '272' },
+      { chapter: 3, pages: '46–47', label: 'Hydration' },
+    ],
+    points: [
+      { text: 'Looks unwell or comfortable; lying still or rolling about', hint: 'Still: peritonitis. Rolling: colic' },
+      { text: 'Jaundice, pallor, wasting' },
+      { text: 'Confusion or drowsiness', hint: 'Hepatic encephalopathy' },
+      { text: 'Hydration: tongue, skin, postural BP', hint: 'Fluid loss' },
+    ],
+  },
+  {
+    heading: 'Hands, arms, face and chest',
+    refs: [
+      { chapter: 16, pages: '282–283', label: 'Text box 16.1' },
+      { chapter: 15, pages: '275' },
+    ],
+    points: [
+      { text: 'Clubbing, white nails, palmar erythema, Dupuytren’s contracture' },
+      { text: 'Flapping tremor (arms out, wrists back)', hint: 'Liver failure' },
+      { text: 'Bruising, spider naevi, scratch marks' },
+      { text: 'Eyes: jaundice, pallor. Mouth: ulcers, angular stomatitis, glossitis; smell of the breath' },
+      { text: 'Neck: left supraclavicular node' },
+      { text: 'Chest: spider naevi, gynaecomastia, loss of body hair' },
+    ],
+  },
+  {
+    heading: 'Abdomen: look',
+    refs: [
+      { chapter: 14, pages: '245–248' },
+      { chapter: 16, pages: '283', label: 'Text box 16.1' },
+    ],
+    points: [
+      { text: 'Does it move with breathing?', hint: 'Not moving: peritonitis' },
+      { text: 'Distension: fat, fluid, flatus, faeces, fetus or a big mass' },
+      { text: 'Scars, stomas, visible peristalsis, masses, hernias' },
+      { text: 'Prominent veins; bruising in the flanks or round the umbilicus', hint: 'Severe pancreatitis' },
+    ],
+  },
+  {
+    heading: 'Abdomen: feel',
+    refs: [
+      { chapter: 15, pages: '272–273', label: 'Good signs guide 15.1' },
+      { chapter: 14, pages: '250–257' },
+    ],
+    points: [
+      { text: 'Ask where it hurts first, start away from it, and watch the face' },
+      { text: 'Ask them to cough: where does it hurt?', hint: 'A gentle test for peritonism' },
+      { text: 'Light palpation: tenderness, guarding, rigidity' },
+      { text: 'Light percussion over tender areas (kinder than testing rebound)' },
+      { text: 'Deep palpation: masses; liver, spleen, kidneys' },
+      { text: 'Gallbladder: Murphy’s sign (catches breath on deep inspiration)' },
+      { text: 'Aorta: expansile pulsation?', urgent: true, hint: 'Aneurysm' },
+    ],
+  },
+  {
+    heading: 'Percuss, listen, and finish',
+    refs: [
+      { chapter: 14, pages: '257–269' },
+      { chapter: 16, pages: '283–284', label: 'Text box 16.1' },
+    ],
+    points: [
+      { text: 'Shifting dullness if the flanks are dull', hint: 'Ascites' },
+      { text: 'Bowel sounds: absent, or loud and high-pitched', hint: 'Ileus, or obstruction' },
+      { text: 'Hernial orifices and groin nodes; testes' },
+      { text: 'Rectal examination (and look at the stool on the glove)' },
+      { text: 'Look at any vomit or stool kept' },
+      { text: 'Urine dipstick; temperature' },
+    ],
+  },
+];

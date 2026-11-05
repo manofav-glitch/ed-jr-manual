@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { BookRef } from '../../src/data/bedsideTypes.ts';
 import { BEDSIDE_STEPS, bedsideTopics, pointIds, topicById, topicsFor } from '../../src/lib/bedside.ts';
 import { flowchartByLabel } from '../../src/lib/flowcharts.ts';
+import { textFor } from '../../src/lib/manual.ts';
 import { buildDocs, createSearch } from '../../src/lib/search.ts';
 import { flowcharts } from '../../src/lib/flowcharts.ts';
 
@@ -26,8 +27,15 @@ const allRefs = bedsideTopics.flatMap((t) => [
 ]);
 
 describe('bedside checklists', () => {
-  it('batch 1 covers the heart and lung presentations', () => {
-    expect(bedsideTopics.flatMap((t) => t.flowcharts).sort()).toEqual(['1.3', '13.3', '13.5', '18.2', '6.1', '6.2', '7.3']);
+  it('cover batch 1 (heart and lungs) and batch 2 (gut)', () => {
+    const labels = (ids: string[]) => bedsideTopics.filter((t) => ids.includes(t.id)).flatMap((t) => t.flowcharts).sort();
+    expect(labels(['chest-pain', 'breathlessness', 'syncope', 'haemoptysis', 'fever-cough-breathless', 'hypertension'])).toEqual([
+      '1.3', '13.3', '13.5', '18.2', '6.1', '6.2', '7.3',
+    ]);
+    expect(
+      labels(['haematemesis', 'rectal-bleeding', 'vomiting', 'diarrhoea', 'abdominal-pain', 'constipation', 'bloating', 'loss-of-appetite', 'dysphagia', 'fever-jaundice']),
+    ).toEqual(['1.4', '1.8', '13.4', '14.4', '2.1', '2.2', '3.1', '3.3', '3.4', '3.5', '3.6']);
+    expect(bedsideTopics).toHaveLength(16);
   });
 
   it('point at real flowcharts, once each, with unique ids', () => {
@@ -78,6 +86,14 @@ describe('bedside checklists', () => {
       for (const n of r.label?.match(/\b\d+\.\d+/g) ?? []) {
         expect(Number(n.split('.')[0]), `${t} ${where}: ${r.label} in ch ${r.chapter}`).toBe(r.chapter);
       }
+    }
+  });
+
+  it('mention a hospital checklist in the plan only when one is linked', () => {
+    for (const t of bedsideTopics) {
+      const last = t.plan.at(-1)!.points.at(-1)!.text;
+      expect(last, t.id).toMatch(/^Then follow the hospital’s .* below$/);
+      expect(/checklist/.test(last), t.id).toBe(t.flowcharts.flatMap(textFor).length > 0);
     }
   });
 
