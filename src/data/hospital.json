@@ -299,22 +299,18 @@
   }
  ],
  "front": [],
- "contentsGroups": [],
  "chapters": [
   {
    "id": "hp-how-to-use-this-manual",
    "number": 1,
    "label": "",
    "title": "How to use this manual",
-   "contentsTitle": "How to use this manual",
-   "group": "counter",
    "sections": [
     {
      "id": "hp-how-to-use-this-manual-reference",
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp-how-to-use-this-manual-reference.0",
@@ -575,7 +571,6 @@
       }
      ],
      "headingText": "Departmental general instructions",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp-how-to-use-this-manual-reference-2.0",
@@ -855,7 +850,6 @@
       }
      ],
      "headingText": "Guide to succinct clinical documentation in the ED",
-     "markerMeaning": "askSr",
      "subsections": [],
      "line": 26
     },
@@ -869,7 +863,6 @@
       }
      ],
      "headingText": "Standard format for the ED case sheet",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp-how-to-use-this-manual-reference-4.0",
@@ -1280,15 +1273,12 @@
    "number": 2,
    "label": "",
    "title": "Triage",
-   "contentsTitle": "Triage",
-   "group": "counter",
    "sections": [
     {
      "id": "hp-triage-reference",
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp-triage-reference.0",
@@ -2166,7 +2156,6 @@
       }
      ],
      "headingText": "Special alerts — activate on triage, before the workup is complete",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp-triage-reference-2.0",
@@ -2439,15 +2428,12 @@
    "number": 3,
    "label": "",
    "title": "Clinical Protocols for Common Presentations in the Emergency Department",
-   "contentsTitle": "Clinical Protocols for Common Presentations in the Emergency Department",
-   "group": "counter",
    "sections": [
     {
      "id": "hp-clinical-protocols-for-common-presentations-in-the-emergency-department-reference",
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp-clinical-protocols-for-common-presentations-in-the-emergency-department-reference.0",
@@ -2493,8 +2479,6 @@
    "number": 4,
    "label": "1.1",
    "title": "Road Traffic Accident / Blunt Polytrauma",
-   "contentsTitle": "Road Traffic Accident / Blunt Polytrauma",
-   "group": "presentation",
    "partTitle": "1.0 Trauma",
    "part": "1.0 Trauma",
    "sections": [
@@ -2503,7 +2487,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp1-1-reference.0",
@@ -2551,7 +2534,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp1-1-history.0",
@@ -2926,7 +2908,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp1-1-exam.0",
@@ -3231,7 +3212,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp1-1-tests.0",
@@ -3462,7 +3442,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp1-1-management.0",
@@ -4016,7 +3995,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp1-1-redflags.0",
@@ -4150,7 +4128,6 @@
       }
      ],
      "headingText": "Priorities in polytrauma — the order that actually saves life",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp1-1-reference-2.0",
@@ -4689,7 +4666,6 @@
       }
      ],
      "headingText": "Decision rules for imaging in trauma",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp1-1-reference-3.0",
@@ -5119,8 +5095,6 @@
    "number": 5,
    "label": "1.2",
    "title": "Head Injury",
-   "contentsTitle": "Head Injury",
-   "group": "presentation",
    "part": "1.0 Trauma",
    "sections": [
     {
@@ -5128,7 +5102,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp1-2-reference.0",
@@ -5176,7 +5149,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp1-2-history.0",
@@ -5385,7 +5357,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp1-2-exam.0",
@@ -5590,7 +5561,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp1-2-tests.0",
@@ -5748,7 +5718,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp1-2-management.0",
@@ -6295,7 +6264,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp1-2-redflags.0",
@@ -6427,8 +6395,6 @@
    "number": 6,
    "label": "1.3",
    "title": "Trauma Patient with Urethral Bleeding / Suspected Urethral Injury",
-   "contentsTitle": "Trauma Patient with Urethral Bleeding / Suspected Urethral Injury",
-   "group": "presentation",
    "part": "1.0 Trauma",
    "sections": [
     {
@@ -6436,7 +6402,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp1-3-reference.0",
@@ -6484,7 +6449,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp1-3-history.0",
@@ -6635,7 +6599,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp1-3-exam.0",
@@ -6849,7 +6812,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp1-3-tests.0",
@@ -7029,7 +6991,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp1-3-management.0",
@@ -7353,7 +7314,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp1-3-redflags.0",
@@ -7452,8 +7412,6 @@
    "number": 7,
    "label": "2.1",
    "title": "Chest Pain",
-   "contentsTitle": "Chest Pain",
-   "group": "presentation",
    "partTitle": "2.0 Chest Pain, Breathlessness and Syncope",
    "part": "2.0 Chest Pain, Breathlessness and Syncope",
    "sections": [
@@ -7462,7 +7420,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-1-reference.0",
@@ -7510,7 +7467,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-1-history.0",
@@ -7936,7 +7892,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-1-exam.0",
@@ -8142,7 +8097,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-1-tests.0",
@@ -8414,7 +8368,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-1-management.0",
@@ -8918,7 +8871,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-1-redflags.0",
@@ -9056,7 +9008,6 @@
       }
      ],
      "headingText": "Quick guide to the killer differentials of chest pain",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-1-reference-2.0",
@@ -9633,7 +9584,6 @@
       }
      ],
      "headingText": "Quick guide to the killer differentials of chest pain (continued)",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-1-reference-3.0",
@@ -10263,8 +10213,6 @@
    "number": 8,
    "label": "2.2",
    "title": "Shortness of Breath",
-   "contentsTitle": "Shortness of Breath",
-   "group": "presentation",
    "part": "2.0 Chest Pain, Breathlessness and Syncope",
    "sections": [
     {
@@ -10272,7 +10220,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-2-reference.0",
@@ -10320,7 +10267,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-2-history.0",
@@ -10681,7 +10627,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-2-exam.0",
@@ -10908,7 +10853,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-2-tests.0",
@@ -11190,7 +11134,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-2-management.0",
@@ -11673,7 +11616,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-2-redflags.0",
@@ -11807,7 +11749,6 @@
       }
      ],
      "headingText": "Differential diagnosis of breathlessness — what to look for and what to start",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-2-reference-2.0",
@@ -12645,8 +12586,6 @@
    "number": 9,
    "label": "2.3",
    "title": "Oncology Patient with Cough or Shortness of Breath",
-   "contentsTitle": "Oncology Patient with Cough or Shortness of Breath",
-   "group": "presentation",
    "part": "2.0 Chest Pain, Breathlessness and Syncope",
    "sections": [
     {
@@ -12654,7 +12593,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-3-reference.0",
@@ -12702,7 +12640,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-3-history.0",
@@ -13057,7 +12994,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-3-exam.0",
@@ -13251,7 +13187,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-3-tests.0",
@@ -13485,7 +13420,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-3-management.0",
@@ -13997,7 +13931,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-3-redflags.0",
@@ -14129,8 +14062,6 @@
    "number": 10,
    "label": "2.4",
    "title": "Syncope and Transient Loss of Consciousness",
-   "contentsTitle": "Syncope and Transient Loss of Consciousness",
-   "group": "presentation",
    "part": "2.0 Chest Pain, Breathlessness and Syncope",
    "sections": [
     {
@@ -14138,7 +14069,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-4-reference.0",
@@ -14186,7 +14116,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-4-history.0",
@@ -14634,7 +14563,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-4-exam.0",
@@ -14805,7 +14733,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-4-tests.0",
@@ -14994,7 +14921,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-4-management.0",
@@ -15410,7 +15336,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-4-redflags.0",
@@ -15612,7 +15537,6 @@
       }
      ],
      "headingText": "Quick guide — syncope or seizure, and the diagnoses that must not be missed",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp2-4-reference-2.0",
@@ -16007,8 +15931,6 @@
    "number": 11,
    "label": "3.1",
    "title": "Acute Abdominal Pain",
-   "contentsTitle": "Acute Abdominal Pain",
-   "group": "presentation",
    "partTitle": "3.0 Nausea, Vomiting, Diarrhoea, GI Bleed and Acute Abdominal Pain",
    "part": "3.0 Nausea, Vomiting, Diarrhoea, GI Bleed and Acute Abdominal Pain",
    "sections": [
@@ -16017,7 +15939,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-1-reference.0",
@@ -16061,7 +15982,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-1-history.0",
@@ -16521,7 +16441,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-1-exam.0",
@@ -16868,7 +16787,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-1-tests.0",
@@ -17160,7 +17078,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-1-management.0",
@@ -17771,7 +17688,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-1-redflags.0",
@@ -17970,7 +17886,6 @@
       }
      ],
      "headingText": "Regional differential diagnosis — salient features and the test that settles it",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-1-reference-2.0",
@@ -19050,8 +18965,6 @@
    "number": 12,
    "label": "3.2",
    "title": "Haematemesis / Upper Gastrointestinal Bleed",
-   "contentsTitle": "Haematemesis / Upper Gastrointestinal Bleed",
-   "group": "presentation",
    "part": "3.0 Nausea, Vomiting, Diarrhoea, GI Bleed and Acute Abdominal Pain",
    "sections": [
     {
@@ -19059,7 +18972,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-2-reference.0",
@@ -19107,7 +19019,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-2-history.0",
@@ -19506,7 +19417,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-2-exam.0",
@@ -19815,7 +19725,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-2-tests.0",
@@ -20159,7 +20068,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-2-management.0",
@@ -20808,7 +20716,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-2-redflags.0",
@@ -20942,7 +20849,6 @@
       }
      ],
      "headingText": "Distinguishing the source of bleeding — a bedside guide",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-2-reference-2.0",
@@ -21414,8 +21320,6 @@
    "number": 13,
    "label": "3.3",
    "title": "Bleeding Per Rectum / Lower Gastrointestinal Bleed",
-   "contentsTitle": "Bleeding Per Rectum / Lower Gastrointestinal Bleed",
-   "group": "presentation",
    "part": "3.0 Nausea, Vomiting, Diarrhoea, GI Bleed and Acute Abdominal Pain",
    "sections": [
     {
@@ -21423,7 +21327,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-3-reference.0",
@@ -21471,7 +21374,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-3-history.0",
@@ -21820,7 +21722,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-3-exam.0",
@@ -22046,7 +21947,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-3-tests.0",
@@ -22326,7 +22226,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-3-management.0",
@@ -22737,7 +22636,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-3-redflags.0",
@@ -22853,8 +22751,6 @@
    "number": 14,
    "label": "3.4",
    "title": "Vomiting (Undifferentiated)",
-   "contentsTitle": "Vomiting (Undifferentiated)",
-   "group": "presentation",
    "part": "3.0 Nausea, Vomiting, Diarrhoea, GI Bleed and Acute Abdominal Pain",
    "sections": [
     {
@@ -22862,7 +22758,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-4-reference.0",
@@ -22906,7 +22801,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-4-history.0",
@@ -23267,7 +23161,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-4-exam.0",
@@ -23456,7 +23349,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-4-tests.0",
@@ -23678,7 +23570,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-4-management.0",
@@ -24174,7 +24065,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-4-redflags.0",
@@ -24306,8 +24196,6 @@
    "number": 15,
    "label": "3.5",
    "title": "Acute Gastroenteritis",
-   "contentsTitle": "Acute Gastroenteritis",
-   "group": "presentation",
    "part": "3.0 Nausea, Vomiting, Diarrhoea, GI Bleed and Acute Abdominal Pain",
    "sections": [
     {
@@ -24315,7 +24203,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-5-reference.0",
@@ -24376,7 +24263,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-5-history.0",
@@ -24617,7 +24503,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-5-exam.0",
@@ -24863,7 +24748,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-5-tests.0",
@@ -25047,7 +24931,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-5-management.0",
@@ -25535,7 +25418,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-5-redflags.0",
@@ -25651,8 +25533,6 @@
    "number": 16,
    "label": "3.6",
    "title": "Oncology Patient with Nausea and Vomiting",
-   "contentsTitle": "Oncology Patient with Nausea and Vomiting",
-   "group": "presentation",
    "part": "3.0 Nausea, Vomiting, Diarrhoea, GI Bleed and Acute Abdominal Pain",
    "sections": [
     {
@@ -25660,7 +25540,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-6-reference.0",
@@ -25708,7 +25587,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-6-history.0",
@@ -26080,7 +25958,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-6-exam.0",
@@ -26258,7 +26135,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-6-tests.0",
@@ -26438,7 +26314,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-6-management.0",
@@ -26913,7 +26788,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-6-redflags.0",
@@ -27033,8 +26907,6 @@
    "number": 17,
    "label": "3.7",
    "title": "Oncology Patient with Diarrhoea",
-   "contentsTitle": "Oncology Patient with Diarrhoea",
-   "group": "presentation",
    "part": "3.0 Nausea, Vomiting, Diarrhoea, GI Bleed and Acute Abdominal Pain",
    "sections": [
     {
@@ -27042,7 +26914,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-7-reference.0",
@@ -27103,7 +26974,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-7-history.0",
@@ -27450,7 +27320,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-7-exam.0",
@@ -27631,7 +27500,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-7-tests.0",
@@ -27890,7 +27758,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-7-management.0",
@@ -28321,7 +28188,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp3-7-redflags.0",
@@ -28450,8 +28316,6 @@
    "number": 18,
    "label": "4.1",
    "title": "The Unconscious Patient",
-   "contentsTitle": "The Unconscious Patient",
-   "group": "presentation",
    "partTitle": "4.0 Central Nervous System — Unconsciousness, Seizure, Altered Sensorium and Weakness",
    "part": "4.0 Central Nervous System — Unconsciousness, Seizure, Altered Sensorium and Weakness",
    "sections": [
@@ -28460,7 +28324,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-1-reference.0",
@@ -28495,7 +28358,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-1-history.0",
@@ -28740,7 +28602,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-1-exam.0",
@@ -29164,7 +29025,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-1-tests.0",
@@ -29450,7 +29310,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-1-management.0",
@@ -29957,7 +29816,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-1-redflags.0",
@@ -30094,7 +29952,6 @@
       }
      ],
      "headingText": "Causes of coma and altered sensorium — the AEIOU-TIPS and TIME framework",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-1-reference-2.0",
@@ -30947,8 +30804,6 @@
    "number": 19,
    "label": "4.2",
    "title": "Seizure and Status Epilepticus",
-   "contentsTitle": "Seizure and Status Epilepticus",
-   "group": "presentation",
    "part": "4.0 Central Nervous System — Unconsciousness, Seizure, Altered Sensorium and Weakness",
    "sections": [
     {
@@ -30956,7 +30811,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-2-reference.0",
@@ -31000,7 +30854,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-2-history.0",
@@ -31359,7 +31212,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-2-exam.0",
@@ -31575,7 +31427,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-2-tests.0",
@@ -31844,7 +31695,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-2-management.0",
@@ -32594,7 +32444,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-2-redflags.0",
@@ -32743,8 +32592,6 @@
    "number": 20,
    "label": "4.3",
    "title": "Altered Sensorium — Metabolic and Glycaemic Emergencies",
-   "contentsTitle": "Altered Sensorium — Metabolic and Glycaemic Emergencies",
-   "group": "presentation",
    "part": "4.0 Central Nervous System — Unconsciousness, Seizure, Altered Sensorium and Weakness",
    "sections": [
     {
@@ -32752,7 +32599,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-3-reference.0",
@@ -32800,7 +32646,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-3-history.0",
@@ -33098,7 +32943,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-3-exam.0",
@@ -33288,7 +33132,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-3-tests.0",
@@ -33583,7 +33426,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-3-management.0",
@@ -34282,7 +34124,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-3-redflags.0",
@@ -34393,8 +34234,6 @@
    "number": 21,
    "label": "4.4",
    "title": "Acute Weakness / Paralysis and Suspected Stroke",
-   "contentsTitle": "Acute Weakness / Paralysis and Suspected Stroke",
-   "group": "presentation",
    "part": "4.0 Central Nervous System — Unconsciousness, Seizure, Altered Sensorium and Weakness",
    "sections": [
     {
@@ -34402,7 +34241,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-4-reference.0",
@@ -34450,7 +34288,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-4-history.0",
@@ -34955,7 +34792,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-4-exam.0",
@@ -35269,7 +35105,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-4-tests.0",
@@ -35509,7 +35344,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-4-management.0",
@@ -36187,7 +36021,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-4-redflags.0",
@@ -36319,8 +36152,6 @@
    "number": 22,
    "label": "4.5",
    "title": "Oncology Patient with Altered Sensorium or Seizure",
-   "contentsTitle": "Oncology Patient with Altered Sensorium or Seizure",
-   "group": "presentation",
    "part": "4.0 Central Nervous System — Unconsciousness, Seizure, Altered Sensorium and Weakness",
    "sections": [
     {
@@ -36328,7 +36159,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-5-reference.0",
@@ -36363,7 +36193,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-5-history.0",
@@ -36735,7 +36564,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-5-exam.0",
@@ -36926,7 +36754,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-5-tests.0",
@@ -37171,7 +36998,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-5-management.0",
@@ -37720,7 +37546,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-5-redflags.0",
@@ -37843,8 +37668,6 @@
    "number": 23,
    "label": "4.6",
    "title": "Vertigo and Dizziness",
-   "contentsTitle": "Vertigo and Dizziness",
-   "group": "presentation",
    "part": "4.0 Central Nervous System — Unconsciousness, Seizure, Altered Sensorium and Weakness",
    "sections": [
     {
@@ -37852,7 +37675,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-6-reference.0",
@@ -37900,7 +37722,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-6-history.0",
@@ -38285,7 +38106,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-6-exam.0",
@@ -38550,7 +38370,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-6-tests.0",
@@ -38754,7 +38573,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-6-management.0",
@@ -39206,7 +39024,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-6-redflags.0",
@@ -39341,7 +39158,6 @@
       }
      ],
      "headingText": "Separating central from peripheral vertigo at the bedside",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-6-reference-2.0",
@@ -40009,8 +39825,6 @@
    "number": 24,
    "label": "4.7",
    "title": "Headache",
-   "contentsTitle": "Headache",
-   "group": "presentation",
    "part": "4.0 Central Nervous System — Unconsciousness, Seizure, Altered Sensorium and Weakness",
    "sections": [
     {
@@ -40018,7 +39832,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-7-reference.0",
@@ -40075,7 +39888,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-7-history.0",
@@ -40481,7 +40293,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-7-exam.0",
@@ -40669,7 +40480,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-7-tests.0",
@@ -40912,7 +40722,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-7-management.0",
@@ -41529,7 +41338,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-7-redflags.0",
@@ -41753,7 +41561,6 @@
       }
      ],
      "headingText": "Quick guide — thunderclap headache, and the pattern of the primary headaches",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp4-7-reference-2.0",
@@ -42146,8 +41953,6 @@
    "number": 25,
    "label": "5.1",
    "title": "Poisoning — General Approach",
-   "contentsTitle": "Poisoning — General Approach",
-   "group": "presentation",
    "partTitle": "5.0 Poisoning, Envenomation and Animal Bite",
    "part": "5.0 Poisoning, Envenomation and Animal Bite",
    "sections": [
@@ -42156,7 +41961,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp5-1-reference.0",
@@ -42204,7 +42008,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp5-1-history.0",
@@ -42490,7 +42293,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp5-1-exam.0",
@@ -42755,7 +42557,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp5-1-tests.0",
@@ -42976,7 +42777,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp5-1-management.0",
@@ -43615,7 +43415,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp5-1-redflags.0",
@@ -43758,7 +43557,6 @@
       }
      ],
      "headingText": "Organophosphate and carbamate poisoning — the commonest severe poisoning in this region",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp5-1-reference-2.0",
@@ -45388,7 +45186,6 @@
       }
      ],
      "headingText": "Other agents commonly seen in this region — recognition and specific treatment",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp5-1-reference-3.0",
@@ -46619,8 +46416,6 @@
    "number": 26,
    "label": "5.2",
    "title": "Animal Bite, Scratch and Rabies Prophylaxis",
-   "contentsTitle": "Animal Bite, Scratch and Rabies Prophylaxis",
-   "group": "presentation",
    "part": "5.0 Poisoning, Envenomation and Animal Bite",
    "sections": [
     {
@@ -46628,7 +46423,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp5-2-reference.0",
@@ -46689,7 +46483,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp5-2-history.0",
@@ -46885,7 +46678,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp5-2-exam.0",
@@ -47030,7 +46822,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp5-2-tests.0",
@@ -47163,7 +46954,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp5-2-management.0",
@@ -47892,7 +47682,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp5-2-redflags.0",
@@ -48132,7 +47921,6 @@
       }
      ],
      "headingText": "Quick guide — categorising the exposure, and organisms by animal",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp5-2-reference-2.0",
@@ -48709,8 +48497,6 @@
    "number": 27,
    "label": "6.1",
    "title": "Patient in Labour, and the Obstetric Emergency",
-   "contentsTitle": "Patient in Labour, and the Obstetric Emergency",
-   "group": "presentation",
    "partTitle": "6.0 Obstetric and Gynaecological Presentations",
    "part": "6.0 Obstetric and Gynaecological Presentations",
    "sections": [
@@ -48719,7 +48505,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp6-1-reference.0",
@@ -48767,7 +48552,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp6-1-history.0",
@@ -49109,7 +48893,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp6-1-exam.0",
@@ -49377,7 +49160,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp6-1-tests.0",
@@ -49557,7 +49339,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp6-1-management.0",
@@ -50151,7 +49932,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp6-1-redflags.0",
@@ -50292,8 +50072,6 @@
    "number": 28,
    "label": "6.2",
    "title": "Bleeding in Early Pregnancy — Abortion and Medical Termination",
-   "contentsTitle": "Bleeding in Early Pregnancy — Abortion and Medical Termination",
-   "group": "presentation",
    "part": "6.0 Obstetric and Gynaecological Presentations",
    "sections": [
     {
@@ -50301,7 +50079,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp6-2-reference.0",
@@ -50345,7 +50122,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp6-2-history.0",
@@ -50621,7 +50397,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp6-2-exam.0",
@@ -50850,7 +50625,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp6-2-tests.0",
@@ -51092,7 +50866,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp6-2-management.0",
@@ -51591,7 +51364,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp6-2-redflags.0",
@@ -51723,8 +51495,6 @@
    "number": 29,
    "label": "6.3",
    "title": "Abnormal Uterine Bleeding",
-   "contentsTitle": "Abnormal Uterine Bleeding",
-   "group": "presentation",
    "part": "6.0 Obstetric and Gynaecological Presentations",
    "sections": [
     {
@@ -51732,7 +51502,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp6-3-reference.0",
@@ -51780,7 +51549,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp6-3-history.0",
@@ -52059,7 +51827,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp6-3-exam.0",
@@ -52294,7 +52061,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp6-3-tests.0",
@@ -52470,7 +52236,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp6-3-management.0",
@@ -52859,7 +52624,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp6-3-redflags.0",
@@ -53000,8 +52764,6 @@
    "number": 30,
    "label": "7.1",
    "title": "Acute Retention of Urine",
-   "contentsTitle": "Acute Retention of Urine",
-   "group": "presentation",
    "partTitle": "7.0 Other Presentations",
    "part": "7.0 Other Presentations",
    "sections": [
@@ -53010,7 +52772,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-1-reference.0",
@@ -53058,7 +52819,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-1-history.0",
@@ -53352,7 +53112,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-1-exam.0",
@@ -53535,7 +53294,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-1-tests.0",
@@ -53694,7 +53452,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-1-management.0",
@@ -54156,7 +53913,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-1-redflags.0",
@@ -54297,8 +54053,6 @@
    "number": 31,
    "label": "7.2",
    "title": "Haematuria",
-   "contentsTitle": "Haematuria",
-   "group": "presentation",
    "part": "7.0 Other Presentations",
    "sections": [
     {
@@ -54306,7 +54060,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-2-reference.0",
@@ -54354,7 +54107,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-2-history.0",
@@ -54716,7 +54468,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-2-exam.0",
@@ -54913,7 +54664,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-2-tests.0",
@@ -55132,7 +54882,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-2-management.0",
@@ -55541,7 +55290,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-2-redflags.0",
@@ -55673,8 +55421,6 @@
    "number": 32,
    "label": "7.3",
    "title": "Fever",
-   "contentsTitle": "Fever",
-   "group": "presentation",
    "part": "7.0 Other Presentations",
    "sections": [
     {
@@ -55682,7 +55428,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-3-reference.0",
@@ -55730,7 +55475,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-3-history.0",
@@ -56134,7 +55878,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-3-exam.0",
@@ -56368,7 +56111,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-3-tests.0",
@@ -56594,7 +56336,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-3-management.0",
@@ -57213,7 +56954,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-3-redflags.0",
@@ -57355,8 +57095,6 @@
    "number": 33,
    "label": "7.4",
    "title": "Oncology Patient with Fever — Febrile Neutropenia",
-   "contentsTitle": "Oncology Patient with Fever — Febrile Neutropenia",
-   "group": "presentation",
    "part": "7.0 Other Presentations",
    "sections": [
     {
@@ -57364,7 +57102,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-4-reference.0",
@@ -57421,7 +57158,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-4-history.0",
@@ -57776,7 +57512,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-4-exam.0",
@@ -58020,7 +57755,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-4-tests.0",
@@ -58264,7 +57998,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-4-management.0",
@@ -58971,7 +58704,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-4-redflags.0",
@@ -59111,8 +58843,6 @@
    "number": 34,
    "label": "7.5",
    "title": "Anxiety, Panic Attack and Acute Psychological Distress",
-   "contentsTitle": "Anxiety, Panic Attack and Acute Psychological Distress",
-   "group": "presentation",
    "part": "7.0 Other Presentations",
    "sections": [
     {
@@ -59120,7 +58850,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-5-reference.0",
@@ -59164,7 +58893,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-5-history.0",
@@ -59472,7 +59200,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-5-exam.0",
@@ -59638,7 +59365,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-5-tests.0",
@@ -59832,7 +59558,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-5-management.0",
@@ -60293,7 +60018,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-5-redflags.0",
@@ -60491,7 +60215,6 @@
       }
      ],
      "headingText": "Quick guide — what anxiety is mistaken for, and how to talk the patient through the episode",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp7-5-reference-2.0",
@@ -60994,8 +60717,6 @@
    "number": 35,
    "label": "8.1",
    "title": "Anaphylaxis",
-   "contentsTitle": "Anaphylaxis",
-   "group": "presentation",
    "partTitle": "8.0 Additional Protocols (new in Revision 02)",
    "part": "8.0 Additional Protocols (new in Revision 02)",
    "sections": [
@@ -61004,7 +60725,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-1-reference.0",
@@ -61052,7 +60772,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-1-history.0",
@@ -61227,7 +60946,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-1-exam.0",
@@ -61408,7 +61126,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-1-tests.0",
@@ -61519,7 +61236,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-1-management.0",
@@ -62017,7 +61733,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-1-redflags.0",
@@ -62189,7 +61904,6 @@
       }
      ],
      "headingText": "Quick guide — mimics, and errors that recur",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-1-reference-2.0",
@@ -62534,8 +62248,6 @@
    "number": 36,
    "label": "8.2",
    "title": "Sepsis and Septic Shock",
-   "contentsTitle": "Sepsis and Septic Shock",
-   "group": "presentation",
    "part": "8.0 Additional Protocols (new in Revision 02)",
    "sections": [
     {
@@ -62543,7 +62255,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-2-reference.0",
@@ -62604,7 +62315,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-2-history.0",
@@ -62749,7 +62459,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-2-exam.0",
@@ -62904,7 +62613,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-2-tests.0",
@@ -63043,7 +62751,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-2-management.0",
@@ -63429,7 +63136,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-2-redflags.0",
@@ -63622,7 +63328,6 @@
       }
      ],
      "headingText": "Quick guide — fluid, vasopressors and the sources that get missed",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-2-reference-2.0",
@@ -64003,8 +63708,6 @@
    "number": 37,
    "label": "8.3",
    "title": "Hyperkalaemia",
-   "contentsTitle": "Hyperkalaemia",
-   "group": "presentation",
    "part": "8.0 Additional Protocols (new in Revision 02)",
    "sections": [
     {
@@ -64012,7 +63715,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-3-reference.0",
@@ -64060,7 +63762,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-3-history.0",
@@ -64201,7 +63902,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-3-exam.0",
@@ -64316,7 +64016,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-3-tests.0",
@@ -64460,7 +64159,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-3-management.0",
@@ -64838,7 +64536,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-3-redflags.0",
@@ -64993,7 +64690,6 @@
       }
      ],
      "headingText": "Quick guide — timing, and the pitfalls",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-3-reference-2.0",
@@ -65347,8 +65043,6 @@
    "number": 38,
    "label": "8.4",
    "title": "Burns",
-   "contentsTitle": "Burns",
-   "group": "presentation",
    "part": "8.0 Additional Protocols (new in Revision 02)",
    "sections": [
     {
@@ -65356,7 +65050,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-4-reference.0",
@@ -65404,7 +65097,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-4-history.0",
@@ -65583,7 +65275,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-4-exam.0",
@@ -65824,7 +65515,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-4-tests.0",
@@ -65969,7 +65659,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-4-management.0",
@@ -66411,7 +66100,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-4-redflags.0",
@@ -66596,7 +66284,6 @@
       }
      ],
      "headingText": "Quick guide — special burns, and errors that recur",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-4-reference-2.0",
@@ -66954,8 +66641,6 @@
    "number": 39,
    "label": "8.5",
    "title": "Acute Limb Ischaemia",
-   "contentsTitle": "Acute Limb Ischaemia",
-   "group": "presentation",
    "part": "8.0 Additional Protocols (new in Revision 02)",
    "sections": [
     {
@@ -66963,7 +66648,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-5-reference.0",
@@ -67024,7 +66708,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-5-history.0",
@@ -67164,7 +66847,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-5-exam.0",
@@ -67389,7 +67071,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-5-tests.0",
@@ -67531,7 +67212,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-5-management.0",
@@ -67880,7 +67560,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-5-redflags.0",
@@ -68048,7 +67727,6 @@
       }
      ],
      "headingText": "Quick guide — what else it could be, and how the pitfalls arise",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-5-reference-2.0",
@@ -68410,8 +68088,6 @@
    "number": 40,
    "label": "8.6",
    "title": "Hypertensive Emergency and Urgency",
-   "contentsTitle": "Hypertensive Emergency and Urgency",
-   "group": "presentation",
    "part": "8.0 Additional Protocols (new in Revision 02)",
    "sections": [
     {
@@ -68419,7 +68095,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-6-reference.0",
@@ -68467,7 +68142,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-6-history.0",
@@ -68632,7 +68306,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-6-exam.0",
@@ -68760,7 +68433,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-6-tests.0",
@@ -68943,7 +68615,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-6-management.0",
@@ -69499,7 +69170,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-6-redflags.0",
@@ -69675,7 +69345,6 @@
       }
      ],
      "headingText": "Quick guide — sorting emergency from urgency, and the errors",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-6-reference-2.0",
@@ -70054,8 +69723,6 @@
    "number": 41,
    "label": "8.7",
    "title": "The Agitated, Aggressive or Violent Patient",
-   "contentsTitle": "The Agitated, Aggressive or Violent Patient",
-   "group": "presentation",
    "part": "8.0 Additional Protocols (new in Revision 02)",
    "sections": [
     {
@@ -70063,7 +69730,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-7-reference.0",
@@ -70111,7 +69777,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-7-history.0",
@@ -70256,7 +69921,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-7-exam.0",
@@ -70406,7 +70070,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-7-tests.0",
@@ -70567,7 +70230,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-7-management.0",
@@ -71111,7 +70773,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-7-redflags.0",
@@ -71304,7 +70965,6 @@
       }
      ],
      "headingText": "Quick guide — organic causes to exclude, and the standard for restraint",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-7-reference-2.0",
@@ -71662,8 +71322,6 @@
    "number": 42,
    "label": "8.8",
    "title": "Acute Transfusion Reaction",
-   "contentsTitle": "Acute Transfusion Reaction",
-   "group": "presentation",
    "part": "8.0 Additional Protocols (new in Revision 02)",
    "sections": [
     {
@@ -71671,7 +71329,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-8-reference.0",
@@ -71715,7 +71372,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-8-history.0",
@@ -71837,7 +71493,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-8-exam.0",
@@ -71986,7 +71641,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-8-tests.0",
@@ -72135,7 +71789,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-8-management.0",
@@ -72708,7 +72361,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-8-redflags.0",
@@ -72884,7 +72536,6 @@
       }
      ],
      "headingText": "Quick guide — telling the reactions apart",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-8-reference-2.0",
@@ -73299,8 +72950,6 @@
    "number": 43,
    "label": "8.9",
    "title": "Needle-Stick and Blood or Body-Fluid Exposure",
-   "contentsTitle": "Needle-Stick and Blood or Body-Fluid Exposure",
-   "group": "presentation",
    "part": "8.0 Additional Protocols (new in Revision 02)",
    "sections": [
     {
@@ -73308,7 +72957,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-9-reference.0",
@@ -73369,7 +73017,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-9-history.0",
@@ -73541,7 +73188,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-9-exam.0",
@@ -73640,7 +73286,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-9-tests.0",
@@ -73817,7 +73462,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-9-management.0",
@@ -74255,7 +73899,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-9-redflags.0",
@@ -74427,7 +74070,6 @@
       }
      ],
      "headingText": "Quick guide — risk figures, and what not to do",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-9-reference-2.0",
@@ -74745,8 +74387,6 @@
    "number": 44,
    "label": "8.10",
    "title": "Common Paediatric Emergencies",
-   "contentsTitle": "Common Paediatric Emergencies",
-   "group": "presentation",
    "part": "8.0 Additional Protocols (new in Revision 02)",
    "sections": [
     {
@@ -74754,7 +74394,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-10-reference.0",
@@ -74815,7 +74454,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-10-history.0",
@@ -74955,7 +74593,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-10-exam.0",
@@ -75171,7 +74808,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-10-tests.0",
@@ -75303,7 +74939,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-10-management.0",
@@ -75831,7 +75466,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-10-redflags.0",
@@ -76033,7 +75667,6 @@
       }
      ],
      "headingText": "Quick guide — numbers to have at hand, and the errors",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-10-reference-2.0",
@@ -76459,8 +76092,6 @@
    "number": 45,
    "label": "8.11",
    "title": "Brought Dead, Death in the ED, and Medico-legal Documentation",
-   "contentsTitle": "Brought Dead, Death in the ED, and Medico-legal Documentation",
-   "group": "presentation",
    "part": "8.0 Additional Protocols (new in Revision 02)",
    "sections": [
     {
@@ -76468,7 +76099,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-11-reference.0",
@@ -76516,7 +76146,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-11-history.0",
@@ -76645,7 +76274,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-11-exam.0",
@@ -76824,7 +76452,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-11-tests.0",
@@ -76958,7 +76585,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-11-management.0",
@@ -77576,7 +77202,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-11-redflags.0",
@@ -77744,7 +77369,6 @@
       }
      ],
      "headingText": "Quick guide — the record, and how to break the news",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-11-reference-2.0",
@@ -78129,8 +77753,6 @@
    "number": 46,
    "label": "8.12",
    "title": "Sexual Assault — Examination and Care",
-   "contentsTitle": "Sexual Assault — Examination and Care",
-   "group": "presentation",
    "part": "8.0 Additional Protocols (new in Revision 02)",
    "sections": [
     {
@@ -78138,7 +77760,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-12-reference.0",
@@ -78195,7 +77816,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-12-history.0",
@@ -78352,7 +77972,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-12-exam.0",
@@ -78587,7 +78206,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-12-tests.0",
@@ -78733,7 +78351,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-12-management.0",
@@ -79118,7 +78735,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-12-redflags.0",
@@ -79294,7 +78910,6 @@
       }
      ],
      "headingText": "Quick guide — obligations, and what must never appear in the record",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-12-reference-2.0",
@@ -79637,8 +79252,6 @@
    "number": 47,
    "label": "8.13",
    "title": "Mass Casualty Incident and Disaster Response",
-   "contentsTitle": "Mass Casualty Incident and Disaster Response",
-   "group": "presentation",
    "part": "8.0 Additional Protocols (new in Revision 02)",
    "sections": [
     {
@@ -79646,7 +79259,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-13-reference.0",
@@ -79707,7 +79319,6 @@
       }
      ],
      "headingText": "Salient history to be taken",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-13-history.0",
@@ -79862,7 +79473,6 @@
       }
      ],
      "headingText": "Salient clinical examination",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-13-exam.0",
@@ -80037,7 +79647,6 @@
       }
      ],
      "headingText": "Point-of-care investigations",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-13-tests.0",
@@ -80192,7 +79801,6 @@
       }
      ],
      "headingText": "Basic initial management",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-13-management.0",
@@ -80780,7 +80388,6 @@
       }
      ],
      "headingText": "RED FLAG SIGNS— shift to Resuscitation/Red bed and inform Consultant immediately",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-13-redflags.0",
@@ -80956,7 +80563,6 @@
       }
      ],
      "headingText": "Quick guide — the first ten minutes, and the lessons that recur",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp8-13-reference-2.0",
@@ -81356,8 +80962,6 @@
    "number": 48,
    "label": "9.1",
    "title": "ABCDE Assessment — physiological thresholds by triage zone",
-   "contentsTitle": "ABCDE Assessment — physiological thresholds by triage zone",
-   "group": "presentation",
    "partTitle": "9.0 Emergency Assessment Protocols and Resuscitation Algorithms",
    "part": "9.0 Emergency Assessment Protocols and Resuscitation Algorithms",
    "sections": [
@@ -81366,7 +80970,6 @@
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp9-1-reference.0",
@@ -81891,7 +81494,6 @@
       }
      ],
      "headingText": "9.2  AVPU Scale   |   9.3  Glasgow Coma Scale (adult and paediatric)",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp9-1-reference-2.0",
@@ -82634,8 +82236,6 @@
    "number": 49,
    "label": "9.4",
    "title": "Basic Life Support — Adult",
-   "contentsTitle": "Basic Life Support — Adult",
-   "group": "presentation",
    "part": "9.0 Emergency Assessment Protocols and Resuscitation Algorithms",
    "sections": [
     {
@@ -82648,7 +82248,6 @@
       }
      ],
      "headingText": "Adult BLS — healthcare provider sequence",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp9-4-reference.0",
@@ -83247,7 +82846,6 @@
       }
      ],
      "headingText": "9.5  Basic Life Support — Paediatric",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp9-4-reference-2.0",
@@ -83673,8 +83271,6 @@
    "number": 50,
    "label": "9.6",
    "title": "Advanced Cardiac Life Support — Adult",
-   "contentsTitle": "Advanced Cardiac Life Support — Adult",
-   "group": "presentation",
    "part": "9.0 Emergency Assessment Protocols and Resuscitation Algorithms",
    "sections": [
     {
@@ -83687,7 +83283,6 @@
       }
      ],
      "headingText": "9.6.1 / 9.6.2  Adult cardiac arrest algorithm",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp9-6-reference.0",
@@ -84468,7 +84063,6 @@
       }
      ],
      "headingText": "9.6.3  Immediate post-cardiac-arrest care",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp9-6-reference-2.0",
@@ -84855,7 +84449,6 @@
       }
      ],
      "headingText": "9.6.4  Adult bradycardia with a pulse   |   9.6.5  Adult tachycardia with a pulse",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp9-6-reference-3.0",
@@ -85682,7 +85275,6 @@
       }
      ],
      "headingText": "9.6.6  Acute coronary syndrome algorithm",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp9-6-reference-4.0",
@@ -86283,8 +85875,6 @@
    "number": 51,
    "label": "9.7",
    "title": "Paediatric Advanced Life Support",
-   "contentsTitle": "Paediatric Advanced Life Support",
-   "group": "presentation",
    "part": "9.0 Emergency Assessment Protocols and Resuscitation Algorithms",
    "sections": [
     {
@@ -86297,7 +85887,6 @@
       }
      ],
      "headingText": "9.7.1  Paediatric cardiac arrest   |   9.7.2  Tachycardia with poor perfusion   |   9.7.3  Bradycardia with poor perfusion",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp9-7-reference.0",
@@ -87065,15 +86654,12 @@
    "number": 52,
    "label": "10.0",
    "title": "Fibrinolytic Checklist for STEMI",
-   "contentsTitle": "Fibrinolytic Checklist for STEMI",
-   "group": "counter",
    "sections": [
     {
      "id": "hp10-0-reference",
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp10-0-reference.0",
@@ -87134,7 +86720,6 @@
       }
      ],
      "headingText": "Fibrinolytic checklist",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp10-0-reference-2.0",
@@ -87864,15 +87449,12 @@
    "number": 53,
    "label": "11.0",
    "title": "Guide to Common Medications used in the Emergency Department",
-   "contentsTitle": "Guide to Common Medications used in the Emergency Department",
-   "group": "counter",
    "sections": [
     {
      "id": "hp11-0-reference",
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp11-0-reference.0",
@@ -87933,7 +87515,6 @@
       }
      ],
      "headingText": "11.1  Hyperkalaemia (K⁺ >5.5 mEq/L)   |   11.2  Initial loading for suspected acute coronary syndrome",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp11-0-reference-2.0",
@@ -88539,7 +88120,6 @@
       }
      ],
      "headingText": "11.3  Upper GI bleed   |   11.4  Analgesia in the ED",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp11-0-reference-3.0",
@@ -89262,7 +88842,6 @@
       }
      ],
      "headingText": "11.5  Common antibiotics in the ED — a syndromic quick guide (prescribe after consulting the Consultant on call)",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp11-0-reference-4.0",
@@ -90524,7 +90103,6 @@
       }
      ],
      "headingText": "11.6  Antidotes and toxicology drugs   |   11.7  Sedation, RSI and vasoactive infusions",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp11-0-reference-5.0",
@@ -91373,15 +90951,12 @@
    "number": 54,
    "label": "12.0",
    "title": "Summary of Substantive Changes from Issue 01",
-   "contentsTitle": "Summary of Substantive Changes from Issue 01",
-   "group": "counter",
    "sections": [
     {
      "id": "hp12-0-reference",
      "kind": "reference",
      "heading": null,
      "headingText": null,
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp12-0-reference.0",
@@ -91416,7 +90991,6 @@
       }
      ],
      "headingText": "Clinical changes and their basis",
-     "markerMeaning": "askSr",
      "subsections": [
       {
        "id": "hp12-0-reference-2.0",

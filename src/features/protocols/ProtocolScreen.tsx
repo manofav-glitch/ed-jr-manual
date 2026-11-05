@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import { redFlagAction, site } from '../../config/site.ts';
 import type { Chapter, Section, SectionKind } from '../../data/types.ts';
 import { Blocks } from '../../components/Blocks.tsx';
 import { Collapsible } from '../../components/Collapsible.tsx';
@@ -16,11 +15,27 @@ import {
   introFor,
   partFor,
   sectionsFor,
-  sourceOf,
-  shortTitle,
+  sheetLabelsFor,
   tabsFor,
 } from '../../lib/manual.ts';
+import { flowchartByLabel } from '../../lib/flowcharts.ts';
 import { useApp } from '../../lib/store.ts';
+
+/** Back to wherever the checklist was opened from (usually its flowchart), else to the list. */
+function BackButton() {
+  const navigate = useNavigate();
+  const canGoBack = (window.history.state as { idx?: number } | null)?.idx;
+  return (
+    <button
+      type="button"
+      aria-label="Back"
+      onClick={() => (canGoBack ? navigate(-1) : navigate('/'))}
+      className="-ml-2 flex size-12 shrink-0 items-center justify-center"
+    >
+      <BackIcon className="size-7" />
+    </button>
+  );
+}
 
 export function ProtocolScreen() {
   const { chapterId, tab } = useParams();
@@ -46,7 +61,17 @@ export function ProtocolScreen() {
     <>
       <ProtocolHeader ch={ch} tabs={tabs} current={current} />
       <main className="px-safe mx-auto max-w-3xl pb-8">
-        <p className="pt-3 text-sm text-muted">{chapterLine(ch)}</p>
+        <p className="pt-3 text-sm text-muted">
+          {chapterLine(ch)}
+          {sheetLabelsFor(ch).map((label) => {
+            const f = flowchartByLabel(label);
+            return f ? (
+              <Link key={f.id} to={`/f/${f.id}`} className="ml-2 font-bold whitespace-nowrap text-accent underline">
+                Flowchart {f.label}
+              </Link>
+            ) : null;
+          })}
+        </p>
         {/* Remount on every jump so collapsed sections open around the search target. */}
         <TabContent key={`${ch.id}/${current}/${focus}`} ch={ch} kind={current} focus={focus} />
         <NextStep ch={ch} tabs={tabs} current={current} />
@@ -65,10 +90,8 @@ function ProtocolHeader({ ch, tabs, current }: { ch: Chapter; tabs: SectionKind[
   return (
     <header className="pt-safe sticky top-0 z-20 border-b border-line bg-canvas/95 backdrop-blur">
       <div className="px-safe mx-auto flex max-w-3xl items-center gap-1 py-1">
-        <Link to="/" aria-label="All protocols" className="-ml-2 flex size-12 shrink-0 items-center justify-center">
-          <BackIcon className="size-7" />
-        </Link>
-        <h1 className="line-clamp-2 min-w-0 flex-1 text-lg leading-tight font-bold break-words">{shortTitle(ch)}</h1>
+        <BackButton />
+        <h1 className="line-clamp-2 min-w-0 flex-1 text-lg leading-tight font-bold break-words">{ch.title}</h1>
         <button
           type="button"
           onClick={() => togglePin(ch.id)}
@@ -211,13 +234,6 @@ function TabContent({ ch, kind, focus }: { ch: Chapter; kind: SectionKind; focus
           ))}
         </div>
       ))}
-      {/* AIIMS: the manual's rule as a banner. The hospital protocols print it in the red-flag heading. */}
-      {kind === 'redflags' && sourceOf(ch) === 'aiims' && (
-        <p className="mb-3 flex items-start gap-2 rounded-xl bg-danger px-4 py-3 text-lg font-bold text-surface" role="note">
-          <AlertIcon className="mt-1 size-6 shrink-0" />
-          {redFlagAction(site)}
-        </p>
-      )}
       {sections.map((s) =>
         kind === 'reference' ? (
           <ReferenceSection key={s.id} s={s} focus={focus} only={sections.length === 1} />

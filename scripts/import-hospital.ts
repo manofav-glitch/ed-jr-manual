@@ -1,5 +1,5 @@
 // Converts the hospital's emergency manual (.docx) into content/hospital.md, which
-// scripts/parse-manual.ts then turns into src/data/hospital.json like the AIIMS manual.
+// scripts/parse-manual.ts then turns into src/data/hospital.json.
 //
 //   node scripts/import-hospital.ts <manual.docx> --replace "<text to remove>=this hospital" [--replace …]
 //

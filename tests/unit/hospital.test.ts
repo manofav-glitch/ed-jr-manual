@@ -2,14 +2,14 @@ import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { HOSPITAL, HOSPITAL_OUTPUT_PATH, HOSPITAL_PATH, items, parseManual, serialise } from '../../scripts/parse-manual.ts';
+import { HOSPITAL_OUTPUT_PATH, HOSPITAL_PATH, items, parseManual, serialise } from '../../scripts/parse-manual.ts';
 import { allFlowcharts, flowchartByLabel, flowcharts } from '../../src/lib/flowcharts.ts';
 import { tabsFor } from '../../src/lib/manual.ts';
 import { squash, textOfManual, textOfMarkdown } from './helpers.ts';
 
 const ROOT = join(import.meta.dirname, '../..');
 const md = readFileSync(HOSPITAL_PATH, 'utf8');
-const { manual: hp, warnings } = parseManual(md, HOSPITAL);
+const { manual: hp, warnings } = parseManual(md);
 
 describe('hospital protocols: structure', () => {
   it('parses without warnings, and the committed JSON is up to date', () => {
@@ -55,12 +55,7 @@ describe('hospital protocols: structure', () => {
   });
 
   it('loses, adds or reorders no text', () => {
-    expect(squash(textOfManual(hp, 'hospital'))).toBe(squash(textOfMarkdown(md)));
-  });
-
-  it('has no "Ask" badges (its asterisks are formatting, not a convention)', () => {
-    const its = hp.chapters.flatMap((c) => c.sections.flatMap((s) => s.subsections.flatMap((x) => items(x.blocks))));
-    expect(its.filter((i) => i.marker)).toEqual([]);
+    expect(squash(textOfManual(hp))).toBe(squash(textOfMarkdown(md)));
   });
 });
 

@@ -1,160 +1,184 @@
 import { describe, expect, it } from 'vitest';
+import { LISTS } from '../../src/features/triage/store.ts';
+import { plain } from '../../src/lib/inline.ts';
 import { manual } from '../../src/lib/manual.ts';
-import { listAfter, tableRow } from '../../src/lib/quote.ts';
-import { FINDINGS, fToC, triage, type FindingId, type Vitals } from '../../src/lib/triage.ts';
+import { listAfter } from '../../src/lib/quote.ts';
+import { cToF, triage, type Vitals, type Zone } from '../../src/lib/triage.ts';
 
-const NORMAL: Vitals = { rr: 16, spo2: 98, hr: 80, sbp: 120, dbp: 80, gcs: 15, tempC: 37 };
-const run = (v: Partial<Vitals> = {}, extra: Partial<Parameters<typeof triage>[0]> = {}) =>
-  triage({ vitals: { ...NORMAL, ...v }, findings: [], emergencies: [], vulnerable: [], ...extra });
+const NORMAL: Vitals = { rr: 16, spo2: 98, hr: 80, sbp: 120, dbp: 80, gcs: 15, tempF: 98.6, rbs: 110 };
+const run = (v: Partial<Vitals> = {}, ticked: Partial<Record<Zone, string[]>> = {}, priorityRed = false) =>
+  triage({ vitals: { ...NORMAL, ...v }, ticked, priorityRed });
+const zone = (v: Partial<Vitals>) => run(v).zone;
 
-describe('triage: wording comes from chapter 1', () => {
-  it('every primary-survey finding is the manual\'s exact text', () => {
-    for (const f of FINDINGS) {
-      const row = tableRow(manual, 1, { A: 'A — Airway', B: 'B — Breathing', C: 'C — Circulation', D: 'D — Disability' }[f.part]);
-      expect(row, f.id).toContain(f.match);
-    }
+/** A row of the section 9.1 table, by its "Parameter" cell. */
+function abcde(parameter: string): string[] {
+  const ch = manual.chapters.find((c) => c.id === 'hp9-1')!;
+  for (const s of ch.sections)
+    for (const sub of s.subsections)
+      for (const b of sub.blocks) {
+        if (b.type !== 'table') continue;
+        const row = b.rows.map((r) => r.map(plain)).find((r) => r[1] === parameter);
+        if (row) return row;
+      }
+  throw new Error(parameter);
+}
+
+describe('triage: thresholds are the manual\'s', () => {
+  const triageText = (start: string) =>
+    [...listAfter(manual, 'hp-triage', 'Physiology'), ...listAfter(manual, 'hp-triage', 'Threat to life'), ...listAfter(manual, 'hp-triage', 'Stable primary survey')]
+      .map((i) => i.text)
+      .find((t) => t.startsWith(start))!;
+
+  it('Triage chapter', () => {
+    expect(triageText('Apnoea')).toContain('RR >40 or <10, SpO₂ <90% on oxygen');
+    expect(triageText('SBP <90')).toBe('SBP <90 with hypoperfusion, or HR >150 / <40');
+    expect(triageText('GCS')).toContain('GCS ≤8');
+    expect(triageText('Shock index')).toBe('Shock index (HR÷SBP) >0.9');
+    expect(triageText('Danger-zone')).toBe('Danger-zone vitals: HR >100, RR >20, SpO₂ <92%');
+    expect(triageText('Patent airway')).toBe('Patent airway, RR 10–24, SpO₂ >95%, SBP >90 without extremes of heart rate, GCS >13');
   });
 
-  it('the thresholds in code are the ones the manual states', () => {
-    expect(tableRow(manual, 1, 'B — Breathing')).toContain('RR < 10 or > 24/min; SpO₂ < 94%');
-    expect(tableRow(manual, 1, 'C — Circulation')).toContain('HR < 50 or > 120 (without fever); SBP < 90 or > 200; DBP > 110; shock index (pulse rate / SBP) > 1');
-    expect(tableRow(manual, 1, 'D — Disability')).toContain('GCS < 13');
+  it('section 9.1', () => {
+    expect(abcde('Respiratory rate /min').slice(2)).toEqual(['>40 or <10', '30–40 or 10–12', '12–20']);
+    expect(abcde('SpO₂').slice(2, 4)).toEqual(['<80%', '<90%']);
+    expect(abcde('Heart rate /min').slice(2, 4)).toEqual(['>150 or <40', '>130 or <60']);
+    expect(abcde('Blood pressure (mmHg)').slice(2, 4)).toEqual(['>180/100 or <90/60', '<100/70']);
+    expect(abcde('Shock index (HR÷SBP)').slice(2, 4)).toEqual(['>1.0', '>0.9']);
+    expect(abcde('Temperature (°F)')[2]).toBe('>104 or <97');
+    expect(abcde('Blood sugar (mg/dL)').slice(2, 4)).toEqual(['<50', '<70 or >250']);
   });
 
-  it('reads 16 time-sensitive emergencies and 7 vulnerable groups', () => {
-    expect(listAfter(manual, 1, 'Time-sensitive emergencies')).toHaveLength(16);
-    expect(listAfter(manual, 1, 'Vulnerable population')).toHaveLength(7);
+  it('tick-boxes come from the chapter, leaving out what the vitals decide', () => {
+    expect(LISTS.map((l) => [l.zone, l.items.length])).toEqual([
+      ['RESUS', 6],
+      ['RESUS', 6],
+      ['RED', 17],
+      ['YELLOW', 4],
+      ['GREEN', 3],
+      ['WHITE', 6],
+    ]);
   });
 });
 
-describe('triage: categories', () => {
+describe('triage: zones', () => {
   it('normal vitals, nothing ticked → GREEN', () => {
-    expect(run().category).toBe('GREEN');
+    expect(run().zone).toBe('GREEN');
+    expect(run().reasons).toEqual([]);
   });
 
-  it('a vulnerable group → YELLOW', () => {
-    const r = run({}, { vulnerable: ['Chronic kidney disease'] });
-    expect(r.category).toBe('YELLOW');
-    expect(r.yellow).toEqual(['Chronic kidney disease']);
+  it('a Yellow item → YELLOW; day care only → WHITE; day care plus a Green item → GREEN', () => {
+    expect(run({}, { YELLOW: ['Persistent vomiting or decreased urine output'] }).zone).toBe('YELLOW');
+    expect(run({}, { WHITE: ['Catheter change'] }).zone).toBe('WHITE');
+    expect(run({}, { WHITE: ['Catheter change'], GREEN: ['Minor injury, simple wound, uncomplicated fever or pain'] }).zone).toBe('GREEN');
   });
 
-  it('a time-sensitive emergency → RED even with normal vitals', () => {
-    const r = run({}, { emergencies: ['H/o syncope'], vulnerable: ['Chronic kidney disease'] });
-    expect(r.category).toBe('RED');
-    expect(r.red).toEqual(['Time-sensitive: H/o syncope']);
+  it('a ticked Red or Resus item, or "Priority Red", wins', () => {
+    expect(run({}, { RED: ['GI bleed — upper or lower'], YELLOW: ['x'] }).zone).toBe('RED');
+    expect(run({}, { RESUS: ['Intubated pre-hospital'] }).zone).toBe('RESUS');
+    expect(run({}, {}, true).zone).toBe('RED');
   });
 
-  it.each(FINDINGS.map((f) => f.id))('primary-survey finding %s → RED', (id) => {
-    expect(run({}, { findings: [id as FindingId] }).category).toBe('RED');
-  });
-
-  it('waits for the vitals before calling YELLOW or GREEN', () => {
-    const r = triage({ vitals: { rr: 16, spo2: 98 }, findings: [], emergencies: [], vulnerable: [] });
-    expect(r.category).toBeNull();
+  it('waits for the vitals before calling Yellow, Green or White', () => {
+    const r = triage({ vitals: { rr: 16, spo2: 98 }, ticked: {} });
+    expect(r.zone).toBeNull();
     expect(r.missing).toEqual(['HR', 'SBP', 'DBP', 'GCS']);
-  });
-
-  it('calls RED straight away when a Red criterion is met, even with vitals missing', () => {
-    expect(triage({ vitals: { spo2: 88 }, findings: [], emergencies: [], vulnerable: [] }).category).toBe('RED');
-  });
-
-  it('ignores the site priority group unless it is passed in', () => {
-    expect(run().category).toBe('GREEN');
-    expect(run({}, { priorityRed: 'AIIMS EHS patient' }).red).toEqual(['Priority Red: AIIMS EHS patient']);
+    expect(triage({ vitals: { hr: 160 }, ticked: {} }).zone).toBe('RESUS');
   });
 });
 
-describe('triage: boundary values', () => {
+describe('triage: boundaries (more urgent table wins)', () => {
   it.each([
-    [9, 'RED'],
-    [10, 'GREEN'],
-    [24, 'GREEN'],
-    [25, 'RED'],
-  ])('RR %i → %s', (rr, cat) => expect(run({ rr }).category).toBe(cat));
+    [9, 'RESUS'],
+    [10, 'RED'], // 9.1: 10–12
+    [12, 'RED'],
+    [13, 'GREEN'],
+    [20, 'GREEN'],
+    [21, 'RED'], // Triage: danger zone RR >20
+    [40, 'RED'],
+    [41, 'RESUS'],
+  ])('RR %i → %s', (rr, z) => expect(zone({ rr })).toBe(z));
 
   it.each([
-    [93, 'RED', 0],
-    [94, 'RED', 1],
-    [95, 'RED', 1],
-    [96, 'GREEN', 0],
-  ])('SpO₂ %i → %s (gaps: %i)', (spo2, cat, gaps) => {
+    [79, 'RESUS'], // 9.1 <80%
+    [85, 'RED'],
+    [91, 'RED'], // Triage <92%
+    [96, 'GREEN'],
+  ])('SpO₂ %i%% on air → %s', (spo2, z) => expect(zone({ spo2 })).toBe(z));
+
+  it('SpO₂ <90% on oxygen → RESUS (Triage chapter)', () => {
+    expect(zone({ spo2: 89, onOxygen: true })).toBe('RESUS');
+    expect(zone({ spo2: 89, onOxygen: false })).toBe('RED');
+  });
+
+  it.each([92, 95])('SpO₂ %i%% is a gap → RED, and says so', (spo2) => {
     const r = run({ spo2 });
-    expect(r.category).toBe(cat);
-    expect(r.gaps).toHaveLength(gaps);
+    expect(r.zone).toBe('RED');
+    expect(r.gaps[0]).toMatch(/triaged up to RED/);
   });
 
   it.each([
-    [12, 'RED', 0],
-    [13, 'RED', 1],
-    [14, 'GREEN', 0],
-  ])('GCS %i → %s (gaps: %i)', (gcs, cat, gaps) => {
-    const r = run({ gcs });
-    expect(r.category).toBe(cat);
-    expect(r.gaps).toHaveLength(gaps);
+    [39, 'RESUS'],
+    [40, 'RED'], // 9.1 <60
+    [59, 'RED'],
+    [60, 'GREEN'],
+    [100, 'GREEN'],
+    [101, 'RED'], // Triage danger zone
+    [150, 'RESUS'], // SI 150/120 > 1
+    [151, 'RESUS'],
+  ])('HR %i → %s', (hr, z) => expect(zone({ hr })).toBe(z));
+
+  it('HR 130 with SBP 160 (SI 0.81) is Red for the heart rate alone', () => {
+    expect(run({ hr: 130, sbp: 160, dbp: 90 }).reasons.map((r) => r.text)).toEqual(['Danger-zone HR >100 (130)']);
   });
 
   it.each([
-    [89, 'RED'],
-    [90, 'RED'],
-    [91, 'GREEN'],
-    [200, 'GREEN'],
-    [201, 'RED'],
-  ])('SBP %i → %s', (sbp, cat) => expect(run({ sbp, hr: 70 }).category).toBe(cat));
+    [{ sbp: 89 }, 'RESUS'], // 9.1 BP <90/60
+    [{ sbp: 99 }, 'RED'], // 9.1 BP <100/70
+    [{ sbp: 100, dbp: 75 }, 'GREEN'],
+    [{ dbp: 69 }, 'RED'],
+    [{ dbp: 59 }, 'RESUS'],
+    [{ sbp: 181 }, 'RESUS'], // 9.1 BP >180/100
+    [{ dbp: 101 }, 'RESUS'],
+  ])('BP %j → %s', (v, z) => expect(zone(v)).toBe(z));
 
-  it('SBP 90 is reported as a gap', () => {
-    expect(run({ sbp: 90, hr: 70 }).gaps).toEqual(['SBP 90 is not defined in the manual (Red < 90, Yellow > 90): triaged up to RED.']);
+  it('shock index >0.9 is Red, >1.0 is Resus', () => {
+    expect(zone({ hr: 95, sbp: 100 })).toBe('RED'); // 0.95
+    expect(zone({ hr: 99, sbp: 110 })).toBe('GREEN'); // 0.9 exactly
+    expect(zone({ hr: 105, sbp: 100 })).toBe('RESUS'); // 1.05
   });
 
   it.each([
-    [110, 'GREEN'],
-    [111, 'RED'],
-  ])('DBP %i → %s', (dbp, cat) => expect(run({ dbp }).category).toBe(cat));
+    [8, 'RESUS'],
+    [14, 'GREEN'],
+  ])('GCS %i → %s', (gcs, z) => expect(zone({ gcs })).toBe(z));
+
+  it.each([9, 13])('GCS %i is a gap → RED', (gcs) => {
+    expect(run({ gcs }).gaps).toHaveLength(1);
+    expect(zone({ gcs })).toBe('RED');
+  });
 
   it.each([
-    [49, 'RED'],
-    [50, 'GREEN'],
+    [104.5, 'RESUS'],
+    [96.5, 'RESUS'],
+    [101, 'GREEN'],
+  ])('temperature %f °F → %s', (tempF, z) => expect(zone({ tempF })).toBe(z));
+
+  it.each([
+    [45, 'RESUS'],
+    [60, 'RED'],
+    [260, 'RED'],
     [120, 'GREEN'],
-    [121, 'RED'],
-  ])('HR %i (afebrile) → %s', (hr, cat) => expect(run({ hr, sbp: 140 }).category).toBe(cat));
-});
+  ])('blood sugar %i → %s', (rbs, z) => expect(zone({ rbs })).toBe(z));
 
-describe('triage: shock index', () => {
-  it('is calculated from HR / SBP', () => {
-    expect(run({ hr: 90, sbp: 120 }).shockIndex).toBeCloseTo(0.75);
+  it('says which table each reason came from', () => {
+    const r = run({ rr: 11, hr: 105 }); // shock index 0.88
+    expect(r.reasons.map((x) => [x.source, x.text])).toEqual([
+      ['Triage', 'Danger-zone HR >100 (105)'],
+      ['9.1', 'RR 10–12 (11)'],
+    ]);
   });
 
-  it('> 1 is RED; exactly 1 is not', () => {
-    expect(run({ hr: 100, sbp: 99 }).red).toContain('C: shock index (pulse rate / SBP) > 1 (1.01)');
-    expect(run({ hr: 100, sbp: 100 }).category).toBe('GREEN');
-  });
-});
-
-describe('triage: "HR > 120 without fever" exception', () => {
-  it('HR 130 with fever is not Red on its own, but at least Yellow', () => {
-    const r = run({ hr: 130, sbp: 140, tempC: 38.6 });
-    expect(r.fever).toBe(true);
-    expect(r.red).toEqual([]);
-    expect(r.category).toBe('YELLOW');
-    expect(r.yellow[0]).toMatch(/^HR > 120 with fever/);
-  });
-
-  it('HR 130 without fever is Red', () => {
-    expect(run({ hr: 130, sbp: 140, tempC: 37 }).red).toEqual(['C: HR > 120 without fever (130)']);
-  });
-
-  it('HR 130 with no temperature entered is Red, and says so', () => {
-    const r = run({ hr: 130, sbp: 140, tempC: undefined });
-    expect(r.category).toBe('RED');
-    expect(r.notes.join(' ')).toMatch(/No temperature entered/);
-  });
-
-  it('febrile tachycardia with another Red criterion is still Red', () => {
-    expect(run({ hr: 130, sbp: 85, tempC: 39 }).category).toBe('RED');
-  });
-
-  it('fever means above 38.0 °C (100.4 °F, ch 11)', () => {
-    expect(run({ tempC: 38 }).fever).toBe(false);
-    expect(run({ tempC: 38.1 }).fever).toBe(true);
-    expect(fToC(100.4)).toBeCloseTo(38);
+  it('converts °C to °F', () => {
+    expect(cToF(40)).toBe(104);
   });
 });

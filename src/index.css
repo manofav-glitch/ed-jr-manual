@@ -6,7 +6,7 @@
  *   warn    YELLOW triage only
  *   ok      GREEN triage only
  *   review  "Check before use" corrections
- *   info    "Ask SR" and other advice
+ *   info    checklist links and other advice
  *   accent  buttons, progress, links
  */
 :root {

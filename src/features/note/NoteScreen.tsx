@@ -1,13 +1,25 @@
 import { Link } from 'react-router-dom';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { redArea, site } from '../../config/site.ts';
 import { CheckRow, ConfirmButton, NumberField, Segmented, SectionTitle, TextField, ToolHeader } from '../../components/Fields.tsx';
 import { CopyButton } from '../../components/CopyButton.tsx';
 import { CloseIcon } from '../../components/Icons.tsx';
-import { EMPTY_NOTE, buildNote, hhmm, importVitals, nowLocal, type NoteData, type Timed } from '../../lib/note.ts';
+import {
+  ARRIVAL_MODES,
+  DISPOSITIONS,
+  EMPTY_NOTE,
+  buildNote,
+  hhmm,
+  importVitals,
+  noteShockIndex,
+  nowLocal,
+  type Consult,
+  type NoteData,
+  type Timed,
+} from '../../lib/note.ts';
 import { num } from '../../lib/num.ts';
 import { safeStorage } from '../../lib/persist.ts';
+import { ZONE_NAME } from '../../lib/triage.ts';
 import { triageOf, useTriage } from '../triage/store.ts';
 
 const useNote = create<{ n: NoteData; set: (p: Partial<NoteData>) => void; clear: () => void }>()(
@@ -18,14 +30,17 @@ const useNote = create<{ n: NoteData; set: (p: Partial<NoteData>) => void; clear
       // Your own name stays for the next patient.
       clear: () => set((s) => ({ n: { ...EMPTY_NOTE, seenBy: s.n.seenBy } })),
     }),
-    { name: 'ed-note', version: 1, storage: safeStorage },
+    // Version 2: the hospital's case-sheet format.
+    { name: 'ed-note', version: 2, storage: safeStorage },
   ),
 );
+
+type Text = (k: keyof NoteData) => { value: string; onChange: (v: string) => void };
 
 export function NoteScreen() {
   const { n, set, clear } = useNote();
   const text = buildNote(n);
-  const t = (k: keyof NoteData) => ({ value: n[k] as string, onChange: (v: string) => set({ [k]: v }) });
+  const t: Text = (k) => ({ value: n[k] as string, onChange: (v: string) => set({ [k]: v }) });
 
   return (
     <>
@@ -34,8 +49,8 @@ export function NoteScreen() {
       </ToolHeader>
       <main className="px-safe mx-auto max-w-3xl pb-8">
         <p className="mt-3 text-sm text-muted">
-          Chapter 2 format.{' '}
-          <Link to="/p/ch2" className="text-accent underline">
+          The manual's standard format for the ED case sheet.{' '}
+          <Link to="/p/hp-how-to-use-this-manual" className="text-accent underline">
             Read the documentation guide
           </Link>
         </p>
@@ -46,6 +61,47 @@ export function NoteScreen() {
           <CheckRow checked={n.noKnownAllergies} onToggle={() => set({ noKnownAllergies: !n.noKnownAllergies })}>
             No known drug allergies
           </CheckRow>
+        </div>
+
+        <SectionTitle>Front sheet</SectionTitle>
+        <p className="mb-2 text-sm text-muted">Name, UHID and contact number go on the case sheet itself; they are not stored here.</p>
+        <div className="grid grid-cols-2 gap-3">
+          <NumberField label="Age" unit="y" {...t('age')} />
+          <div>
+            <span className="text-sm font-bold text-muted">Sex</span>
+            <div className="mt-0.5">
+              <Segmented
+                label="Sex"
+                options={(['M', 'F', 'Other'] as const).map((v) => ({ value: v, label: v }))}
+                value={n.sex || null}
+                onChange={(sex) => set({ sex })}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="mt-3 flex items-end gap-2">
+          <TimeField label="Time of arrival" value={n.arrivedAt} onChange={(arrivedAt) => set({ arrivedAt })} />
+        </div>
+        <div className="mt-3">
+          <span className="text-sm font-bold text-muted">Mode of arrival</span>
+          <div className="mt-0.5 grid grid-cols-2 gap-1.5">
+            {ARRIVAL_MODES.map((m) => (
+              <button
+                key={m}
+                type="button"
+                aria-pressed={n.arrivalMode === m}
+                onClick={() => set({ arrivalMode: n.arrivalMode === m ? '' : m })}
+                className={'min-h-12 rounded-xl border-2 px-2 font-bold ' + (n.arrivalMode === m ? 'border-accent bg-accent text-accent-ink' : 'border-line bg-surface')}
+              >
+                {m}
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className="mt-3 space-y-3">
+          <TextField label="MLC number (where applicable)" {...t('mlcNumber')} />
+          <TextField multiline label="Known co-morbid illness (malignancy: site, stage, last chemotherapy date and regimen)" {...t('comorbid')} />
+          <TextField multiline label="Current medications (antiplatelets, anticoagulants, insulin, steroids, immunosuppressants, chemotherapy)" {...t('medications')} />
         </div>
 
         <SectionTitle>Examined</SectionTitle>
@@ -62,8 +118,7 @@ export function NoteScreen() {
           <NowButton onClick={() => set({ examinedAt: nowLocal() })} />
         </div>
         <div className="mt-3 space-y-3">
-          <TextField label="Case seen by (your name & designation)" placeholder="Dr ABC, JR" {...t('seenBy')} />
-          <TextField label="Previous known co-morbid illness" {...t('comorbid')} />
+          <TextField label="Case seen by (your name & designation)" placeholder="Dr ABC, EMO" {...t('seenBy')} />
           <TextField label="Chief complaint (with duration)" {...t('complaint')} />
         </div>
 
@@ -71,55 +126,52 @@ export function NoteScreen() {
 
         <SectionTitle>History & examination</SectionTitle>
         <div className="space-y-3">
-          <TextField multiline label="Brief history as per the presenting complaint" {...t('history')} />
-          <TextField multiline label="Relevant negative history" {...t('negatives')} />
-          <TextField multiline label="Relevant focussed systemic examination findings" {...t('systemic')} />
+          <TextField multiline label="Focused history" {...t('history')} />
+          <TextField multiline label="Relevant negatives" {...t('negatives')} />
+          <TextField multiline label="Focused systemic examination" {...t('systemic')} />
         </div>
 
-        <SectionTitle>POC investigations</SectionTitle>
-        <TimedRows rows={n.investigations} onChange={(investigations) => set({ investigations })} nameLabel="Investigation sent" timeLabel="Time sent" addLabel="Add investigation" />
-        <div className="mt-3 space-y-3">
-          <TextField multiline label="Salient findings (ECG, blood gas…)" {...t('findings')} />
-          <NumberField label="RBS" unit="mg/dL" {...t('rbs')} />
-        </div>
-
-        <SectionTitle>Emergency treatment advised / given</SectionTitle>
-        <ol className="space-y-2">
-          {n.treatment.map((line, i) => (
-            <li key={i} className="flex items-center gap-2">
-              <span className="w-7 shrink-0 text-right font-bold">{i + 1})</span>
-              <input
-                value={line}
-                aria-label={`Treatment ${i + 1}`}
-                placeholder="Inj. Paracetamol 1 g i.v. stat"
-                onChange={(e) => set({ treatment: n.treatment.map((x, j) => (j === i ? e.target.value : x)) })}
-                className="min-h-13 min-w-0 flex-1 rounded-xl border-2 border-line bg-surface px-3 text-lg"
-              />
-              <RemoveButton label={`Remove treatment ${i + 1}`} onClick={() => set({ treatment: n.treatment.filter((_, j) => j !== i) })} />
-            </li>
-          ))}
-        </ol>
-        <AddButton onClick={() => set({ treatment: [...n.treatment, ''] })}>Add drug / treatment</AddButton>
+        <SectionTitle>Investigations</SectionTitle>
+        <TimedRows rows={n.investigations} onChange={(investigations) => set({ investigations })} nameLabel="Investigation" timeLabel="Time sent" addLabel="Add investigation" />
         <div className="mt-3">
-          <TextField label="Other interventions (NG lavage, Foley's…)" {...t('interventions')} />
+          <TextField multiline label="Salient findings — ECG interpretation, ABG values, RBS, POCUS findings" {...t('findings')} />
         </div>
 
-        <SectionTitle>Disposition & communication</SectionTitle>
-        <Segmented
-          label="Shift to"
-          options={[redArea(site), site.zones.yellow, site.zones.green].map((z) => ({ value: z, label: z }))}
-          value={n.shiftTo || null}
-          onChange={(shiftTo) => set({ shiftTo })}
+        <SectionTitle>Consultations</SectionTitle>
+        <ConsultRows rows={n.consults} onChange={(consults) => set({ consults })} />
+
+        <SectionTitle>Treatment</SectionTitle>
+        <p className="mb-2 text-sm text-muted">Number each drug: name, formulation, dose, route, and the time given.</p>
+        <TimedRows
+          rows={n.treatment}
+          onChange={(treatment) => set({ treatment })}
+          nameLabel="Inj. Paracetamol 1 g IV"
+          timeLabel="Time given"
+          addLabel="Add drug"
+          numbered
         />
         <div className="mt-3 space-y-3">
-          <TextField label="Shift to (or type another area)" {...t('shiftTo')} />
-          <TextField label="Handover note" {...t('handover')} />
+          <TextField multiline label="Procedures — NG tube, Foley's, catheter size, cannula gauge, intubation (tube size, grade of view, confirmation)" {...t('procedures')} />
+          <TextField multiline label="Blood products, consent taken, counselling done and by whom" {...t('bloodConsent')} />
         </div>
-        <h3 className="mt-4 mb-2 font-bold">Consultations</h3>
-        <TimedRows rows={n.consults} onChange={(consults) => set({ consults })} nameLabel="Who was informed" timeLabel="Time informed" addLabel="Add consultation" />
 
-        <SectionTitle>Other specific documentation</SectionTitle>
-        <TextField multiline label="Blood products arranged, investigations to review…" {...t('other')} />
+        <SectionTitle>Disposition</SectionTitle>
+        <div className="grid grid-cols-2 gap-1.5">
+          {DISPOSITIONS.map((d) => (
+            <button
+              key={d}
+              type="button"
+              aria-pressed={n.disposition === d}
+              onClick={() => set({ disposition: n.disposition === d ? '' : d })}
+              className={'min-h-12 rounded-xl border-2 px-2 font-bold ' + (n.disposition === d ? 'border-accent bg-accent text-accent-ink' : 'border-line bg-surface')}
+            >
+              {d}
+            </button>
+          ))}
+        </div>
+        <div className="mt-3">
+          <TextField label="Details (zone, consultant, advice, reason for referral, LAMA signature)" {...t('dispositionDetail')} />
+        </div>
 
         <SectionTitle>Note</SectionTitle>
         <pre className="max-h-[60vh] overflow-auto rounded-xl border border-line bg-surface px-3 py-2 font-sans text-base whitespace-pre-wrap">
@@ -133,33 +185,28 @@ export function NoteScreen() {
   );
 }
 
-function PrimarySurvey({
-  n,
-  set,
-  t,
-}: {
-  n: NoteData;
-  set: (p: Partial<NoteData>) => void;
-  t: (k: keyof NoteData) => { value: string; onChange: (v: string) => void };
-}) {
+function PrimarySurvey({ n, set, t }: { n: NoteData; set: (p: Partial<NoteData>) => void; t: Text }) {
   const tri = useTriage();
   const hasTriage = Object.values(tri.fields).some((v) => v?.trim());
+  const si = noteShockIndex(n);
   const doImport = () => {
     const f = tri.fields;
     const next = importVitals(n, {
       rr: num(f.rr),
       spo2: num(f.spo2),
+      onOxygen: tri.onOxygen,
       hr: num(f.hr),
       sbp: num(f.sbp),
       dbp: num(f.dbp),
       gcs: num(f.gcs),
-      temp: num(f.tempC),
+      rbs: num(f.rbs),
+      temp: num(f.temp),
       tempUnit: tri.tempUnit,
     });
-    // Disposition follows the triage category (ch 2), unless one is already written.
-    const cat = triageOf(tri).category;
-    const zone = cat === 'RED' ? redArea(site) : cat === 'YELLOW' ? site.zones.yellow : cat === 'GREEN' ? site.zones.green : '';
-    set({ ...next, shiftTo: n.shiftTo || zone });
+    // Disposition follows the triage zone, unless one is already written.
+    const zone = triageOf(tri).zone;
+    const shift = !n.disposition && !n.dispositionDetail && zone ? { disposition: 'Shifted to' as const, dispositionDetail: ZONE_NAME[zone] } : {};
+    set({ ...next, ...shift });
   };
 
   return (
@@ -182,7 +229,7 @@ function PrimarySurvey({
         onChange={(airway) => set({ airway })}
       />
       <div className="mt-2">
-        <TextField label="Intervention" {...t('airwayIntervention')} />
+        <TextField label="Intervention done" {...t('airwayIntervention')} />
       </div>
 
       <h3 className="mt-4 mb-1 font-bold">B — Breathing</h3>
@@ -191,8 +238,9 @@ function PrimarySurvey({
         <NumberField label="SpO₂" unit="%" {...t('spo2')} />
       </div>
       <div className="mt-2 space-y-2">
-        <TextField label="On (room air / O₂ L/min)" {...t('oxygen')} />
+        <TextField label="FiO₂ / device" placeholder="room air" {...t('oxygen')} />
         <TextField label="Bilateral air entry" placeholder="equal" {...t('airEntry')} />
+        <TextField label="Added sounds" {...t('addedSounds')} />
       </div>
 
       <h3 className="mt-4 mb-1 font-bold">C — Circulation</h3>
@@ -208,8 +256,12 @@ function PrimarySurvey({
           onChange={(pulseRhythm) => set({ pulseRhythm })}
         />
       </div>
-      <div className="mt-2">
-        <TextField label="Capillary refill time / peripheral perfusion" {...t('perfusion')} />
+      <p className="mt-2 rounded-xl bg-surface-2 px-3 py-2">
+        Shock index: <strong>{si === undefined ? '—' : si.toFixed(2)}</strong>
+      </p>
+      <div className="mt-2 grid grid-cols-2 gap-3">
+        <TextField label="Capillary refill" placeholder="<2 s" {...t('crt')} />
+        <TextField label="Peripheral perfusion" {...t('perfusion')} />
       </div>
 
       <h3 className="mt-4 mb-1 font-bold">D — Disability</h3>
@@ -218,10 +270,12 @@ function PrimarySurvey({
         <NumberField label="V" {...t('gcsV')} />
         <NumberField label="M" {...t('gcsM')} />
       </div>
-      {n.gcsTotal && !(n.gcsE || n.gcsV || n.gcsM) && <p className="mt-1 text-sm text-muted">GCS {n.gcsTotal}/15 from triage; add E, V, M if known.</p>}
+      {n.gcsTotal && !(n.gcsE || n.gcsV || n.gcsM) && <p className="mt-1 text-sm text-muted">GCS {n.gcsTotal} from triage; record E, V and M.</p>}
       <div className="mt-2 space-y-2">
-        <TextField label="Any focal neurologic deficit" {...t('focalDeficit')} />
-        <TextField label="Pupils / meningeal signs / plantar reflexes" {...t('pupils')} />
+        <TextField label="Pupil size and reaction" {...t('pupils')} />
+        <TextField label="Focal deficit" {...t('focalDeficit')} />
+        <TextField label="Plantars" {...t('plantars')} />
+        <NumberField label="RBS" unit="mg/dL" {...t('rbs')} />
       </div>
 
       <h3 className="mt-4 mb-1 font-bold">E — Exposure</h3>
@@ -230,16 +284,33 @@ function PrimarySurvey({
         <Segmented
           label="Temperature unit"
           options={[
-            { value: 'C' as const, label: '°C' },
             { value: 'F' as const, label: '°F' },
+            { value: 'C' as const, label: '°C' },
           ]}
           value={n.tempUnit}
           onChange={(tempUnit) => set({ tempUnit })}
         />
       </div>
       <div className="mt-2">
-        <TextField multiline label="Salient head-to-toe findings" {...t('exposure')} />
+        <TextField multiline label="Head-to-toe findings, rash, injuries, log roll findings" {...t('exposure')} />
       </div>
+    </>
+  );
+}
+
+function TimeField({ label, value, onChange }: { label: string; value: string; onChange: (v: string) => void }) {
+  return (
+    <>
+      <label className="block min-w-0 flex-1">
+        <span className="text-sm font-bold text-muted">{label}</span>
+        <input
+          type="time"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className="mt-0.5 min-h-13 w-full rounded-xl border-2 border-line bg-surface px-3 text-lg"
+        />
+      </label>
+      <NowButton onClick={() => onChange(hhmm())} />
     </>
   );
 }
@@ -250,12 +321,14 @@ function TimedRows({
   nameLabel,
   timeLabel,
   addLabel,
+  numbered,
 }: {
   rows: Timed[];
   onChange: (rows: Timed[]) => void;
   nameLabel: string;
   timeLabel: string;
   addLabel: string;
+  numbered?: boolean;
 }) {
   const update = (i: number, p: Partial<Timed>) => onChange(rows.map((r, j) => (j === i ? { ...r, ...p } : r)));
   return (
@@ -264,9 +337,10 @@ function TimedRows({
         {rows.map((r, i) => (
           <li key={i} className="rounded-xl border border-line bg-surface p-2">
             <div className="flex items-center gap-2">
+              {numbered && <span className="w-7 shrink-0 text-right font-bold">{i + 1})</span>}
               <input
                 value={r.name}
-                aria-label={nameLabel}
+                aria-label={numbered ? `Treatment ${i + 1}` : nameLabel}
                 placeholder={nameLabel}
                 onChange={(e) => update(i, { name: e.target.value })}
                 className="min-h-13 min-w-0 flex-1 rounded-lg border-2 border-line bg-canvas px-3 text-lg"
@@ -287,6 +361,51 @@ function TimedRows({
         ))}
       </ul>
       <AddButton onClick={() => onChange([...rows, { name: '', time: hhmm() }])}>{addLabel}</AddButton>
+    </>
+  );
+}
+
+function ConsultRows({ rows, onChange }: { rows: Consult[]; onChange: (rows: Consult[]) => void }) {
+  const update = (i: number, p: Partial<Consult>) => onChange(rows.map((r, j) => (j === i ? { ...r, ...p } : r)));
+  return (
+    <>
+      <ul className="space-y-3">
+        {rows.map((r, i) => (
+          <li key={i} className="space-y-2 rounded-xl border border-line bg-surface p-2">
+            <div className="flex items-center gap-2">
+              <input
+                value={r.name}
+                aria-label="Consultant"
+                placeholder="Name of consultant"
+                onChange={(e) => update(i, { name: e.target.value })}
+                className="min-h-13 min-w-0 flex-1 rounded-lg border-2 border-line bg-canvas px-3 text-lg"
+              />
+              <RemoveButton label={`Remove ${r.name || 'consultation'}`} onClick={() => onChange(rows.filter((_, j) => j !== i))} />
+            </div>
+            {(['informed', 'seen'] as const).map((k) => (
+              <div key={k} className="flex items-center gap-2">
+                <span className="w-20 shrink-0 text-sm font-bold text-muted">Time {k}</span>
+                <input
+                  type="time"
+                  value={r[k]}
+                  aria-label={`Time ${k}`}
+                  onChange={(e) => update(i, { [k]: e.target.value })}
+                  className="min-h-12 min-w-0 flex-1 rounded-lg border-2 border-line bg-canvas px-3 text-lg"
+                />
+                <NowButton onClick={() => update(i, { [k]: hhmm() })} />
+              </div>
+            ))}
+            <input
+              value={r.advice}
+              aria-label="Advice received"
+              placeholder="Advice received"
+              onChange={(e) => update(i, { advice: e.target.value })}
+              className="min-h-13 w-full rounded-lg border-2 border-line bg-canvas px-3 text-lg"
+            />
+          </li>
+        ))}
+      </ul>
+      <AddButton onClick={() => onChange([...rows, { name: '', informed: hhmm(), seen: '', advice: '' }])}>Add consultation</AddButton>
     </>
   );
 }

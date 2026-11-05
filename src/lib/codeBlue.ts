@@ -1,5 +1,6 @@
-// Code blue (chapter 13). Everything is derived from the timestamped event log, so the screen
-// survives a reload and "Undo" is just dropping the last event.
+// Code blue, from the hospital manual's BLS (9.4) and adult ACLS (9.6). Everything is derived
+// from the timestamped event log, so the screen survives a reload and "Undo" is just dropping
+// the last event.
 
 export type Rhythm = 'vf' | 'pea' | 'asystole';
 
@@ -9,11 +10,12 @@ export type EventType =
   | 'shock'
   | 'adrenaline'
   | 'amiodarone'
+  | 'lignocaine'
   | 'calcium'
   | 'bicarb'
   | 'airway'
   | 'iv'
-  | 'vbg'
+  | 'gas'
   | 'rosc'
   | 'end';
 
@@ -26,23 +28,26 @@ export interface CodeEvent {
 
 export const RHYTHM_LABEL: Record<Rhythm, string> = { vf: 'VF / pVT', pea: 'PEA', asystole: 'Asystole' };
 
-/** Manual: "Rhythm (± pulse) check every 2 minutes of CPR". */
+/** 9.6: "Rhythm check every 2 minutes". */
 export const CYCLE_MS = 2 * 60_000;
-/** Manual: "Inj. Adrenaline to repeat every 4 minutes". */
-export const ADRENALINE_MS = 4 * 60_000;
+/** 9.6: "Inj. Adrenaline 1 mg IV/IO … then every 3–5 minutes". */
+export const ADRENALINE_FROM_MS = 3 * 60_000;
+export const ADRENALINE_BY_MS = 5 * 60_000;
 
-/** Doses as written in chapter 13. */
+/** Doses and energies as written in 9.6. */
 export const LABEL = {
   start: 'CPR started',
-  shock: 'DC shock 200 J',
-  adrenaline: 'Inj. Adrenaline 1 mg IV',
-  amiodarone1: 'Inj. Amiodarone 300 mg IV (1st)',
-  amiodarone2: 'Inj. Amiodarone 150 mg IV (2nd)',
-  calcium: 'Inj. Calcium gluconate 10%, 30 mL, IV push',
-  bicarb: 'Inj. NaHCO₃ (1.5 mEq/kg) — 100 mEq, IV push',
+  shock: 'Shock (biphasic 120–200 J)',
+  adrenaline: 'Inj. Adrenaline 1 mg IV/IO',
+  amiodarone1: 'Inj. Amiodarone 300 mg IV/IO bolus',
+  amiodarone2: 'Inj. Amiodarone 150 mg IV/IO (second dose)',
+  lignocaine1: 'Inj. Lignocaine 1–1.5 mg/kg',
+  lignocaine2: 'Inj. Lignocaine 0.5–0.75 mg/kg (second dose)',
+  calcium: 'Calcium given',
+  bicarb: 'Sodium bicarbonate given',
   airway: 'Advanced airway in place',
-  iv: 'IV access',
-  vbg: 'VBG sent',
+  iv: 'IV / IO access',
+  gas: 'Blood gas sent',
   rosc: 'ROSC',
   end: 'Resuscitation stopped',
 } as const;
@@ -55,9 +60,9 @@ export interface CodeView {
   advancedAirway: boolean;
   shocks: number;
   adrenalineDoses: number;
-  amiodaroneDoses: number;
-  /** Next amiodarone dose in mg, or null when both are given. */
-  nextAmiodarone: 300 | 150 | null;
+  /** Next antiarrhythmic dose (1 or 2), or null when both are given or the other drug was chosen. */
+  nextAmiodarone: 1 | 2 | null;
+  nextLignocaine: 1 | 2 | null;
   /** When the current 2-minute CPR cycle started (start, last shock or last rhythm check). */
   cycleStart: number | null;
   lastAdrenaline: number | null;
@@ -70,6 +75,9 @@ export function view(events: CodeEvent[]): CodeView {
   const ended = events.find((e) => e.type === 'rosc' || e.type === 'end');
   const cycle = [...events].reverse().find((e) => e.type === 'start' || e.type === 'shock' || e.type === 'rhythm');
   const amio = count('amiodarone');
+  const lig = count('lignocaine');
+  // 9.6: amiodarone *or* lignocaine.
+  const next = (mine: number, other: number) => (other > 0 || mine >= 2 ? null : ((mine + 1) as 1 | 2));
   return {
     startedAt: start?.t ?? null,
     endedAt: ended?.t ?? null,
@@ -78,8 +86,8 @@ export function view(events: CodeEvent[]): CodeView {
     advancedAirway: count('airway') > 0,
     shocks: count('shock'),
     adrenalineDoses: count('adrenaline'),
-    amiodaroneDoses: amio,
-    nextAmiodarone: amio === 0 ? 300 : amio === 1 ? 150 : null,
+    nextAmiodarone: next(amio, lig),
+    nextLignocaine: next(lig, amio),
     cycleStart: cycle?.t ?? null,
     lastAdrenaline: last('adrenaline')?.t ?? null,
   };
@@ -99,13 +107,16 @@ export function eventFor(type: EventType, v: CodeView, now: number, rhythm?: Rhy
       return { t: now, type, label: `${LABEL.adrenaline} (dose ${v.adrenalineDoses + 1})` };
     case 'amiodarone':
       if (v.nextAmiodarone === null) return null;
-      return { t: now, type, label: v.nextAmiodarone === 300 ? LABEL.amiodarone1 : LABEL.amiodarone2 };
+      return { t: now, type, label: v.nextAmiodarone === 1 ? LABEL.amiodarone1 : LABEL.amiodarone2 };
+    case 'lignocaine':
+      if (v.nextLignocaine === null) return null;
+      return { t: now, type, label: v.nextLignocaine === 1 ? LABEL.lignocaine1 : LABEL.lignocaine2 };
     case 'airway':
       return v.advancedAirway ? null : { t: now, type, label: LABEL.airway };
     case 'calcium':
     case 'bicarb':
     case 'iv':
-    case 'vbg':
+    case 'gas':
     case 'rosc':
     case 'end':
       return { t: now, type, label: LABEL[type] };
@@ -117,9 +128,21 @@ export function cycleRemaining(v: CodeView, now: number): number | null {
   return v.running && v.cycleStart !== null ? v.cycleStart + CYCLE_MS - now : null;
 }
 
-/** ms until the next adrenaline (negative when overdue); null before the first dose. */
-export function adrenalineDueIn(v: CodeView, now: number): number | null {
-  return v.running && v.lastAdrenaline !== null ? v.lastAdrenaline + ADRENALINE_MS - now : null;
+export type AdrenalineState =
+  | { state: 'none' }
+  /** Before 3 minutes: `in` ms until the window opens. */
+  | { state: 'wait'; in: number }
+  /** 3–5 minutes: `left` ms until the 5-minute mark. */
+  | { state: 'due'; left: number }
+  /** Past 5 minutes by `over` ms. */
+  | { state: 'overdue'; over: number };
+
+export function adrenaline(v: CodeView, now: number): AdrenalineState {
+  if (!v.running || v.lastAdrenaline === null) return { state: 'none' };
+  const since = now - v.lastAdrenaline;
+  if (since < ADRENALINE_FROM_MS) return { state: 'wait', in: ADRENALINE_FROM_MS - since };
+  if (since <= ADRENALINE_BY_MS) return { state: 'due', left: ADRENALINE_BY_MS - since };
+  return { state: 'overdue', over: since - ADRENALINE_BY_MS };
 }
 
 /** "m:ss"; negative values as "+m:ss" (overdue). */

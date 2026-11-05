@@ -1,15 +1,15 @@
 import Fuse, { type FuseResultMatch } from 'fuse.js';
-import type { Block } from '../data/types.ts';
+import type { Block, Chapter } from '../data/types.ts';
 import type { Flowcharts } from '../data/flowchartTypes.ts';
 import { plain } from './inline.ts';
-import { SOURCES, TAB_LABEL, isIntro, shortTitle, tabsFor, type SourceId } from './manual.ts';
+import { TAB_LABEL, isIntro, tabsFor } from './manual.ts';
 
 export interface SearchDoc {
-  /** Element (or chapter / flowchart) id. */
+  /** Element, chapter or flowchart id. */
   id: string;
   url: string;
-  source: SourceId | 'flowcharts';
-  /** "3. Chest pain › Tests › Point-of-care investigations" */
+  source: 'flowchart' | 'checklist';
+  /** "2.1 Chest Pain › Tests › Point-of-care investigations" */
   where: string;
   text: string;
 }
@@ -21,37 +21,41 @@ export interface SearchHit {
 }
 
 export const SOURCE_LABEL: Record<SearchDoc['source'], string> = {
-  aiims: 'AIIMS',
-  hospital: 'Hospital',
-  flowcharts: 'Flowchart',
+  flowchart: 'Flowchart',
+  checklist: 'Checklist',
 };
 
-export function buildDocs(fc?: Flowcharts): SearchDoc[] {
+/** Flowchart titles, and every line of the text protocols the flowcharts link to. */
+export function buildDocs(fc: Flowcharts, chapters: Chapter[]): SearchDoc[] {
   const docs: SearchDoc[] = [];
-  for (const { id: source, manual } of SOURCES) {
-    for (const ch of manual.chapters) {
-      const name = `${ch.label ? `${ch.label}${source === 'aiims' ? '.' : ''} ` : ''}${shortTitle(ch)}`;
-      const tabs = tabsFor(ch);
-      const stepper = tabs.length > 1;
-      docs.push({ id: ch.id, url: `/p/${ch.id}`, source, where: '', text: ch.title });
-      for (const s of ch.sections) {
-        // Same link urlFor() would give, worked out once per section.
-        const kind = stepper && isIntro(s) ? tabs[0]! : s.kind;
-        const base = `/p/${ch.id}${stepper ? `/${kind}` : ''}?focus=`;
-        const tab = stepper ? ` › ${TAB_LABEL[kind]}` : '';
-        const add = (id: string, text: string, under: (string | null)[]) =>
-          docs.push({ id, url: base + encodeURIComponent(id), source, where: [`${name}${tab}`, ...under].filter(Boolean).join(' › '), text });
-        if (s.headingText) add(s.id, s.headingText, []);
-        for (const sub of s.subsections) {
-          if (sub.headingText) add(sub.id, sub.headingText, [s.headingText]);
-          walk(sub.blocks, (id, text) => add(id, text, [s.headingText, sub.headingText]));
-        }
-      }
+  for (const part of fc.parts) {
+    for (const f of part.items) {
+      docs.push({ id: f.id, url: `/f/${f.id}`, source: 'flowchart', where: `${part.label} ${part.title}`, text: `${f.label} ${f.title}` });
     }
   }
-  for (const part of fc?.parts ?? []) {
-    for (const f of part.items) {
-      docs.push({ id: f.id, url: `/f/${f.id}`, source: 'flowcharts', where: `${part.label} ${part.title}`, text: `${f.label} ${f.title}` });
+  for (const ch of chapters) {
+    const name = `${ch.label} ${ch.title}`.trim();
+    const tabs = tabsFor(ch);
+    const stepper = tabs.length > 1;
+    docs.push({ id: ch.id, url: `/p/${ch.id}`, source: 'checklist', where: '', text: name });
+    for (const s of ch.sections) {
+      // The same link urlFor() gives, worked out once per section.
+      const kind = stepper && isIntro(s) ? tabs[0]! : s.kind;
+      const base = `/p/${ch.id}${stepper ? `/${kind}` : ''}?focus=`;
+      const tab = stepper ? ` › ${TAB_LABEL[kind]}` : '';
+      const add = (id: string, text: string, under: (string | null)[]) =>
+        docs.push({
+          id,
+          url: base + encodeURIComponent(id),
+          source: 'checklist',
+          where: [`${name}${tab}`, ...under].filter(Boolean).join(' › '),
+          text,
+        });
+      if (s.headingText) add(s.id, s.headingText, []);
+      for (const sub of s.subsections) {
+        if (sub.headingText) add(sub.id, sub.headingText, [s.headingText]);
+        walk(sub.blocks, (id, text) => add(id, text, [s.headingText, sub.headingText]));
+      }
     }
   }
   return docs;
@@ -94,7 +98,7 @@ export function createSearch(docs: SearchDoc[]) {
     if (q.length < 2) return [];
     const lower = q.toLowerCase();
 
-    // Exact substring matches first, in manual order; then fuzzy ones (typos, partial words).
+    // Exact substring matches first (flowchart titles, then the text in order); then fuzzy ones.
     const exact: SearchHit[] = docs
       .filter((d) => d.text.toLowerCase().includes(lower))
       .map((d) => {

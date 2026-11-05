@@ -2,17 +2,18 @@ import type { Block, Chapter, Manual } from '../data/types.ts';
 
 /**
  * Points at a place in the manual by text rather than by id, so it keeps working when the
- * manual is re-parsed. `match` must be an exact substring of exactly one item, paragraph,
- * bold sub-heading or heading in that chapter (tests/unit/notes.test.ts checks this).
+ * manual is re-parsed. `chapter` is the chapter id ("hp-triage", "hp5-1"); `match` must be an
+ * exact substring of exactly one item, paragraph, bold sub-heading or heading in that chapter
+ * (the tests check this).
  */
 export interface Anchor {
-  chapter: number;
+  chapter: string;
   match: string;
 }
 
 /** Ids of every place in the chapter whose text contains `match`. */
 export function findAnchor(manual: Manual, a: Anchor): string[] {
-  const ch = manual.chapters.find((c) => c.number === a.chapter);
+  const ch = manual.chapters.find((c) => c.id === a.chapter);
   if (!ch) return [];
   return textsOf(ch)
     .filter((t) => t.text.includes(a.match))

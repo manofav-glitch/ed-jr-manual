@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
-import { site } from '../../config/site.ts';
 import { reviewNotes } from '../../data/reviewNotes.ts';
-import { Blocks } from '../../components/Blocks.tsx';
 import { BackIcon } from '../../components/Icons.tsx';
 import { findAnchor } from '../../lib/anchors.ts';
-import { manual, shortTitle, urlFor } from '../../lib/manual.ts';
+import { allFlowcharts } from '../../lib/flowcharts.ts';
+import { chapterById, linkedChapters, manual, urlFor } from '../../lib/manual.ts';
 import { useApp, type Theme } from '../../lib/store.ts';
 
 export function AboutScreen() {
   const theme = useApp((s) => s.theme);
   const setTheme = useApp((s) => s.setTheme);
+  const sheets = allFlowcharts.reduce((n, f) => n + f.sheets.length, 0);
   return (
     <>
       <header className="pt-safe sticky top-0 z-20 border-b border-line bg-canvas/95 backdrop-blur">
@@ -21,21 +21,25 @@ export function AboutScreen() {
         </div>
       </header>
       <main className="px-safe mx-auto max-w-3xl space-y-6 pt-4 pb-8">
-        <section>
-          <h2 className="text-xl font-bold">{manual.title}</h2>
-          <Blocks blocks={manual.front} mode="read" />
+        <section className="space-y-2">
+          <h2 className="text-xl font-bold">The hospital's ED protocols</h2>
+          <p>
+            {allFlowcharts.length} presentations as {sheets} flowchart sheets, {linkedChapters.length} of them with a
+            step-by-step checklist from the hospital's text manual, <em>{manual.title}</em>.
+          </p>
+          <p>
+            The tools are built from the same manual: Triage (Triage chapter and section 9.1), Code blue (9.4 and
+            9.6), Doses (the manual's weight-based doses) and the case-sheet Note (documentation guide).
+          </p>
         </section>
 
         <section className="rounded-xl border border-line bg-surface px-3 py-2">
           <p>
-            Built from the department manual. The text is shown exactly as written. Where it needs correcting,
-            a <strong className="text-review">Check before use</strong> note sits next to it; the manual itself is
-            not changed.
+            The text is shown exactly as written. Where it needs checking, a{' '}
+            <strong className="text-review">Check before use</strong> note sits next to it; the manual itself is not
+            changed.
           </p>
-          <p className="mt-2">
-            A decision aid for junior residents. No critical treatment is to be started without informing the{' '}
-            {site.seniorLong} on shift.
-          </p>
+          <p className="mt-2">A decision aid. When the patient does not fit the protocol, escalate to the Consultant on call.</p>
         </section>
 
         <section>
@@ -43,16 +47,12 @@ export function AboutScreen() {
           <ul className="space-y-2">
             {reviewNotes.map((n) => {
               const a = n.anchors[0]!;
-              const ch = manual.chapters.find((c) => c.number === a.chapter);
+              const ch = chapterById(a.chapter);
               const id = findAnchor(manual, a)[0];
-              const to = id ? urlFor(id) : '/';
               return (
                 <li key={n.id}>
-                  <Link to={to} className="block rounded-xl border-2 border-dashed border-review bg-review-soft px-3 py-2">
-                    <span className="text-sm text-muted">
-                      Ch {a.chapter}
-                      {ch && ` · ${shortTitle(ch)}`}
-                    </span>
+                  <Link to={id ? urlFor(id) : '/'} className="block rounded-xl border-2 border-dashed border-review bg-review-soft px-3 py-2">
+                    <span className="text-sm text-muted">{ch ? `${ch.label} ${ch.title}`.trim() : ''}</span>
                     <span className="block font-bold">{n.title}</span>
                   </Link>
                 </li>
@@ -83,14 +83,9 @@ export function AboutScreen() {
         </section>
 
         <section className="text-sm text-muted">
-          <p>
-            Site: {site.name}
-            {!site.verified && ' — local details are a draft and need checking'}
-          </p>
           <p>Manual version: {manual.sourceHash.slice(0, 12)}</p>
         </section>
       </main>
     </>
   );
 }
-

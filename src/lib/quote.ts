@@ -7,35 +7,55 @@ export interface Quote {
   id: string;
   inline: Inline[];
   text: string;
-  chapter: number;
+  chapter: string;
 }
 
 /** The one item, paragraph or sub-heading matching the anchor. Throws if it is missing or ambiguous. */
 export function quote(m: Manual, a: Anchor): Quote {
   const ids = findAnchor(m, a);
-  if (ids.length !== 1) throw new Error(`Ch ${a.chapter}: "${a.match}" found ${ids.length} times, expected 1`);
+  if (ids.length !== 1) throw new Error(`${a.chapter}: "${a.match}" found ${ids.length} times, expected 1`);
   const node = byId(m, ids[0]!);
-  if (!node) throw new Error(`Ch ${a.chapter}: "${a.match}" is a heading, not quotable text`);
+  if (!node) throw new Error(`${a.chapter}: "${a.match}" is a heading, not quotable text`);
   return { id: ids[0]!, inline: node.inline, text: node.text, chapter: a.chapter };
 }
 
-/** Items of the first list that follows the paragraph / sub-heading starting with `heading`. */
-export function listAfter(m: Manual, chapter: number, heading: string): Item[] {
-  const ch = m.chapters.find((c) => c.number === chapter);
+/**
+ * Items of the first list that follows the paragraph / sub-heading `heading` (an exact match is
+ * preferred, so "H" finds the "H" sub-heading, not the first line starting with H).
+ */
+export function listAfter(m: Manual, chapter: string, heading: string): Item[] {
+  const ch = m.chapters.find((c) => c.id === chapter);
+  for (const exact of [true, false]) {
+    for (const s of ch?.sections ?? []) {
+      for (const sub of s.subsections) {
+        const at = sub.blocks.findIndex(
+          (b) => (b.type === 'subhead' || b.type === 'paragraph') && (exact ? b.text === heading : b.text.startsWith(heading)),
+        );
+        if (at === -1) continue;
+        const list = sub.blocks.slice(at + 1).find((b) => b.type === 'list');
+        if (list?.type === 'list') return list.items;
+      }
+    }
+  }
+  throw new Error(`${chapter}: no list after "${heading}"`);
+}
+
+/** Items of the first list in the #### sub-section whose heading starts with `heading`. */
+export function listIn(m: Manual, chapter: string, heading: string): Item[] {
+  const ch = m.chapters.find((c) => c.id === chapter);
   for (const s of ch?.sections ?? []) {
     for (const sub of s.subsections) {
-      const at = sub.blocks.findIndex((b) => (b.type === 'subhead' || b.type === 'paragraph') && b.text.startsWith(heading));
-      if (at === -1) continue;
-      const list = sub.blocks.slice(at + 1).find((b) => b.type === 'list');
+      if (!sub.headingText?.startsWith(heading)) continue;
+      const list = sub.blocks.find((b) => b.type === 'list');
       if (list?.type === 'list') return list.items;
     }
   }
-  throw new Error(`Ch ${chapter}: no list after "${heading}"`);
+  throw new Error(`${chapter}: no list in "${heading}"`);
 }
 
 /** Text of the table row whose first cell starts with `rowStart` (e.g. "A — Airway"). */
-export function tableRow(m: Manual, chapter: number, rowStart: string): string {
-  const ch = m.chapters.find((c) => c.number === chapter);
+export function tableRow(m: Manual, chapter: string, rowStart: string): string {
+  const ch = m.chapters.find((c) => c.id === chapter);
   for (const b of allBlocks(ch?.sections.flatMap((s) => s.subsections.flatMap((x) => x.blocks)) ?? [])) {
     if (b.type !== 'table') continue;
     for (const row of b.rows) {
@@ -43,7 +63,7 @@ export function tableRow(m: Manual, chapter: number, rowStart: string): string {
       if (cells[0]?.startsWith(rowStart)) return cells.slice(1).join(' ');
     }
   }
-  throw new Error(`Ch ${chapter}: no table row "${rowStart}"`);
+  throw new Error(`${chapter}: no table row "${rowStart}"`);
 }
 
 function plainText(runs: Inline[]): string {

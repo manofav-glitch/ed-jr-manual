@@ -1,5 +1,6 @@
-// Shape of src/data/manual.json, produced by scripts/parse-manual.ts.
-// The JSON is generated: edit content/manual.md and run `npm run parse`, never the JSON.
+// Shape of src/data/hospital.json, produced by scripts/parse-manual.ts.
+// The JSON is generated: change content/hospital.md (via scripts/import-hospital.ts) and run
+// `npm run parse`, never the JSON.
 
 /** Inline text exactly as written in the manual, with its emphasis kept. */
 export type Inline =
@@ -9,13 +10,6 @@ export type Inline =
   | { t: 'code'; v: string }
   | { t: 'link'; href: string; c: Inline[] };
 
-/**
- * What a "*" on an item means. The manual uses it two ways: "discuss with the SR before
- * proceeding" (most chapters) and "if (clinically) indicated" (chapters 9 and 15, which say
- * so in a footnote).
- */
-export type Marker = 'askSr' | 'ifIndicated';
-
 export interface Item {
   id: string;
   /** Number shown in the manual for ordered lists. */
@@ -23,7 +17,6 @@ export interface Item {
   inline: Inline[];
   /** Plain text of `inline`, for search and tests. */
   text: string;
-  marker?: Marker;
   /** Nested lists, call-outs or extra paragraphs belonging to this item. */
   children: Block[];
   line: number;
@@ -54,28 +47,21 @@ export interface Section {
   /** null for content between the chapter title and its first ### heading. */
   heading: Inline[] | null;
   headingText: string | null;
-  /** Meaning of "*" on items in this section. */
-  markerMeaning: Marker;
   subsections: Subsection[];
   line: number;
 }
 
-export type ChapterGroup = 'counter' | 'presentation' | 'drug';
-
 export interface Chapter {
+  /** hp2-1, or hp-triage for an unnumbered chapter. */
   id: string;
-  /** Position in its manual, from 1. */
+  /** Position in the manual, from 1. */
   number: number;
-  /** Number as printed: "3" in the AIIMS manual, "1.1" in the hospital protocols, "" if none. */
+  /** Number as printed: "2.1", "10.0", or "" if none. */
   label: string;
-  /** Title as in the chapter heading, e.g. "Assessment of a patient with Chest Pain". */
   title: string;
-  /** Title as in the manual's contents list, e.g. "Initial assessment of a patient with chest pain". */
-  contentsTitle: string;
-  group: ChapterGroup;
-  /** A part title (a single # heading) printed just before this chapter, if any. */
+  /** The part title ("# 2.0 …") printed just before this chapter, if any. */
   partTitle?: string;
-  /** Hospital protocols: the part ("1.0 Trauma") this chapter belongs to. */
+  /** The part ("2.0 Chest Pain, …") this protocol belongs to. */
   part?: string;
   sections: Section[];
   line: number;
@@ -83,13 +69,11 @@ export interface Chapter {
 
 export interface Manual {
   title: string;
-  /** Hospital protocols: parts ("# 1.0 Trauma") with their introductions. */
-  parts?: { title: string; intro: Block[] }[];
-  /** Front matter: department line and credits, exactly as written. */
+  /** Parts ("# 1.0 Trauma") with their introductions. */
+  parts: { title: string; intro: Block[] }[];
+  /** Text before the first chapter (none in the current manual). */
   front: Block[];
-  /** Headings the manual uses to group its contents list. */
-  contentsGroups: { title: string; chapters: number[] }[];
   chapters: Chapter[];
-  /** sha-256 of content/manual.md, so the app can tell which manual version it was built from. */
+  /** sha-256 of content/hospital.md, so the app can tell which version it was built from. */
   sourceHash: string;
 }

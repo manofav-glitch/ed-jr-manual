@@ -3,7 +3,7 @@ import { isLeaf } from '../lib/manual.ts';
 import { useApp } from '../lib/store.ts';
 import { CheckIcon } from './Icons.tsx';
 import { InlineText } from './Inline.tsx';
-import { MarkerBadge, NotesFor } from './Notes.tsx';
+import { NotesFor } from './Notes.tsx';
 
 /** 'check': items without sub-points are tickable steps. 'read': plain bullets. */
 export type Mode = 'check' | 'read';
@@ -104,7 +104,6 @@ function ReadItem({ item, ordered, mode }: { item: Item; ordered: boolean; mode:
           {ordered && isGroup && `${item.n}. `}
           <InlineText runs={item.inline} />
         </span>
-        <MarkerBadge marker={item.marker} />
         <NotesFor id={item.id} />
         <div className={isGroup ? 'mt-1 border-l-2 border-line pl-3' : ''}>
           <Blocks blocks={item.children} mode={mode} />
@@ -141,8 +140,7 @@ function CheckItem({ item }: { item: Item }) {
         <span className={'min-w-0 flex-1 ' + (ticked ? 'text-muted' : '')}>
           {item.n !== undefined && <span className="font-bold">{item.n}. </span>}
           <InlineText runs={item.inline} />
-          <MarkerBadge marker={item.marker} />
-        </span>
+          </span>
       </button>
       <NotesFor id={item.id} />
       {item.children.length > 0 && (

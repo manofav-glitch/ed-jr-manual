@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { BackIcon, StarIcon } from '../../components/Icons.tsx';
 import { flowchartById, flowchartByLabel, sheetUrl } from '../../lib/flowcharts.ts';
+import { textFor } from '../../lib/manual.ts';
 import { useApp } from '../../lib/store.ts';
 
 export function FlowchartScreen() {
@@ -24,6 +25,7 @@ export function FlowchartScreen() {
     );
   }
   const see = f.seeAlso ? flowchartByLabel(f.seeAlso) : undefined;
+  const texts = textFor(f.label);
 
   return (
     <>
@@ -52,6 +54,21 @@ export function FlowchartScreen() {
             See {see.label} {see.title} →
           </Link>
         )}
+        {texts.map((ch) => (
+          <Link
+            key={ch.id}
+            to={`/p/${ch.id}`}
+            className="flex min-h-14 items-center justify-between gap-2 rounded-xl bg-accent px-4 py-2 text-lg font-bold text-accent-ink"
+          >
+            <span>
+              Step-by-step checklist
+              <span className="block text-sm font-normal">
+                {ch.label} {ch.title}
+              </span>
+            </span>
+            <span aria-hidden="true">→</span>
+          </Link>
+        ))}
         <p className="text-sm text-muted">Tap a sheet to open it full size and zoom.</p>
         {f.sheets.map((s) => (
           <figure key={s.src}>

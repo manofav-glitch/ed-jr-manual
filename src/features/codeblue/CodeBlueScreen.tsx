@@ -5,7 +5,7 @@ import { InlineText } from '../../components/Inline.tsx';
 import { NotesFor } from '../../components/Notes.tsx';
 import {
   RHYTHM_LABEL,
-  adrenalineDueIn,
+  adrenaline as adrenalineState,
   clock,
   cycleRemaining,
   eventFor,
@@ -15,28 +15,28 @@ import {
   type Rhythm,
 } from '../../lib/codeBlue.ts';
 import { manual } from '../../lib/manual.ts';
-import { listAfter, quote } from '../../lib/quote.ts';
+import { listAfter, listIn, quote } from '../../lib/quote.ts';
+import { num } from '../../lib/num.ts';
+import { useWeight } from '../../lib/weight.ts';
+import { fmt } from '../../lib/doses.ts';
 import { alarm, unlockAudio, useMetronome, useNow, useWakeLock } from './device.ts';
 import { useCode } from './store.ts';
 
-const q = (match: string) => quote(manual, { chapter: 13, match });
+const bls = (match: string) => quote(manual, { chapter: 'hp9-4', match });
 const MANUAL = {
-  activate: q('ACTIVATE CODE BLUE'),
-  cpr: q('BEGIN HIGH QUALITY CPR'),
-  shockable: q('Shockable rhythm (pulseless VT or VF)'),
-  nonShockable: q('Non-shockable (PEA or asystole)'),
-  noAirway: q('No advanced airway: give 2 breaths after each 30 chest compressions'),
-  airway: q('Advanced airway in place: one breath every 6 seconds'),
-  rate: q('Rate: 100–120/min'),
-  drugs: [
-    q('Epinephrine: 1 mg IV stat'),
-    q('Amiodarone: 1st 300 mg IV'),
-    q('Hyperkalemic arrest'),
-    q('Metabolic acidosis: Inj. NaHCO₃'),
-  ],
+  activate: bls('Shout for help. Announce CODE BLUE'),
+  start: bls('No breathing and no pulse → start CPR immediately'),
+  noAirway: bls('Compression-to-ventilation ratio 30:2'),
+  airway: bls('With an advanced airway: continuous compressions with 1 breath every 6 seconds'),
+  rate: bls('Rate: 100–120 compressions per minute'),
+  change: bls('Change the compressor every 2 minutes'),
+  etco2: bls('an ETCO₂ below 10 mmHg indicates inadequate compressions'),
+  bicarb: quote(manual, { chapter: 'hp9-6', match: 'Routine sodium bicarbonate is not recommended' }),
 };
-const HS = listAfter(manual, 13, '5H');
-const TS = listAfter(manual, 13, '5T');
+const SHOCKABLE = listIn(manual, 'hp9-6', 'Shockable rhythm');
+const NON_SHOCKABLE = listIn(manual, 'hp9-6', 'Non-shockable rhythm');
+const HS = listAfter(manual, 'hp9-6', 'H');
+const TS = listAfter(manual, 'hp9-6', 'T');
 const BPM = 110;
 
 export function CodeBlueScreen() {
@@ -46,9 +46,10 @@ export function CodeBlueScreen() {
   const wake = useWakeLock(v.running);
   const beat = useMetronome(metronome && v.running, BPM);
   const cycle = cycleRemaining(v, now);
-  const adrenaline = adrenalineDueIn(v, now);
+  const adr = adrenalineState(v, now);
   const rhythmDue = cycle !== null && cycle <= 0;
-  const adrenalineDue = adrenaline !== null && adrenaline <= 0;
+  const adrenalineDue = adr.state === 'due' || adr.state === 'overdue';
+  const kg = num(useWeight((w) => w.weight));
 
   // Alarm once each time a rhythm check or adrenaline dose falls due.
   const alerted = useRef({ cycle: 0, adrenaline: 0 });
@@ -81,7 +82,7 @@ export function CodeBlueScreen() {
         {v.startedAt === null ? (
           <div className="pt-4">
             <Quoted q={MANUAL.activate} />
-            <Quoted q={MANUAL.cpr} />
+            <Quoted q={MANUAL.start} />
             <button
               type="button"
               onClick={() => press('start')}
@@ -108,10 +109,13 @@ export function CodeBlueScreen() {
                 </div>
               )}
               {v.running && (
-                <p className={'col-span-2 rounded-xl px-3 py-2 text-lg font-bold ' + (adrenalineDue ? 'alert-flash' : 'bg-surface-2')}>
+                <p className={'col-span-2 rounded-xl px-3 py-2 text-lg font-bold ' + (adr.state === 'overdue' ? 'alert-flash' : 'bg-surface-2')}>
                   Adrenaline:{' '}
-                  {adrenaline === null ? 'not given yet' : adrenalineDue ? `DUE NOW (${clock(adrenaline)})` : `next in ${clock(adrenaline)}`}
-                  <span className="ml-2 text-sm font-normal">({v.adrenalineDoses} given)</span>
+                  {adr.state === 'none' && 'not given yet'}
+                  {adr.state === 'wait' && `due in ${clock(adr.in)}`}
+                  {adr.state === 'due' && `DUE NOW (by ${clock(adr.left)})`}
+                  {adr.state === 'overdue' && `OVERDUE (${clock(-adr.over)})`}
+                  <span className="ml-2 text-sm font-normal">({v.adrenalineDoses} given · every 3–5 min)</span>
                 </p>
               )}
             </div>
@@ -137,7 +141,15 @@ export function CodeBlueScreen() {
                   ))}
                 </div>
                 <p className="mt-1 text-sm text-muted">Tap the rhythm at every check: it restarts the 2-minute countdown.</p>
-                {v.rhythm && <Quoted q={v.rhythm === 'vf' ? MANUAL.shockable : MANUAL.nonShockable} />}
+                {v.rhythm && (
+                  <ol className="my-2 list-decimal space-y-1 border-l-4 border-line pl-8">
+                    {(v.rhythm === 'vf' ? SHOCKABLE : NON_SHOCKABLE).map((i) => (
+                      <li key={i.id}>
+                        <InlineText runs={i.inline} />
+                      </li>
+                    ))}
+                  </ol>
+                )}
 
                 <SectionTitle>Breaths</SectionTitle>
                 <Quoted q={v.advancedAirway ? MANUAL.airway : MANUAL.noAirway} />
@@ -145,21 +157,29 @@ export function CodeBlueScreen() {
                 <SectionTitle>Log</SectionTitle>
                 <div className="grid grid-cols-2 gap-2">
                   <Action onClick={() => press('shock')} strong={v.rhythm === 'vf'}>
-                    Shock 200 J{v.shocks > 0 && <Count n={v.shocks} />}
+                    Shock 120–200 J{v.shocks > 0 && <Count n={v.shocks} />}
                   </Action>
                   <Action onClick={() => press('adrenaline')} strong={adrenalineDue || v.adrenalineDoses === 0}>
                     Adrenaline 1 mg{v.adrenalineDoses > 0 && <Count n={v.adrenalineDoses} />}
                   </Action>
                   <Action onClick={() => press('amiodarone')} disabled={!can('amiodarone')}>
-                    {v.nextAmiodarone ? `Amiodarone ${v.nextAmiodarone} mg` : 'Amiodarone: both given'}
+                    {v.nextAmiodarone === 1 ? 'Amiodarone 300 mg' : v.nextAmiodarone === 2 ? 'Amiodarone 150 mg' : 'Amiodarone —'}
+                  </Action>
+                  <Action onClick={() => press('lignocaine')} disabled={!can('lignocaine')}>
+                    {v.nextLignocaine === null ? 'Lignocaine —' : v.nextLignocaine === 1 ? 'Lignocaine 1–1.5 mg/kg' : 'Lignocaine 0.5–0.75 mg/kg'}
+                    {v.nextLignocaine !== null && kg !== undefined && kg > 0 && (
+                      <span className="block text-sm font-normal">
+                        {v.nextLignocaine === 1 ? `${fmt(kg)}–${fmt(kg * 1.5)} mg` : `${fmt(kg * 0.5)}–${fmt(kg * 0.75)} mg`} at {fmt(kg)} kg
+                      </span>
+                    )}
                   </Action>
                   <Action onClick={() => press('airway')} disabled={!can('airway')}>
                     {v.advancedAirway ? 'Advanced airway ✓' : 'Advanced airway'}
                   </Action>
-                  <Action onClick={() => press('calcium')}>Ca gluconate 10% 30 mL</Action>
-                  <Action onClick={() => press('bicarb')}>NaHCO₃ 100 mEq</Action>
-                  <Action onClick={() => press('iv')}>IV access</Action>
-                  <Action onClick={() => press('vbg')}>VBG sent</Action>
+                  <Action onClick={() => press('calcium')}>Calcium given</Action>
+                  <Action onClick={() => press('bicarb')}>Bicarbonate given</Action>
+                  <Action onClick={() => press('iv')}>IV / IO access</Action>
+                  <Action onClick={() => press('gas')}>Blood gas sent</Action>
                   <Action onClick={() => press('rosc')} strong>
                     ROSC
                   </Action>
@@ -194,13 +214,15 @@ export function CodeBlueScreen() {
                   {metronome ? `Metronome on · ${BPM}/min` : `Metronome ${BPM}/min`}
                 </button>
                 <Quoted q={MANUAL.rate} />
+                <Quoted q={MANUAL.change} />
+                <Quoted q={MANUAL.etco2} />
                 <p className="text-sm text-muted">
                   Screen: {wake === 'on' ? 'kept awake' : wake === 'unsupported' ? 'this browser cannot keep it awake' : 'may sleep'}
                 </p>
               </>
             )}
 
-            <SectionTitle>Reversible causes (5H & 5T)</SectionTitle>
+            <SectionTitle>Reversible causes — the H’s and T’s</SectionTitle>
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               {[...HS, ...TS].map((i) => (
                 <CheckRow key={i.id} checked={considered.includes(i.id)} onToggle={() => toggleConsidered(i.id)}>
@@ -224,17 +246,9 @@ export function CodeBlueScreen() {
           </>
         )}
 
-        <SectionTitle>Drug doses (chapter 13)</SectionTitle>
-        <ul className="space-y-1.5">
-          {MANUAL.drugs.map((d) => (
-            <li key={d.id} className="flex gap-2">
-              <span aria-hidden="true">•</span>
-              <span>
-                <InlineText runs={d.inline} />
-              </span>
-            </li>
-          ))}
-        </ul>
+        <SectionTitle>Drugs</SectionTitle>
+        <p className="mb-2 text-sm text-muted">From section 9.6. The calcium and bicarbonate buttons only log the time.</p>
+        <Quoted q={MANUAL.bicarb} />
       </main>
     </>
   );
